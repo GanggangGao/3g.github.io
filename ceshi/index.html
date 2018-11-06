@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
   <title>Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="礼物 - 11.6 	 	 	 	   	 	 		老婆想你了… 		 		 			 				 					 					 					摇一摇…见证奇迹的时刻… 					 				 				 					老婆么么哒 					我想你了 					请打开音量收听… 				 			 		 	  	 		var Main = (function() {">
+  <meta name="description" content="礼物 - 11.6 	 	 	 	   	 		 			 				 					摇一摇…见证奇迹的时刻… 					 				 				 					老婆么么哒 					我想你了 					请打开音量收听… 				 			 		 	  	 		var Main = (function() { 			function playAudio(src)">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Struggle3g‘s Blog">
 <meta property="og:url" content="https://www.struggle3g.com/ceshi/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="礼物 - 11.6 	 	 	 	   	 	 		老婆想你了… 		 		 			 				 					 					 					摇一摇…见证奇迹的时刻… 					 				 				 					老婆么么哒 					我想你了 					请打开音量收听… 				 			 		 	  	 		var Main = (function() {">
+<meta property="og:description" content="礼物 - 11.6 	 	 	 	   	 		 			 				 					摇一摇…见证奇迹的时刻… 					 				 				 					老婆么么哒 					我想你了 					请打开音量收听… 				 			 		 	  	 		var Main = (function() { 			function playAudio(src)">
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="https://www.struggle3g.com/ceshi/img/shake.png">
-<meta property="og:updated_time" content="2018-11-06T09:18:36.000Z">
+<meta property="og:updated_time" content="2018-11-06T09:48:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="礼物 - 11.6 	 	 	 	   	 	 		老婆想你了… 		 		 			 				 					 					 					摇一摇…见证奇迹的时刻… 					 				 				 					老婆么么哒 					我想你了 					请打开音量收听… 				 			 		 	  	 		var Main = (function() {">
+<meta name="twitter:description" content="礼物 - 11.6 	 	 	 	   	 		 			 				 					摇一摇…见证奇迹的时刻… 					 				 				 					老婆么么哒 					我想你了 					请打开音量收听… 				 			 		 	  	 		var Main = (function() { 			function playAudio(src)">
 <meta name="twitter:image" content="https://www.struggle3g.com/ceshi/img/shake.png">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
@@ -193,19 +193,14 @@
 	<script src="js/shake.js"></script>
 </head>
 <body>
-	<!-- <div id="my_player"></div> -->
 	<header>
-		<p>老婆想你了…</p>
-		<!-- <div class="paper-t"></div> -->
 		<div class="main">
 			<div class="main-top top2">
 				<section id="se1">
-					<!-- <p>首先，你要输入我的生日</p> -->
-					<!-- <input id="myBir" type="text" placeholder="4位数，格式为:mmdd"/> -->
 					<p>摇一摇…见证奇迹的时刻…</p>
 					<img src="img/shake.png">
 				</section>
-				<section id="se2" class="hide">
+				<section id="se2" class="Myhide">
 					<p>老婆么么哒</p>
 					<p>我想你了</p>
 					<p>请打开音量收听…</p>
@@ -239,8 +234,8 @@
 			window.addEventListener('shake', autoRun, false);
 			function autoRun(){
 				// if($("#myBir").val() == "0325"){
-					$("#se1").hide();
-					$("#se2").show();
+					$("#se1").Myhide();
+					$("#se2").Myshow();
 					playAudio("media/gift.ogg");
 				// }else{
 				// 	alert("生日错误");
