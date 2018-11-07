@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
   <title>Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="郁闷                                          摇一摇…见证奇迹的时刻…         请打开音量收听…                                 function audioAutoPlay(id){       var audio = document.getElementById(id),">
+  <meta name="description" content="老婆么么哒！                                             摇一摇…见证奇迹的时刻…         请打开音量收听…老婆么么哒！老婆想你了！                                                     function audioAutoPlay(id){">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Struggle3g‘s Blog">
 <meta property="og:url" content="https://www.struggle3g.com/ceshi/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="郁闷                                          摇一摇…见证奇迹的时刻…         请打开音量收听…                                 function audioAutoPlay(id){       var audio = document.getElementById(id),">
+<meta property="og:description" content="老婆么么哒！                                             摇一摇…见证奇迹的时刻…         请打开音量收听…老婆么么哒！老婆想你了！                                                     function audioAutoPlay(id){">
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="https://www.struggle3g.com/ceshi/img/shake.png">
-<meta property="og:updated_time" content="2018-11-07T06:35:52.000Z">
+<meta property="og:updated_time" content="2018-11-07T07:14:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="郁闷                                          摇一摇…见证奇迹的时刻…         请打开音量收听…                                 function audioAutoPlay(id){       var audio = document.getElementById(id),">
+<meta name="twitter:description" content="老婆么么哒！                                             摇一摇…见证奇迹的时刻…         请打开音量收听…老婆么么哒！老婆想你了！                                                     function audioAutoPlay(id){">
 <meta name="twitter:image" content="https://www.struggle3g.com/ceshi/img/shake.png">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
@@ -69,8 +69,6 @@
 				<li><a href="/Photo/">相册</a></li>
 	        
 				<li><a href="/Video/">精彩</a></li>
-	        
-				<li><a href="/ceshi/">测试</a></li>
 	        
 			</ul>
 		</nav>
@@ -130,8 +128,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -148,15 +144,13 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/">主页</a></li>
+					<li style="width: 25%"><a href="/">主页</a></li>
 		        
-					<li style="width: 20%"><a href="/essay/">记录</a></li>
+					<li style="width: 25%"><a href="/essay/">记录</a></li>
 		        
-					<li style="width: 20%"><a href="/Photo/">相册</a></li>
+					<li style="width: 25%"><a href="/Photo/">相册</a></li>
 		        
-					<li style="width: 20%"><a href="/Video/">精彩</a></li>
-		        
-					<li style="width: 20%"><a href="/ceshi/">测试</a></li>
+					<li style="width: 25%"><a href="/Video/">精彩</a></li>
 		        
 				</ul>
 			</nav>
@@ -172,7 +166,7 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="post-photos" class="article article-type-post " itemscope itemprop="blogPost">
+<article id="post-" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
 
     
@@ -185,12 +179,13 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="format-detection" content="telephone=no">
   <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
-  <title>郁闷</title>
+  <title>老婆么么哒！</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/index.css">
   <script src="js/shake.js"></script>
   <script src="js/zepto.min.js"></script>
   <script src="js/jquery-3.3.1.js"></script>
+  
 </head>
 
 <body>
@@ -198,54 +193,57 @@
     <div class="main">
       <div class="main-top top2">
         <article id="se1"><p>摇一摇…见证奇迹的时刻…</p><img src="img/shake.png"></article>
-        <article id="se2" class="Myhide"><p>请打开音量收听…</p>
+        <article id="se2" class="Myhide"><p>请打开音量收听…</p><p>老婆么么哒！</p><p>老婆想你了！</p>
         </article>
+        <audio id="SimpleMusicPlayer" src="media/shake_sound_male.mp3">
+        </audio>
       </div>
     </div>
   </header>
 </body>
 
-<script>
+<script type="text/javascript">
 
-    function audioAutoPlay(id){
-      var audio = document.getElementById(id),  
-      play = function(){
-        audio.load();
+      function audioAutoPlay(id){
+        var audio = document.getElementById(id),  play = function(){
+          audio.play();  
+          document.removeEventListener("touchstart",play, false);  
+        };
+        audio.load();  
         audio.play();  
-        document.removeEventListener("touchstart",play, false);  
-      };  
-      audio.play();  
-      document.addEventListener("WeixinJSBridgeReady", function () {  
-          play();  
-      }, false);  
-      document.addEventListener('YixinJSBridgeReady', function() {  
-          play();  
-      }, false);  
-      document.addEventListener("touchstart",play, false);  
-    }
-    
-    var Main = (function() {
+        document.addEventListener("WeixinJSBridgeReady", function () {  
+            play();  
+        }, false);  
+        document.addEventListener('YixinJSBridgeReady', function() {  
+            play();  
+        }, false);  
+        document.addEventListener("touchstart",play, false);  
+      }
+      
+      var Main = (function() {
 
       window.addEventListener('shake', autoRun, false);
 
       function autoRun(){
         document.getElementById("se1").style.display="none";
         document.getElementById("se2").style.display="block";
-        audioAutoPlay("muisc")
+        audioAutoPlay('SimpleMusicPlayer'); 
       }
 
       var init = function() {
         
       }
-
       return {
         init: init
       }
 
     })();
 
-    $(Main.init());
-  </script>
+</script>
+
+
+
+
 
 
 
@@ -450,6 +448,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Runtime</a>
               </li>
              
@@ -487,10 +489,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">经验笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小知识</a>
               </li>
             
             <div class="clearfix"></div>
