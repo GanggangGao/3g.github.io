@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
   <title>Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="礼物 - 11.6 	 	 	 	 	   	 		 			 				 					摇一摇…见证奇迹的时刻… 					 				 				 					老婆么么哒 					我想你了 					请打开音量收听… 				 			 		 	  	  		function autoPlay() {             var myAuto = do">
+  <meta name="description" content="郁闷                                          摇一摇…见证奇迹的时刻…         请打开音量收听…                                 function audioAutoPlay(id){       var audio = document.getElementById(id),">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Struggle3g‘s Blog">
 <meta property="og:url" content="https://www.struggle3g.com/ceshi/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="礼物 - 11.6 	 	 	 	 	   	 		 			 				 					摇一摇…见证奇迹的时刻… 					 				 				 					老婆么么哒 					我想你了 					请打开音量收听… 				 			 		 	  	  		function autoPlay() {             var myAuto = do">
+<meta property="og:description" content="郁闷                                          摇一摇…见证奇迹的时刻…         请打开音量收听…                                 function audioAutoPlay(id){       var audio = document.getElementById(id),">
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="https://www.struggle3g.com/ceshi/img/shake.png">
-<meta property="og:updated_time" content="2018-11-06T11:06:04.000Z">
+<meta property="og:updated_time" content="2018-11-07T06:35:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="礼物 - 11.6 	 	 	 	 	   	 		 			 				 					摇一摇…见证奇迹的时刻… 					 				 				 					老婆么么哒 					我想你了 					请打开音量收听… 				 			 		 	  	  		function autoPlay() {             var myAuto = do">
+<meta name="twitter:description" content="郁闷                                          摇一摇…见证奇迹的时刻…         请打开音量收听…                                 function audioAutoPlay(id){       var audio = document.getElementById(id),">
 <meta name="twitter:image" content="https://www.struggle3g.com/ceshi/img/shake.png">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
@@ -172,90 +172,86 @@
           </div>
           <div id="js-content" class="content-ll">
             
-<article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+<article id="post-photos" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
 
     
     <div class="article-entry" itemprop="articleBody">
       
-        <!doctype html>
-<html lang="en">
+        
 <head>
-	<meta charset="utf-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
-	<title>礼物 - 11.6</title>
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/index.css">
-	<script src="js/zepto.min.js"></script>
-	<script src="js/shake.js"></script>
-	<audio src="js/shake_sound_male.mp3">
-</audio></head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
+  <title>郁闷</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/shake.js"></script>
+  <script src="js/zepto.min.js"></script>
+  <script src="js/jquery-3.3.1.js"></script>
+</head>
+
 <body>
-	<header>
-		<div class="main">
-			<div class="main-top top2">
-				<section id="se1">
-					<p>摇一摇…见证奇迹的时刻…</p>
-					<img src="img/shake.png">
-				</section>
-				<section id="se2" class="Myhide">
-					<p>老婆么么哒</p>
-					<p>我想你了</p>
-					<p>请打开音量收听…</p>
-				</section>
-			</div>
-		</div>
-	</header>
+  <header>
+    <div class="main">
+      <div class="main-top top2">
+        <article id="se1"><p>摇一摇…见证奇迹的时刻…</p><img src="img/shake.png"></article>
+        <article id="se2" class="Myhide"><p>请打开音量收听…</p>
+        </article>
+      </div>
+    </div>
+  </header>
 </body>
-	<script>
 
-		function autoPlay() {
-            var myAuto = document.getElementById('myaudio');
-            myAuto.play();
-        }
+<script>
 
-		var Main = (function() {
-			function playAudio(src) {
-			    if (typeof Audio != "undefined") { 
-			        new Audio(src).play() ;
-			    } else if (typeof device != "undefined") {
-			        if (device.platform == 'Android') {
-			            console.log(src);
-			        }
-			        var mediaRes = new Media(src,
-			            function onSuccess() {
-			                mediaRes.release();
-			            },
-			            function onError(e){
-			                console.log("error playing sound: " + JSON.stringify(e));
-			            });
-			        mediaRes.play();
+    function audioAutoPlay(id){
+      var audio = document.getElementById(id),  
+      play = function(){
+        audio.load();
+        audio.play();  
+        document.removeEventListener("touchstart",play, false);  
+      };  
+      audio.play();  
+      document.addEventListener("WeixinJSBridgeReady", function () {  
+          play();  
+      }, false);  
+      document.addEventListener('YixinJSBridgeReady', function() {  
+          play();  
+      }, false);  
+      document.addEventListener("touchstart",play, false);  
+    }
+    
+    var Main = (function() {
 
-			    } else {
-			        alert("no sound API to play: " + src);
-			    }
-			}
-			window.addEventListener('shake', autoRun, false);
-			function autoRun(){
-				autoPlay();
-				alert("老婆么么哒!");
-				$("#se1").Myhide();
-				$("#se2").Myshow();
-			}
-			var init = function() {
-				
-			}
-			return {
-				init: init
-			}
-		})();
+      window.addEventListener('shake', autoRun, false);
 
-		$(Main.init());
-	</script>
-</html>
+      function autoRun(){
+        document.getElementById("se1").style.display="none";
+        document.getElementById("se2").style.display="block";
+        audioAutoPlay("muisc")
+      }
+
+      var init = function() {
+        
+      }
+
+      return {
+        init: init
+      }
+
+    })();
+
+    $(Main.init());
+  </script>
+
+
+
+
+
+
 
       
 
@@ -454,10 +450,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">小知识</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Runtime</a>
               </li>
              
@@ -491,6 +483,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">生活杂记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">经验笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">小知识</a>
               </li>
             
             <div class="clearfix"></div>
