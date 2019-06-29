@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
-  <title>Struggle3g‘s Blog</title>
+  <title>iOS基础全面分析之一(KVC全面分析) | Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="KVC全面分析基本使用 能够对对象的私有成员进行取值赋值 对数值和结构体的属性进行的打包解包处理 (NSNumber、NSValue)  基本赋值过程 先找相关方法： set&amp;lt;key&amp;gt;:, _set&amp;lt;key&amp;gt;:, setIs&amp;lt;key&amp;gt;: 若没有相关方法，会调用+ (BOOL)accessInstanceVariablesDirectly方法 如果return是N">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Struggle3g‘s Blog">
+<meta property="og:title" content="iOS基础全面分析之一(KVC全面分析)">
 <meta property="og:url" content="https://www.struggle3g.com/2019/06/28/iOS基础全面分析之一(KVC全面分析)/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
 <meta property="og:description" content="KVC全面分析基本使用 能够对对象的私有成员进行取值赋值 对数值和结构体的属性进行的打包解包处理 (NSNumber、NSValue)  基本赋值过程 先找相关方法： set&amp;lt;key&amp;gt;:, _set&amp;lt;key&amp;gt;:, setIs&amp;lt;key&amp;gt;: 若没有相关方法，会调用+ (BOOL)accessInstanceVariablesDirectly方法 如果return是N">
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-cc99aeaeec87f3dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-06-28T18:09:42.000Z">
+<meta property="og:updated_time" content="2019-06-29T04:38:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Struggle3g‘s Blog">
+<meta name="twitter:title" content="iOS基础全面分析之一(KVC全面分析)">
 <meta name="twitter:description" content="KVC全面分析基本使用 能够对对象的私有成员进行取值赋值 对数值和结构体的属性进行的打包解包处理 (NSNumber、NSValue)  基本赋值过程 先找相关方法： set&amp;lt;key&amp;gt;:, _set&amp;lt;key&amp;gt;:, setIs&amp;lt;key&amp;gt;: 若没有相关方法，会调用+ (BOOL)accessInstanceVariablesDirectly方法 如果return是N">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-cc99aeaeec87f3dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
@@ -170,6 +170,21 @@
   <div class="article-inner">
 
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS基础全面分析之一(KVC全面分析)
+    </h1>
+  
+
+        
+        <a href="/2019/06/28/iOS基础全面分析之一(KVC全面分析)/" class="archive-article-date">
+  	<time datetime="2019-06-28T15:06:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="KVC全面分析"><a href="#KVC全面分析" class="headerlink" title="KVC全面分析"></a>KVC全面分析</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><ol>
@@ -315,7 +330,7 @@
   
   
     <a href="/2019/06/28/iOS基础全面分析之二(RunLoop全面分析)/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+      <div class="article-nav-title">iOS基础全面分析之一(RunLoop全面分析)</div>
       <i class="icon-circle-right"></i>
     </a>
   
