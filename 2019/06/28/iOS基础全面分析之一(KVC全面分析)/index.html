@@ -6,19 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
-  <title>Archives: 2019 | Struggle3g‘s Blog</title>
+  <title>Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding yourself">
+  <meta name="description" content="KVC全面分析基本使用 能够对对象的私有成员进行取值赋值 对数值和结构体的属性进行的打包解包处理 (NSNumber、NSValue)  基本赋值过程 先找相关方法： set&amp;lt;key&amp;gt;:, _set&amp;lt;key&amp;gt;:, setIs&amp;lt;key&amp;gt;: 若没有相关方法，会调用+ (BOOL)accessInstanceVariablesDirectly方法 如果return是N">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Struggle3g‘s Blog">
-<meta property="og:url" content="https://www.struggle3g.com/archives/2019/index.html">
+<meta property="og:url" content="https://www.struggle3g.com/2019/06/28/iOS基础全面分析之一(KVC全面分析)/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="Coding yourself">
+<meta property="og:description" content="KVC全面分析基本使用 能够对对象的私有成员进行取值赋值 对数值和结构体的属性进行的打包解包处理 (NSNumber、NSValue)  基本赋值过程 先找相关方法： set&amp;lt;key&amp;gt;:, _set&amp;lt;key&amp;gt;:, setIs&amp;lt;key&amp;gt;: 若没有相关方法，会调用+ (BOOL)accessInstanceVariablesDirectly方法 如果return是N">
 <meta property="og:locale" content="ch">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-cc99aeaeec87f3dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-06-28T18:09:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="Coding yourself">
+<meta name="twitter:description" content="KVC全面分析基本使用 能够对对象的私有成员进行取值赋值 对数值和结构体的属性进行的打包解包处理 (NSNumber、NSValue)  基本赋值过程 先找相关方法： set&amp;lt;key&amp;gt;:, _set&amp;lt;key&amp;gt;:, setIs&amp;lt;key&amp;gt;: 若没有相关方法，会调用+ (BOOL)accessInstanceVariablesDirectly方法 如果return是N">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-cc99aeaeec87f3dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -163,84 +166,194 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-iOS基础全面分析之一(KVC全面分析)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="KVC全面分析"><a href="#KVC全面分析" class="headerlink" title="KVC全面分析"></a>KVC全面分析</h1><h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><ol>
+<li>能够对对象的私有成员进行取值赋值</li>
+<li>对数值和结构体的属性进行的打包解包处理 (NSNumber、NSValue)</li>
+</ol>
+<h2 id="基本赋值过程"><a href="#基本赋值过程" class="headerlink" title="基本赋值过程"></a>基本赋值过程</h2><ol>
+<li>先找相关方法： <code>set&lt;key&gt;:, _set&lt;key&gt;:, setIs&lt;key&gt;:</code></li>
+<li>若没有相关方法，会调用<code>+ (BOOL)accessInstanceVariablesDirectly</code>方法</li>
+<li>如果return是NO，直接执行KVC的<code>[object setValue:forUndefinedKey:]:</code>(系统抛出一个异常，未定义的key)</li>
+<li><p><code>+ (BOOL)accessInstanceVariablesDirectly</code>如果return是YES，继续找相关的变量：</p>
+<ul>
+<li><p>相关变量赋值顺序，</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//_&lt;key&gt;,_is&lt;key&gt;,&lt;key&gt;,is&lt;key&gt;</span><br><span class="line">//    NSString * name;         //3</span><br><span class="line">//    NSString * _name;        //1</span><br><span class="line">//    NSString * isName;       //4</span><br><span class="line">//    NSString * _isName;      //2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>如果方法或成员变量都不存在，<code>[object setValue:forUndefinedKey:]:</code>(系统抛出一个异常，未定义的key)</p>
+</li>
+</ol>
+<h2 id="基本取值过程"><a href="#基本取值过程" class="headerlink" title="基本取值过程"></a>基本取值过程</h2><ol>
+<li>先找相关方法 <code>get&lt;key&gt;,&lt;key&gt;</code></li>
+<li>若没有相关方法，会调用<code>+ (BOOL)accessInstanceVariablesDirectly</code>方法</li>
+<li>如果return是NO，执行KVC的<code>[object valueForUndefinedKey:]:</code>(系统抛出一个异常，未定义的key)</li>
+<li><p><code>+ (BOOL)accessInstanceVariablesDirectly</code>如果return是YES，继续找相关的变量：</p>
+<ul>
+<li><p>相关变量取值顺序</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//_&lt;key&gt;,_is&lt;key&gt;,&lt;key&gt;,is&lt;key&gt;</span><br><span class="line">//    NSString * name;         //3</span><br><span class="line">//    NSString * _name;        //1</span><br><span class="line">//    NSString * isName;       //4</span><br><span class="line">//    NSString * _isName;      //2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>方法根成员变量都不存在，执行KVC的<code>[object valueForUndefinedKey:]:</code>(系统抛出一个异常，未定义的key)</p>
+</li>
+</ol>
+<h2 id="KVC自定义"><a href="#KVC自定义" class="headerlink" title="KVC自定义"></a>KVC自定义</h2><h3 id="set方法自定义"><a href="#set方法自定义" class="headerlink" title="set方法自定义"></a>set方法自定义</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"> - (void)tz_setValue:(nullable id)value forKey:(NSString *)key &#123;</span><br><span class="line">   </span><br><span class="line">    // 判断是否合法</span><br><span class="line">    if (key == nil &amp;&amp; key.length == 0) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // Key</span><br><span class="line">    NSString* Key = key.capitalizedString;</span><br><span class="line">    </span><br><span class="line">    /// 先找相关方法</span><br><span class="line">    //set&lt;Key&gt;:, _set&lt;Key&gt;:, setIs&lt;Key&gt;:</span><br><span class="line">    NSString* setKey = [NSString stringWithFormat:@&quot;set%@:&quot;, Key];</span><br><span class="line">    if ([self respondsToSelector:NSSelectorFromString(setKey)]) &#123;</span><br><span class="line">        [self performSelector:NSSelectorFromString(setKey) withObject:value];</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    NSString* _setKey = [NSString stringWithFormat:@&quot;_set%@:&quot;, Key];</span><br><span class="line">    if ([self respondsToSelector:NSSelectorFromString(_setKey)]) &#123;</span><br><span class="line">        [self performSelector:NSSelectorFromString(_setKey) withObject:value];</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    NSString* setIsKey = [NSString stringWithFormat:@&quot;setIs%@:&quot;, Key];</span><br><span class="line">    if ([self respondsToSelector:NSSelectorFromString(setIsKey)]) &#123;</span><br><span class="line">        [self performSelector:NSSelectorFromString(setIsKey) withObject:value];</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    if (![self.class accessInstanceVariablesDirectly]) &#123;</span><br><span class="line">        NSException* exception = [NSException exceptionWithName:@&quot;NSUnkonwnKeyException&quot; reason:@&quot;setValue:forUndefineKey&quot; userInfo:nil];</span><br><span class="line">        @throw exception;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    /// 再找相关变量</span><br><span class="line">    /// 获取所以成员变量</span><br><span class="line">    unsigned int count = 0;</span><br><span class="line">    Ivar* ivars = class_copyIvarList([self class], &amp;count);</span><br><span class="line">    </span><br><span class="line">    NSMutableArray* arr = [[NSMutableArray alloc] init];</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        Ivar var = ivars[i];</span><br><span class="line">        const char* varName = ivar_getName(var);</span><br><span class="line">        NSString* name = [NSString stringWithUTF8String:varName];</span><br><span class="line">        [arr addObject:name];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // _&lt;key&gt; _is&lt;Key&gt; &lt;key&gt; is&lt;Key&gt;</span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        NSString* keyName = arr[i];</span><br><span class="line">        if ([keyName isEqualToString:[NSString stringWithFormat:@&quot;_%@&quot;, key]]) &#123;</span><br><span class="line">            object_setIvar(self, ivars[i], value);</span><br><span class="line">            free(ivars);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        NSString* keyName = arr[i];</span><br><span class="line">        if ([keyName isEqualToString:[NSString stringWithFormat:@&quot;__is%@&quot;, Key]]) &#123;</span><br><span class="line">            object_setIvar(self, ivars[i], value);</span><br><span class="line">            free(ivars);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        NSString* keyName = arr[i];</span><br><span class="line">        if ([keyName isEqualToString:[NSString stringWithFormat:@&quot;%@&quot;, key]]) &#123;</span><br><span class="line">            object_setIvar(self, ivars[i], value);</span><br><span class="line">            free(ivars);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        NSString* keyName = arr[i];</span><br><span class="line">        if ([keyName isEqualToString:[NSString stringWithFormat:@&quot;is%@&quot;, Key]]) &#123;</span><br><span class="line">            object_setIvar(self, ivars[i], value);</span><br><span class="line">            free(ivars);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    [self setValue:value forUndefinedKey:key];</span><br><span class="line">    free(ivars);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="get方法自定义"><a href="#get方法自定义" class="headerlink" title="get方法自定义"></a>get方法自定义</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line">- (NSString *)GG_getValueforKey:(NSString *)key&#123;</span><br><span class="line">    </span><br><span class="line">    // 判断是否合法</span><br><span class="line">    if (key == nil &amp;&amp; key.length == 0) &#123;</span><br><span class="line">        NSException* exception = [NSException exceptionWithName:@&quot;崩溃&quot; reason:@&quot;value不合法&quot; userInfo:nil];</span><br><span class="line">        @throw exception;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // Key</span><br><span class="line">    NSString* CapitalKey = key.capitalizedString;</span><br><span class="line">    </span><br><span class="line">    //get&lt;key&gt;,&lt;key&gt;</span><br><span class="line">    NSString* getKey = [NSString stringWithFormat:@&quot;get%@&quot;, CapitalKey];</span><br><span class="line">    if ([self respondsToSelector:NSSelectorFromString(getKey)]) &#123;</span><br><span class="line">        </span><br><span class="line">        return [self performSelector:NSSelectorFromString(getKey)];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    NSString* Key = [NSString stringWithFormat:@&quot;%@&quot;, key];</span><br><span class="line">    if ([self respondsToSelector:NSSelectorFromString(Key)]) &#123;</span><br><span class="line">        </span><br><span class="line">        return [self performSelector:NSSelectorFromString(Key)];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    if (![self.class accessInstanceVariablesDirectly]) &#123;</span><br><span class="line">        NSException* exception = [NSException exceptionWithName:@&quot;NSUnkonwnKeyException&quot; reason:@&quot;valueForUndefinedKey:&quot; userInfo:nil];</span><br><span class="line">        @throw exception;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">#pragma mark -- 获取所以成员变量</span><br><span class="line">    /// 再找相关变量</span><br><span class="line">    /// 获取所以成员变量</span><br><span class="line">    unsigned int count = 0;</span><br><span class="line">    Ivar* ivars = class_copyIvarList([self class], &amp;count);</span><br><span class="line">    </span><br><span class="line">    NSMutableArray* arr = [[NSMutableArray alloc] init];</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        Ivar var = ivars[i];</span><br><span class="line">        const char* varName = ivar_getName(var);</span><br><span class="line">        NSString* name = [NSString stringWithUTF8String:varName];</span><br><span class="line">        NSLog(@&quot;%@&quot;,name);</span><br><span class="line">        [arr addObject:name];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    // _&lt;key&gt; _is&lt;Key&gt; &lt;key&gt; is&lt;Key&gt;</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        NSString* keyName = arr[i];</span><br><span class="line">        if ([keyName isEqualToString:[NSString stringWithFormat:@&quot;_%@&quot;, key]]) &#123;</span><br><span class="line">            NSString * var = object_getIvar(self, ivars[i]);</span><br><span class="line">            free(ivars);</span><br><span class="line">            return var;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        NSString* keyName = arr[i];</span><br><span class="line">        if ([keyName isEqualToString:[NSString stringWithFormat:@&quot;_is%@&quot;, CapitalKey]]) &#123;</span><br><span class="line">            NSString * var = object_getIvar(self, ivars[i]);</span><br><span class="line">            free(ivars);</span><br><span class="line">            return var;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        NSString* keyName = arr[i];</span><br><span class="line">        if ([keyName isEqualToString:[NSString stringWithFormat:@&quot;%@&quot;, key]]) &#123;</span><br><span class="line">            NSString * var = object_getIvar(self, ivars[i]);</span><br><span class="line">            free(ivars);</span><br><span class="line">            return var;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    for (int i = 0; i &lt; count; i++) &#123;</span><br><span class="line">        NSString* keyName = arr[i];</span><br><span class="line">        if ([keyName isEqualToString:[NSString stringWithFormat:@&quot;is%@&quot;, CapitalKey]]) &#123;</span><br><span class="line">            NSString * var = object_getIvar(self, ivars[i]);</span><br><span class="line">            free(ivars);</span><br><span class="line">            return var;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    NSString *RNstr = [self valueForUndefinedKey:key];</span><br><span class="line">    </span><br><span class="line">    free(ivars);</span><br><span class="line">    return  RNstr;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="KVC异常处理及正确性验证"><a href="#KVC异常处理及正确性验证" class="headerlink" title="KVC异常处理及正确性验证"></a>KVC异常处理及正确性验证</h2><h3 id="非对象类型，KVC的异常处理"><a href="#非对象类型，KVC的异常处理" class="headerlink" title="非对象类型，KVC的异常处理"></a>非对象类型，KVC的异常处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@interface Person : NSObject</span><br><span class="line">@property(nonatomic,copy)NSString *name;</span><br><span class="line">@property(nonatomic,assign)NSInteger age;</span><br><span class="line">@end</span><br><span class="line">Person *per = [[Person alloc]init];</span><br><span class="line">//这里会崩溃，因为下面是一个值类型，而值类型不能为nil，所以会崩溃</span><br><span class="line">/*</span><br><span class="line">Terminating app due to uncaught exception &apos;NSInvalidArgumentException&apos;, reason: &apos;[&lt;Person 0x600003865380&gt; setNilValueForKey]: could not set nil as the value for the key age.&apos;</span><br><span class="line">*/</span><br><span class="line">[per setValue:nil forKey:@&quot;age&quot;];</span><br></pre></td></tr></table></figure>
+<p>上述是值类型用KVC赋值为nil崩溃，怎样才能不崩溃呐？<br>需要在<code>Person</code>重写<code>setNilValueForKey</code>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//非对象类型，不能为nil</span><br><span class="line">- (void)setNilValueForKey:(NSString *)key&#123;</span><br><span class="line">    NSLog(@&quot;%@,值不能为空&quot;,key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="取值和赋值key不存在的异常捕获"><a href="#取值和赋值key不存在的异常捕获" class="headerlink" title="取值和赋值key不存在的异常捕获"></a>取值和赋值key不存在的异常捕获</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//赋值异常捕获</span><br><span class="line">- (void)setValue:(id)value forUndefinedKey:(NSString *)key&#123;</span><br><span class="line">    NSLog(@&quot;key == %@ 值不存在&quot;,key);</span><br><span class="line">&#125;</span><br><span class="line">//取值的异常捕获</span><br><span class="line">- (id)valueForUndefinedKey:(NSString *)key&#123;</span><br><span class="line">    NSLog(@&quot;key == %@ 值不存在&quot;,key);</span><br><span class="line">    return @&quot;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>扩展：万能容器</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">- (void)setValue:(id)value forUndefinedKey:(NSString *)key&#123;</span><br><span class="line">    </span><br><span class="line">    if(!key || [key isEqualToString:@&quot;&quot;])&#123;</span><br><span class="line">        Persondict = [NSMutableDictionary dictionary];</span><br><span class="line">    &#125;</span><br><span class="line">    [Persondict setValue:value forUndefinedKey:key];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (id)valueForUndefinedKey:(NSString *)key&#123;</span><br><span class="line">    if(!key || [key isEqualToString:@&quot;&quot;])&#123;</span><br><span class="line">        return nil;</span><br><span class="line">    &#125;</span><br><span class="line">    return [Persondict objectForKey:key];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="value正确性验证"><a href="#value正确性验证" class="headerlink" title="value正确性验证"></a>value正确性验证</h3><p><code>- (BOOL)validateValue: forKey: error:，- (BOOL)validateValue: forKeyPath: error:</code>,这两个方法是KVC提供的验证值的正确性的方法</p>
+<ol>
+<li>值所对应的验证方法是否实现，- (BOOL)validate<key>: forKey: error:</key></li>
+<li>如果实现了就会根据实现方法里面的自定义逻辑返回YES和NO，如果没有实现这个方法，则默认系统会返回YES</li>
+</ol>
+<p>例子：存储一个<code>Int</code>类型age，这个值必须<code>0&lt;age&lt;200</code>，如果不符合逻辑返回NO，不赋值给<code>person</code>对象。如果符合就赋值，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@implementation Person</span><br><span class="line">- (BOOL)validateAge:(inout id  _Nullable __autoreleasing *)ioValue error:(out NSError * _Nullable __autoreleasing *)outError&#123;</span><br><span class="line">    </span><br><span class="line">    NSInteger value = [(NSNumber *) * ioValue integerValue];</span><br><span class="line">    if(value &lt;=0 || value&gt;=200)&#123;</span><br><span class="line">        return  NO;</span><br><span class="line">    &#125;</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">//正确性验证</span><br><span class="line">NSNumber *value = @200;</span><br><span class="line">Person *per = [[Person alloc]init];</span><br><span class="line">if([per validateValue:&amp;value forKey:@&quot;age&quot; error:NULL])&#123;</span><br><span class="line">    [per setValue:value forKey:@&quot;age&quot;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="KVC进阶使用"><a href="#KVC进阶使用" class="headerlink" title="KVC进阶使用"></a>KVC进阶使用</h2><h3 id="KVC与字典"><a href="#KVC与字典" class="headerlink" title="KVC与字典"></a>KVC与字典</h3><h4 id="字典转模型"><a href="#字典转模型" class="headerlink" title="字典转模型"></a>字典转模型</h4><p>通过一个字典，以字典Key为属性名称直接赋值给<code>model</code>,一种字典转模型的模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@interface Person : NSObject</span><br><span class="line">@property(nonatomic,copy)NSString *name;</span><br><span class="line">@property(nonatomic,assign)NSInteger age;</span><br><span class="line">@property(nonatomic,copy)NSString *nick;</span><br><span class="line">@property(nonatomic,assign)float height;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">NSDictionary *dict = @&#123;</span><br><span class="line">                       @&quot;name&quot;:@&quot;struggle3g&quot;,</span><br><span class="line">                       @&quot;age&quot;:@18,</span><br><span class="line">                       @&quot;nick&quot;:@&quot;cat&quot;,</span><br><span class="line">                       @&quot;height&quot;:@170</span><br><span class="line">                       &#125;;</span><br><span class="line">    </span><br><span class="line">Person *per = [[Person alloc]init];</span><br><span class="line">[per setValuesForKeysWithDictionary:dict];</span><br><span class="line">    NSLog(@&quot;per.name = %@, per.age = %d, per.nick =%@, per.height = %f&quot;, per.name, per.age, per.nick, per.height);</span><br></pre></td></tr></table></figure>
+<h4 id="通过一组key获取字典"><a href="#通过一组key获取字典" class="headerlink" title="通过一组key获取字典"></a>通过一组key获取字典</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NSArray* keys = @[@&quot;name&quot;, @&quot;age&quot;];</span><br><span class="line">NSDictionary* dict1 = [p dictionaryWithValuesForKeys:keys];</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;%@&quot;, dict1);</span><br></pre></td></tr></table></figure>
+<h3 id="NSArray使用valueForKey-向所有的成员发送消息-KVC消息传递"><a href="#NSArray使用valueForKey-向所有的成员发送消息-KVC消息传递" class="headerlink" title="NSArray使用valueForKey:向所有的成员发送消息 (KVC消息传递)"></a>NSArray使用valueForKey:向所有的成员发送消息 (KVC消息传递)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (void)arrayKVCtext&#123;</span><br><span class="line">    </span><br><span class="line">//向这个数组里面的所有方法发送消息</span><br><span class="line">NSArray *arr = @[@&quot;Mondy&quot;,@&quot;Tuesday&quot;,@&quot;Wednesday&quot;];</span><br><span class="line">NSArray *lengtharr = [arr valueForKey:@&quot;length&quot;];</span><br><span class="line">NSLog(@&quot;%@&quot;,lengtharr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="KVC容器操作"><a href="#KVC容器操作" class="headerlink" title="KVC容器操作"></a>KVC容器操作</h3><h4 id="聚合操作"><a href="#聚合操作" class="headerlink" title="聚合操作"></a><strong>聚合操作</strong></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/*聚合操作*/</span><br><span class="line">    </span><br><span class="line">NSMutableArray *students = [[NSMutableArray alloc]init];</span><br><span class="line">for (int i = 0; i&lt;6; i++) &#123;</span><br><span class="line">    Person *per = [Person new];</span><br><span class="line">    NSDictionary *dict = @&#123;</span><br><span class="line">                           @&quot;name&quot;:@&quot;struggle3g&quot;,</span><br><span class="line">                           @&quot;age&quot;:@(18+i),</span><br><span class="line">                           @&quot;nick&quot;:@&quot;cat&quot;,</span><br><span class="line">                           @&quot;height&quot;:@(1.70+0.02*arc4random_uniform(6))</span><br><span class="line">                           &#125;;</span><br><span class="line">    [per setValuesForKeysWithDictionary:dict];</span><br><span class="line">    [students addObject:per];</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line">NSLog(@&quot;%@&quot;,[students valueForKey:@&quot;height&quot;]);</span><br><span class="line">//平均身高</span><br><span class="line">   </span><br><span class="line">/*</span><br><span class="line"> //聚合的公式，这个在下面官网有注解 https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/KeyValueCoding/CollectionOperators.html#//apple_ref/doc/uid/20002176-SW5</span><br><span class="line"> </span><br><span class="line"> */</span><br><span class="line">float avg = [[students valueForKeyPath:@&quot;@avg.height&quot;] floatValue];</span><br><span class="line">NSLog(@&quot;%f&quot;,avg);</span><br></pre></td></tr></table></figure>
+<h4 id="数组操作"><a href="#数组操作" class="headerlink" title="数组操作"></a>数组操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (void)arrayKVCtext&#123;</span><br><span class="line">    </span><br><span class="line">    //向这个数组里面的所有方法发送消息</span><br><span class="line">    NSArray *arr = @[@&quot;Mondy&quot;,@&quot;Tuesday&quot;,@&quot;Wednesday&quot;];</span><br><span class="line">    NSArray *lengtharr = [arr valueForKey:@&quot;length&quot;];</span><br><span class="line">    NSLog(@&quot;%@&quot;,lengtharr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="嵌套操作-array-amp-set-操作"><a href="#嵌套操作-array-amp-set-操作" class="headerlink" title="嵌套操作(array&amp;set)操作"></a>嵌套操作(array&amp;set)操作</h4><h5 id="嵌套操作array"><a href="#嵌套操作array" class="headerlink" title="嵌套操作array"></a>嵌套操作array</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">/// 嵌套集合(array&amp;set)操作 @distinctUnionOfArrays @unionOfArrays @distinctUnionOfSets</span><br><span class="line">- (void) containerNestingTest &#123;</span><br><span class="line">    </span><br><span class="line">    NSMutableArray* students = [NSMutableArray array];</span><br><span class="line">    for (int i = 0; i &lt; 6; i++) &#123;</span><br><span class="line">        Person* student = [Person new];</span><br><span class="line">        NSDictionary* dict = @&#123;</span><br><span class="line">                               @&quot;name&quot;:@&quot;Tom&quot;,</span><br><span class="line">                               @&quot;age&quot;:@(18+i),</span><br><span class="line">                               @&quot;nick&quot;:@&quot;Cat&quot;,</span><br><span class="line">                               @&quot;height&quot;:@(1.65 + 0.02*arc4random_uniform(6)),</span><br><span class="line">                               &#125;;</span><br><span class="line">        [student setValuesForKeysWithDictionary:dict];</span><br><span class="line">        [students addObject:student];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    NSMutableArray* students1 = [NSMutableArray array];</span><br><span class="line">    for (int i = 0; i &lt; 6; i++) &#123;</span><br><span class="line">        Person* student = [Person new];</span><br><span class="line">        NSDictionary* dict = @&#123;</span><br><span class="line">                               @&quot;name&quot;:@&quot;Tom&quot;,</span><br><span class="line">                               @&quot;age&quot;:@(18+i),</span><br><span class="line">                               @&quot;nick&quot;:@&quot;Cat&quot;,</span><br><span class="line">                               @&quot;height&quot;:@(1.65 + 0.02*arc4random_uniform(6)),</span><br><span class="line">                               &#125;;</span><br><span class="line">        [student setValuesForKeysWithDictionary:dict];</span><br><span class="line">        [students1 addObject:student];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    // 嵌套数组</span><br><span class="line">    NSArray* nestArr = @[students, students1];</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    NSArray* arr = [nestArr valueForKeyPath:@&quot;@distinctUnionOfArrays.height&quot;];</span><br><span class="line">    NSLog(@&quot;arr = %@&quot;, arr);</span><br><span class="line">    </span><br><span class="line">    NSArray* arr1 = [nestArr valueForKeyPath:@&quot;@unionOfArrays.height&quot;];</span><br><span class="line">    NSLog(@&quot;arr1 = %@&quot;, arr1);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="嵌套操作set"><a href="#嵌套操作set" class="headerlink" title="嵌套操作set"></a>嵌套操作set</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">//无序的嵌套集合</span><br><span class="line">- (void) containerNestingTest1&#123;</span><br><span class="line">    </span><br><span class="line">    NSMutableSet* students = [NSMutableSet set];</span><br><span class="line">    for (int i = 0; i &lt; 6; i++) &#123;</span><br><span class="line">        Person* student = [Person new];</span><br><span class="line">        NSDictionary* dict = @&#123;</span><br><span class="line">                               @&quot;name&quot;:@&quot;Tom&quot;,</span><br><span class="line">                               @&quot;age&quot;:@(18+i),</span><br><span class="line">                               @&quot;nick&quot;:@&quot;Cat&quot;,</span><br><span class="line">                               @&quot;height&quot;:@(1.65 + 0.02*arc4random_uniform(6)),</span><br><span class="line">                               &#125;;</span><br><span class="line">        [student setValuesForKeysWithDictionary:dict];</span><br><span class="line">        [students addObject:student];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    NSMutableSet* students1 = [NSMutableSet set];</span><br><span class="line">    for (int i = 0; i &lt; 6; i++) &#123;</span><br><span class="line">        Person* student = [Person new];</span><br><span class="line">        NSDictionary* dict = @&#123;</span><br><span class="line">                               @&quot;name&quot;:@&quot;Tom&quot;,</span><br><span class="line">                               @&quot;age&quot;:@(18+i),</span><br><span class="line">                               @&quot;nick&quot;:@&quot;Cat&quot;,</span><br><span class="line">                               @&quot;height&quot;:@(1.65 + 0.02*arc4random_uniform(6)),</span><br><span class="line">                               &#125;;</span><br><span class="line">        [student setValuesForKeysWithDictionary:dict];</span><br><span class="line">        [students1 addObject:student];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    //set这个无序集合，向每一个成员发送消息，返回的值是默认是去重的</span><br><span class="line">    NSLog(@&quot;students = %@&quot;,[students valueForKey:@&quot;height&quot;]);</span><br><span class="line">    NSLog(@&quot;students1 = %@&quot;,[students1 valueForKey:@&quot;height&quot;]);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    NSSet *set = [NSSet setWithObjects:students,students1, nil];</span><br><span class="line">    NSArray *arr1 = [set valueForKeyPath:@&quot;@distinctUnionOfSets.height&quot;];</span><br><span class="line">    NSLog(@&quot;%@&quot;,arr1);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="集合代理对象"><a href="#集合代理对象" class="headerlink" title="集合代理对象"></a>集合代理对象</h3><h4 id="Array的集合代理对象"><a href="#Array的集合代理对象" class="headerlink" title="Array的集合代理对象"></a>Array的集合代理对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">@interface Person : NSObject</span><br><span class="line">@property (nonatomic,assign)NSUInteger count;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">@implementation Person</span><br><span class="line">#pragma  mark -- 集合代理对象</span><br><span class="line"></span><br><span class="line">- (NSUInteger)countOfBooks&#123;</span><br><span class="line">    </span><br><span class="line">    return self.count;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">-(id)objectInBooksAtIndex:(NSUInteger)index&#123;</span><br><span class="line">    </span><br><span class="line">    return [NSString stringWithFormat:@&quot;book %lu&quot;,index];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">/*array集合代理对象  一对多的关系  array是2个方法*/</span><br><span class="line">Person *p = [[Person alloc]init];</span><br><span class="line">p.count = 5;</span><br><span class="line">NSLog(@&quot;books = %@&quot;,[p valueForKey:@&quot;books&quot;]);</span><br></pre></td></tr></table></figure>
+<h4 id="Set的集合代理对象"><a href="#Set的集合代理对象" class="headerlink" title="Set的集合代理对象"></a>Set的集合代理对象</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@interface Person : NSObject</span><br><span class="line">@property (nonatomic,strong)NSMutableArray *penArr;</span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">@implementation Person</span><br><span class="line">#pragma  mark -- 集合代理对象</span><br><span class="line"></span><br><span class="line">//个数</span><br><span class="line">- (NSUInteger)countOfPens&#123;</span><br><span class="line">    return [self.penArr count];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//是否包含这个成员对象</span><br><span class="line">- (id)memberOfPens:(id)object&#123;</span><br><span class="line">    return [self.penArr containsObject:object]?object:nil;</span><br><span class="line">&#125;</span><br><span class="line">//迭代器</span><br><span class="line">-(id)enumeratorOfPens&#123;</span><br><span class="line">    return [self.penArr reverseObjectEnumerator];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br><span class="line">/*set集合代理对象  set是3个方法*/</span><br><span class="line">p.penArr = [NSMutableArray arrayWithObjects:@&quot;pen0&quot;,@&quot;pen1&quot;,@&quot;pen2&quot;, nil];</span><br><span class="line">NSSet *set = [p valueForKey:@&quot;pens&quot;];</span><br><span class="line">NSLog(@&quot;%@&quot;,set);</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-cc99aeaeec87f3dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="KVC的思维导图.png"></p>
+
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/28/iOS基础全面分析之一(KVC全面分析)/" class="archive-article-date">
-  	<time datetime="2019-06-28T15:06:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+
+<!--MOB SHARE BEGIN-->
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/06/28/iOS基础全面分析之一(KVC全面分析)/" alt="二维码">
+     
+    </div>
+
+</div>
+
+<div class="mask js-mask"></div>
+<!--MOB SHARE END-->
+
+
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/06/28/iOS基础全面分析之二(RunLoop全面分析)/" class="archive-article-date">
-  	<time datetime="2019-06-28T07:23:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/05/24/设计模式总结大纲/" class="archive-article-date">
-  	<time datetime="2019-05-24T05:03:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-24</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/28/iOS基础全面分析之二(RunLoop全面分析)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+
+
+
+
+
 
 
           </div>
@@ -255,8 +368,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
