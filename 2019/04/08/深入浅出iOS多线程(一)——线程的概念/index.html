@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
   <title>深入浅出iOS多线程(一)——线程的概念 | Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="想要深入线程就必须了解进程。 进程什么是进程？进程是正在运行的程序的实例,是一个具有独立功能的程序关于某个数据集合的一次运行活动。它可以申请和拥有系统资源，是一个动态的概念，是一个活动的实体。是系统进行资源分配和调度的基本单位，是操作系统结构的基础。 主要概念 进程是一个实体(文本区域、数据区域、堆栈区域) 进程是一个“执行中的程序”(操作系统正在执行的程序)  进程的特征 动态行：进程的实质是程">
+  <meta name="description" content="想要深入线程就必须了解进程。 进程什么是进程？进程是正在运行的程序的实例,是一个具有独立功能的程序关于某个数据集合的一次运行活动。它可以申请和拥有系统资源，是一个动态的概念，是一个活动的实体。是系统进行资源分配和调度的基本单位，是操作系统结构的基础。">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出iOS多线程(一)——线程的概念">
 <meta property="og:url" content="https://www.struggle3g.com/2019/04/08/深入浅出iOS多线程(一)——线程的概念/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="想要深入线程就必须了解进程。 进程什么是进程？进程是正在运行的程序的实例,是一个具有独立功能的程序关于某个数据集合的一次运行活动。它可以申请和拥有系统资源，是一个动态的概念，是一个活动的实体。是系统进行资源分配和调度的基本单位，是操作系统结构的基础。 主要概念 进程是一个实体(文本区域、数据区域、堆栈区域) 进程是一个“执行中的程序”(操作系统正在执行的程序)  进程的特征 动态行：进程的实质是程">
+<meta property="og:description" content="想要深入线程就必须了解进程。 进程什么是进程？进程是正在运行的程序的实例,是一个具有独立功能的程序关于某个数据集合的一次运行活动。它可以申请和拥有系统资源，是一个动态的概念，是一个活动的实体。是系统进行资源分配和调度的基本单位，是操作系统结构的基础。">
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-4cef3dfe28d4ea09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-039f82074420effa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-ca552301a0abf613.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-09T18:29:51.000Z">
+<meta property="og:updated_time" content="2019-07-12T07:02:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出iOS多线程(一)——线程的概念">
-<meta name="twitter:description" content="想要深入线程就必须了解进程。 进程什么是进程？进程是正在运行的程序的实例,是一个具有独立功能的程序关于某个数据集合的一次运行活动。它可以申请和拥有系统资源，是一个动态的概念，是一个活动的实体。是系统进行资源分配和调度的基本单位，是操作系统结构的基础。 主要概念 进程是一个实体(文本区域、数据区域、堆栈区域) 进程是一个“执行中的程序”(操作系统正在执行的程序)  进程的特征 动态行：进程的实质是程">
+<meta name="twitter:description" content="想要深入线程就必须了解进程。 进程什么是进程？进程是正在运行的程序的实例,是一个具有独立功能的程序关于某个数据集合的一次运行活动。它可以申请和拥有系统资源，是一个动态的概念，是一个活动的实体。是系统进行资源分配和调度的基本单位，是操作系统结构的基础。">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-4cef3dfe28d4ea09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
@@ -191,6 +191,7 @@
       
         <p>想要深入线程就必须了解进程。</p>
 <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="什么是进程？"><a href="#什么是进程？" class="headerlink" title="什么是进程？"></a>什么是进程？</h2><p><strong>进程是正在运行的程序的实例</strong>,是<strong>一个具有独立功能的程序关于某个数据集合的一次运行活动</strong>。它可以申请和拥有系统资源，是一个动态的概念，是一个活动的实体。是<strong>系统进行资源分配和调度的基本单位，是操作系统结构的基础</strong>。</p>
+<a id="more"></a>
 <h2 id="主要概念"><a href="#主要概念" class="headerlink" title="主要概念"></a>主要概念</h2><ul>
 <li>进程是一个实体(文本区域、数据区域、堆栈区域)</li>
 <li>进程是一个“执行中的程序”(操作系统正在执行的程序)</li>

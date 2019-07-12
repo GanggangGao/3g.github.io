@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
   <title>iOS基础全面分析之二(RunLoop全面分析) | Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="RunLoop全面分析什么是RunLoop？字面的意思：  运行循环，程序运行过程中循环的处理事情  iOS中实际含义：  实际上是一个对象，这个对象提供一个入口函数，执行这个入口函数后，程序会进入一个while循环，循环的处理一些事情  例如：在main.m文件中如下代码： 1234567int main(int argc, char * argv[]) &amp;#123;    @autorelea">
+  <meta name="description" content="RunLoop全面分析什么是RunLoop？字面的意思：  运行循环，程序运行过程中循环的处理事情  iOS中实际含义：">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS基础全面分析之二(RunLoop全面分析)">
 <meta property="og:url" content="https://www.struggle3g.com/2019/06/28/iOS基础全面分析之二(RunLoop全面分析)/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="RunLoop全面分析什么是RunLoop？字面的意思：  运行循环，程序运行过程中循环的处理事情  iOS中实际含义：  实际上是一个对象，这个对象提供一个入口函数，执行这个入口函数后，程序会进入一个while循环，循环的处理一些事情  例如：在main.m文件中如下代码： 1234567int main(int argc, char * argv[]) &amp;#123;    @autorelea">
+<meta property="og:description" content="RunLoop全面分析什么是RunLoop？字面的意思：  运行循环，程序运行过程中循环的处理事情  iOS中实际含义：">
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-528416248d9ee771.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-7ff752843128d22f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-6bc124ff38aa72d2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://blog.ibireme.com/wp-content/uploads/2015/05/RunLoop_5.png">
 <meta property="og:image" content="https://blog.ibireme.com/wp-content/uploads/2015/05/RunLoop_network.png">
-<meta property="og:updated_time" content="2019-07-09T18:27:15.000Z">
+<meta property="og:updated_time" content="2019-07-12T07:00:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS基础全面分析之二(RunLoop全面分析)">
-<meta name="twitter:description" content="RunLoop全面分析什么是RunLoop？字面的意思：  运行循环，程序运行过程中循环的处理事情  iOS中实际含义：  实际上是一个对象，这个对象提供一个入口函数，执行这个入口函数后，程序会进入一个while循环，循环的处理一些事情  例如：在main.m文件中如下代码： 1234567int main(int argc, char * argv[]) &amp;#123;    @autorelea">
+<meta name="twitter:description" content="RunLoop全面分析什么是RunLoop？字面的意思：  运行循环，程序运行过程中循环的处理事情  iOS中实际含义：">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-528416248d9ee771.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
@@ -196,6 +196,7 @@
 <li>运行循环，程序运行过程中循环的处理事情</li>
 </ul>
 <p><strong>iOS中实际含义：</strong></p>
+<a id="more"></a>
 <ul>
 <li>实际上是一个对象，这个对象提供一个入口函数，执行这个入口函数后，程序会进入一个while循环，循环的处理一些事情</li>
 </ul>

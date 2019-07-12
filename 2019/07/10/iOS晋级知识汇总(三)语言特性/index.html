@@ -6,19 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
-  <title>Archives | Struggle3g‘s Blog</title>
+  <title>iOS晋级知识汇总(三)语言特性 | Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding yourself">
+  <meta name="description" content="分类用分类干了什么事情？ 声明私有方法 分解提及庞大类文件 把Framework的私有方法公开">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Struggle3g‘s Blog">
-<meta property="og:url" content="https://www.struggle3g.com/archives/page/9/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS晋级知识汇总(三)语言特性">
+<meta property="og:url" content="https://www.struggle3g.com/2019/07/10/iOS晋级知识汇总(三)语言特性/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="Coding yourself">
+<meta property="og:description" content="分类用分类干了什么事情？ 声明私有方法 分解提及庞大类文件 把Framework的私有方法公开">
 <meta property="og:locale" content="ch">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-7be30f57c433bca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-0a8f73f2aa538a49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-fdb068b75cbb45e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-2ae8ad618998ff6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-dd32006662f7e878.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-1156bbb86ee445cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-c08f65f5f63a8fea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-9a99588719b1cf80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-b994938864f6b6ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-6059adb92dc74e47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-aa880761bdad6d39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-12T06:59:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="Coding yourself">
+<meta name="twitter:title" content="iOS晋级知识汇总(三)语言特性">
+<meta name="twitter:description" content="分类用分类干了什么事情？ 声明私有方法 分解提及庞大类文件 把Framework的私有方法公开">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-7be30f57c433bca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -163,241 +176,485 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-iOS晋级知识汇总(三)语言特性" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS晋级知识汇总(三)语言特性
+    </h1>
+  
+
+        
+        <a href="/2019/07/10/iOS晋级知识汇总(三)语言特性/" class="archive-article-date">
+  	<time datetime="2019-07-10T04:56:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><h2 id="用分类干了什么事情？"><a href="#用分类干了什么事情？" class="headerlink" title="用分类干了什么事情？"></a>用分类干了什么事情？</h2><ul>
+<li>声明私有方法</li>
+<li>分解提及庞大类文件</li>
+<li>把Framework的私有方法公开</li>
+</ul>
+<a id="more"></a>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>运行时决议：编好分类文件，并没有分类中添加的内容附加到相应的宿主类，而是在运行时通过RunTime真实的添加到相应的宿主类</li>
+<li>可以为系统类添加分类</li>
+</ul>
+<h2 id="分类中都可以添加哪些内容？"><a href="#分类中都可以添加哪些内容？" class="headerlink" title="分类中都可以添加哪些内容？"></a>分类中都可以添加哪些内容？</h2><ul>
+<li>实例方法</li>
+<li>类方法</li>
+<li>协议</li>
+<li>属性(分类中定义属性，实际上只是生成了对应的getter、setter方法)</li>
+</ul>
+<p>Runtime的源码分类的结构体：<code>struct _category_t</code></p>
+<p>分类的调用栈(Category)</p>
+<ul>
+<li>_objc_int - map_2_images - map_images_nolock - _read_images - remethodizeClass<ul>
+<li>images是镜像</li>
+<li>_read_images 加载一些可执行文件到内存当中进行处理</li>
+<li>remethodizeClass</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-7be30f57c433bca0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="分类_objc_init调用栈.png"></p>
+<h2 id="如果两个分类添加同一个函数名称的函数，哪一个函数最终生效？"><a href="#如果两个分类添加同一个函数名称的函数，哪一个函数最终生效？" class="headerlink" title="如果两个分类添加同一个函数名称的函数，哪一个函数最终生效？"></a>如果两个分类添加同一个函数名称的函数，哪一个函数最终生效？</h2><p>取决于编译顺序，最后生成分类的函数会生效，前面的将被覆盖掉。</p>
+<p>总结：</p>
+<ul>
+<li><p>分类添加的方法可以”覆盖”原有方法</p>
+<ul>
+<li>实际上是runtime在查找这个类的方法时，会查找分类一个宿主类的所有方法所在数组</li>
+<li>而这个数组的分类方法是在宿主类前面的，所以说分类方法的调用有优先宿主类</li>
+<li>而并不是覆盖宿主类的方法。</li>
+</ul>
+</li>
+<li><p>同名分类方法谁能生效取决于编译顺序</p>
+<ul>
+<li>最后被编译的分类，会优先生效</li>
+</ul>
+</li>
+<li><p>名字相同的分类会引起编译报错</p>
+<ul>
+<li>生成具体分类，会把添加的分类名称，以下划线的形式拼接到宿主类中，这样在添加过程中，如果名称一样会报错。</li>
+</ul>
+</li>
+</ul>
+<h2 id="能否给分类添加”成员变量”？"><a href="#能否给分类添加”成员变量”？" class="headerlink" title="能否给分类添加”成员变量”？"></a>能否给分类添加”成员变量”？</h2><ul>
+<li>不能在分类的声明和定义实现的时候直接为分类添加成员变量，但是可以通过关联对象的技术来为分类添加”成员变量”，来达到分类可以添加”成员变量的效果”。</li>
+</ul>
+<p>关联对象的3个API：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">objc_setAssociatedObject(&lt;#id  _Nonnull object#&gt;, &lt;#const void * _Nonnull key#&gt;, &lt;#id  _Nullable value#&gt;, &lt;#objc_AssociationPolicy policy#&gt;)</span><br><span class="line">objc_getAssociatedObject(&lt;#id  _Nonnull object#&gt;, &lt;#const void * _Nonnull key#&gt;)</span><br><span class="line">objc_removeAssociatedObjects(&lt;#id  _Nonnull object#&gt;)</span><br></pre></td></tr></table></figure>
+<h2 id="我们用关联对象技术来实现为分类添加”成员变量”，这个成员变量会被添加到哪里？"><a href="#我们用关联对象技术来实现为分类添加”成员变量”，这个成员变量会被添加到哪里？" class="headerlink" title="我们用关联对象技术来实现为分类添加”成员变量”，这个成员变量会被添加到哪里？"></a>我们用关联对象技术来实现为分类添加”成员变量”，这个成员变量会被添加到哪里？</h2><ul>
+<li>我们为分类所添加的成员变量肯定不是在宿主类中的。</li>
+<li>关联对象由<code>AssociationsManager</code>管理并在<code>AssociationHashMap</code>存储。</li>
+<li>我们创建的每一个对象的关联对象实际上都存储在了<code>AssociationHashMap</code>这样的容器中。</li>
+<li>所有对象的关联内容都在同一个全局容器中</li>
+<li>不同对象的关联对象的值都会放到全局容器中</li>
+</ul>
+<h1 id="关联对象"><a href="#关联对象" class="headerlink" title="关联对象"></a>关联对象</h1><h2 id="关联对象的本质"><a href="#关联对象的本质" class="headerlink" title="关联对象的本质"></a>关联对象的本质</h2><p>关联对象由<code>AssociationsManager</code>管理并在<code>AssociationHashMap</code>存储。<br>我们创建的每一个对象的关联对象实际上都存储在了<code>AssociationHashMap</code>这样的容器中。<br>所有对象的关联内容都在同一个全局容器中</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-0a8f73f2aa538a49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关联对象的本质.png"><br><img src="https://upload-images.jianshu.io/upload_images/7980283-fdb068b75cbb45e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="关联对象的Json形式.png"></p>
+<h1 id="扩展-Extension"><a href="#扩展-Extension" class="headerlink" title="扩展(Extension)"></a>扩展(Extension)</h1><p>类扩展一般都在宿主类的.m文件中。</p>
+<ul>
+<li>一般用扩展做什么？<ul>
+<li>声明私有属性</li>
+<li>声明私有方法(没有多大作用，方便阅读)</li>
+<li>声明私有成员变量</li>
+</ul>
+</li>
+</ul>
+<p>声明私有属性、声明私有成员变量是有区别的</p>
+<h2 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h2><ul>
+<li>编译时决议</li>
+<li>只义声明的形式存在，多数情况下寄生于宿主类的.m中</li>
+<li>不能为系统类添加扩展。</li>
+</ul>
+<h2 id="分类和区别在哪里"><a href="#分类和区别在哪里" class="headerlink" title="分类和区别在哪里"></a>分类和区别在哪里</h2><ol>
+<li>分类是运行时决议、扩展是编译时决议</li>
+<li>分类可以有声明和实现，而扩展只有声明的形式，实现是直接在宿主类的</li>
+<li>可以为系统类添加分类，但是不能为系统类添加扩展</li>
+</ol>
+<h1 id="代理"><a href="#代理" class="headerlink" title="代理"></a>代理</h1><ul>
+<li>准确的说是一种软件设计模式</li>
+<li>iOS 当中以@protocol形式体现</li>
+<li>传递方式一对一</li>
+</ul>
+<h2 id="代理的工作流程"><a href="#代理的工作流程" class="headerlink" title="代理的工作流程"></a>代理的工作流程</h2><ul>
+<li>三个角色：<ul>
+<li>委托方<ul>
+<li>要求代理方需要实现的接口，也就是协议</li>
+<li>调用代理方遵从协议的方法</li>
+<li>可能返回一个处理结果</li>
+</ul>
+</li>
+<li>协议<ul>
+<li>可以定义方法(必须实现和可选类型)</li>
+<li>可以定义属性</li>
+</ul>
+</li>
+<li>代理方<ul>
+<li>按照协议实现方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-2ae8ad618998ff6c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代理的实现流程.png"></p>
+<h2 id="代理方和委托方以什么关系存在？"><a href="#代理方和委托方以什么关系存在？" class="headerlink" title="代理方和委托方以什么关系存在？"></a>代理方和委托方以什么关系存在？</h2><ul>
+<li>一般声明为weak来规避循环引用</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-dd32006662f7e878.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="代理循环引用.png"></p>
+<h1 id="通知实现机制"><a href="#通知实现机制" class="headerlink" title="通知实现机制"></a>通知实现机制</h1><ul>
+<li>使用观察者模式，来实现用于跨层传递消息的机制</li>
+<li>传递方式一对多</li>
+</ul>
+<h2 id="如何实现通知的机制？假如说自己实现这种机制如何实现？"><a href="#如何实现通知的机制？假如说自己实现这种机制如何实现？" class="headerlink" title="如何实现通知的机制？假如说自己实现这种机制如何实现？"></a>如何实现通知的机制？假如说自己实现这种机制如何实现？</h2><ul>
+<li>实现一个实现一个全局Map</li>
+<li>key为notificationName </li>
+<li>value为一个Serrvers(因为一对多) <ul>
+<li>servers中的每个元素应该能明确哪一个对象，哪一个方法</li>
+</ul>
+</li>
+</ul>
+<h2 id="通知传递消息一对多的流程"><a href="#通知传递消息一对多的流程" class="headerlink" title="通知传递消息一对多的流程"></a>通知传递消息一对多的流程</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-1156bbb86ee445cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="通知一对多的流程.png"></p>
+<h2 id="通知和代理的区别"><a href="#通知和代理的区别" class="headerlink" title="通知和代理的区别"></a>通知和代理的区别</h2><ul>
+<li>代理使用代理模式，而通知是由观察者模式实现的</li>
+<li>代理是一对一，而通知是一对多</li>
+</ul>
+<h1 id="KVO"><a href="#KVO" class="headerlink" title="KVO"></a>KVO</h1><h2 id="什么是KVO？"><a href="#什么是KVO？" class="headerlink" title="什么是KVO？"></a>什么是KVO？</h2><ul>
+<li>KVO是key-value observing的缩写</li>
+<li>KVO是Objective-C对观察者设计模式的又一实现</li>
+<li>Apple使用了isa混写(isa-swizzling)来实现KVO</li>
+</ul>
+<h2 id="KVO的实现机制"><a href="#KVO的实现机制" class="headerlink" title="KVO的实现机制"></a>KVO的实现机制</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-c08f65f5f63a8fea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="KVOisa混写.png"></p>
+<ul>
+<li>系统调用<code>addObserver</code>添加KVO的时候</li>
+<li>会想被观察者对象的isa指向其名为<code>NSKVONotifying_&lt;ObjectClass&gt;</code>子类</li>
+<li><code>NSKVONotifying_&lt;ObjectClass&gt;</code>中重写了setter方法</li>
+<li>重写的<code>setter</code>方法负责通知观察者<ul>
+<li>重写的‘setter’代码块两头添加了下面两个方法</li>
+<li>(void)willChangeValueForKey:(NSString *)key;</li>
+<li>(void)didChangeValueForKey:(NSString *)key;</li>
+</ul>
+</li>
+</ul>
+<h2 id="通过KVC设置value能够生效？"><a href="#通过KVC设置value能够生效？" class="headerlink" title="通过KVC设置value能够生效？"></a>通过KVC设置value能够生效？</h2><ul>
+<li>通过KVC设置value，KVO的通知会生效</li>
+<li>KVC设置value会调用setter方法</li>
+</ul>
+<h2 id="通过成员变量直接赋值value能否生效"><a href="#通过成员变量直接赋值value能否生效" class="headerlink" title="通过成员变量直接赋值value能否生效"></a>通过成员变量直接赋值value能否生效</h2><ul>
+<li>不会触发系统的KVO的</li>
+<li>不会调用setter方法</li>
+<li>可以在变量赋值的代码块前后添加下面两个API来触发KVO<ul>
+<li>(void)willChangeValueForKey:(NSString *)key;</li>
+<li>(void)didChangeValueForKey:(NSString *)key;</li>
+</ul>
+</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>使用setter方法改变值KVO才会生效</li>
+<li>使用setValue:forkey:改变KVO才会生效</li>
+<li>成员变量直接修改需手动添加KVO才会生效</li>
+</ul>
+<h1 id="KVC"><a href="#KVC" class="headerlink" title="KVC"></a>KVC</h1><h2 id="什么是KVC？"><a href="#什么是KVC？" class="headerlink" title="什么是KVC？"></a>什么是KVC？</h2><ul>
+<li>KVC是Key-value coding的缩写<ul>
+<li>KVC的两个API<ul>
+<li><ul>
+<li>(void)setValue:(nullable id)value forKey:(NSString *)key</li>
+</ul>
+</li>
+<li><ul>
+<li>(nullable id)valueForKey:(NSString *)key</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="使用KVC是否会违背于面向对象的编程思想"><a href="#使用KVC是否会违背于面向对象的编程思想" class="headerlink" title="使用KVC是否会违背于面向对象的编程思想"></a>使用KVC是否会违背于面向对象的编程思想</h2><ul>
+<li>KVC的key是没有限制的，如果我们知道这个对象内部的私有变量名称的话，我们可以在外界修改、访问它，从这个角度来考虑的话是会破坏面向对象的思想的</li>
+</ul>
+<h2 id="valueForKey的实现流程"><a href="#valueForKey的实现流程" class="headerlink" title="valueForKey的实现流程"></a>valueForKey的实现流程</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-9a99588719b1cf80.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="KVCGetter方法的流程.png"></p>
+<h3 id="Accessor-Method方法的定义"><a href="#Accessor-Method方法的定义" class="headerlink" title="Accessor Method方法的定义"></a>Accessor Method方法的定义</h3><ul>
+<li><getkey></getkey></li>
+<li><key></key></li>
+<li><iskey>
+
+</iskey></li>
+</ul>
+<h3 id="instance-var"><a href="#instance-var" class="headerlink" title="instance var"></a>instance var</h3><ul>
+<li>_key</li>
+<li>_isKey</li>
+<li>key</li>
+<li>isKey</li>
+</ul>
+<h2 id="setValue-forKey的实现流程"><a href="#setValue-forKey的实现流程" class="headerlink" title="setValue:forKey的实现流程"></a>setValue:forKey的实现流程</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-b994938864f6b6ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="KVCsetter方法的流程.png"></p>
+<h3 id="Accessor-Method方法的定义-1"><a href="#Accessor-Method方法的定义-1" class="headerlink" title="Accessor Method方法的定义"></a>Accessor Method方法的定义</h3><ul>
+<li>set<key>:</key></li>
+<li>_set<key>:</key></li>
+<li>setIs<key>:</key></li>
+</ul>
+<h3 id="instance-var-1"><a href="#instance-var-1" class="headerlink" title="instance var"></a>instance var</h3><ul>
+<li>_key</li>
+<li>_isKey</li>
+<li>key</li>
+<li>isKey</li>
+</ul>
+<h1 id="属性关键字"><a href="#属性关键字" class="headerlink" title="属性关键字"></a>属性关键字</h1><h2 id="属性关键字分为哪几类"><a href="#属性关键字分为哪几类" class="headerlink" title="属性关键字分为哪几类"></a>属性关键字分为哪几类</h2><ul>
+<li>读写权限<ul>
+<li>readonly</li>
+<li>readwrite  iOS默认</li>
+</ul>
+</li>
+<li>原子性<ul>
+<li>atomic     iOS默认 <ul>
+<li>修饰的是一个数组，赋值和获取是线程安全的，</li>
+<li>修改这个数组中的数据不是线程安全的</li>
+</ul>
+</li>
+<li>nonatomic</li>
+</ul>
+</li>
+<li>引用技计数<ul>
+<li>retain  mrc</li>
+<li>strong  arc</li>
+<li>assign  既可以修饰对象，也可以修饰值类型数据</li>
+<li>unsafe_unretained  MRC使用的比较多，ARC基本上不怎么用</li>
+<li>weak</li>
+<li>copy</li>
+</ul>
+</li>
+</ul>
+<h3 id="assign的特点"><a href="#assign的特点" class="headerlink" title="assign的特点"></a>assign的特点</h3><pre><code>- 修饰基本数据类型，如果int、bool等
+- 修饰对象类型时，不改变引用计数
+- 在对象释放以后，assign修饰的对象指针还是会指向这个对象地址，当使用这个对象的时候，会出现野指针。
+</code></pre><h3 id="weak-特点"><a href="#weak-特点" class="headerlink" title="weak 特点"></a>weak 特点</h3><pre><code>- 不改变对象引用计数
+- 所指对象在释放之后会自动置为nil
+</code></pre><h3 id="assign和weak的区别有哪些？"><a href="#assign和weak的区别有哪些？" class="headerlink" title="assign和weak的区别有哪些？"></a>assign和weak的区别有哪些？</h3><ul>
+<li>区别：<ul>
+<li>1、weak只可以修饰对象、而assign可以修饰基本数据类型和对象</li>
+<li>2、assign修饰的对象的时候，当对象被释放掉以后，assign指针还是会指向对象的地址，而weak修饰的对象，在对象释放后，weak的指针会被置nil</li>
+</ul>
+</li>
+</ul>
+<h3 id="weak指针对象为什么会被值为nil？"><a href="#weak指针对象为什么会被值为nil？" class="headerlink" title="weak指针对象为什么会被值为nil？"></a>weak指针对象为什么会被值为nil？</h3><h3 id="Copy"><a href="#Copy" class="headerlink" title="Copy"></a>Copy</h3><table>
+<thead>
+<tr>
+<th>源对象类型</th>
+<th>拷贝方式</th>
+<th>目标对象类型</th>
+<th>拷贝类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mutable对象</td>
+<td>copy</td>
+<td>不可变</td>
+<td>深拷贝</td>
+</tr>
+<tr>
+<td>mutable对象</td>
+<td>mutableCopy</td>
+<td>可变</td>
+<td>深拷贝</td>
+</tr>
+<tr>
+<td>immutable对象</td>
+<td>copy</td>
+<td>不可变</td>
+<td>浅拷贝</td>
+</tr>
+<tr>
+<td>immutable对象</td>
+<td>mutableCopy</td>
+<td>可变</td>
+<td>深拷贝</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>可变对象的copy和mutablecopy都是深拷贝</li>
+<li>不可变对象的copy是浅拷贝，mutablecopy是深拷贝</li>
+<li>copy方法返回的都是不可变对象</li>
+</ul>
+<h4 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h4><ul>
+<li>浅拷贝会增加被拷贝对象的引用计数</li>
+<li>并没有发生新的内存分配</li>
+</ul>
+<p>浅拷贝就是对内存地址的复制，让目标对象指针和源对象指向同一片内存空间。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-6059adb92dc74e47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="浅拷贝.png"></p>
+<h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><ul>
+<li>不会增加被拷贝对象的引用计数</li>
+<li>产生了内存分配</li>
+</ul>
+<p>深拷贝让目标对象指针和源对象指针指向两片内容相同的内存空间</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-aa880761bdad6d39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="深拷贝.png"></p>
+<h4 id="深拷贝VS浅拷贝？"><a href="#深拷贝VS浅拷贝？" class="headerlink" title="深拷贝VS浅拷贝？"></a>深拷贝VS浅拷贝？</h4><ul>
+<li>是否开辟新的内存空间</li>
+<li>是否影响引用计数</li>
+</ul>
+<h4 id="property-copy-NSMutableArray-array-会出现什么问题？"><a href="#property-copy-NSMutableArray-array-会出现什么问题？" class="headerlink" title="@property(copy)NSMutableArray *array;会出现什么问题？"></a>@property(copy)NSMutableArray *array;会出现什么问题？</h4><p>最终结果是一个不可变的对象，那么你在修改这个数组的时候会崩溃</p>
+<ul>
+<li><p>如果赋值过来的是NSMutableArray，copy之后虽然是深拷贝，但是返回的是NSArray</p>
+</li>
+<li><p>如果赋值过来的是NSArray，copy之后是NSArray</p>
+</li>
+<li><p>当修改array这个数组的时候就会出现崩溃问题</p>
+</li>
+</ul>
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="1、MRC下如何重写retain修饰变量的setter方法？"><a href="#1、MRC下如何重写retain修饰变量的setter方法？" class="headerlink" title="1、MRC下如何重写retain修饰变量的setter方法？"></a>1、MRC下如何重写retain修饰变量的setter方法？</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@property(nonatomic,retain)id obj;</span><br><span class="line"></span><br><span class="line">- (void)setObj:(id)obj&#123;</span><br><span class="line">	//对象不等判断</span><br><span class="line">	//如果传递过来的obj对象是原来的obj对象</span><br><span class="line">	//实际上也是在传递过来的obj对象release的操作，有可能会直接释放掉了传递过来的对象，</span><br><span class="line">	//这时候如果还去访问被释放的对象就会崩溃</span><br><span class="line">	if(_obj != obj)&#123;</span><br><span class="line">		[_obj release];</span><br><span class="line">		_obj = [obj retain]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2、-分类的实现原理"><a href="#2、-分类的实现原理" class="headerlink" title="2、 分类的实现原理"></a>2、 分类的实现原理</h2><ul>
+<li>是由运行时来决议的</li>
+<li>不同分类，同名函数名称，谁最后生效，取决于，谁最后参与编译的同名分类方法会生效</li>
+<li>如果分类方法的名字和宿主的方法名称一样，那么分类的方法会覆盖宿主类的方法，这里的覆盖是runtime优先处理数组靠前的方法，如果找到就调用。宿主类的同名方法还是存在的</li>
+</ul>
+<h2 id="3、KVO实现原理是怎么样的？"><a href="#3、KVO实现原理是怎么样的？" class="headerlink" title="3、KVO实现原理是怎么样的？"></a>3、KVO实现原理是怎么样的？</h2><ul>
+<li>KVO是系统基于观察模式的一个实现</li>
+<li>KVO通过isa的混写技术来动态运行时去为某一个类添加子类，并重写setter方法，同时把原有类的isa指针指向这个子类</li>
+</ul>
+<h2 id="4、能否为分类添加实例变量？"><a href="#4、能否为分类添加实例变量？" class="headerlink" title="4、能否为分类添加实例变量？"></a>4、能否为分类添加实例变量？</h2><ul>
+<li></li>
+</ul>
+
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/">Cycript（二）非越狱调试、修改App中UI的数据</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+
+<!--MOB SHARE BEGIN-->
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/07/10/iOS晋级知识汇总(三)语言特性/" alt="二维码">
+     
+    </div>
+
+</div>
+
+<div class="mask js-mask"></div>
+<!--MOB SHARE END-->
+
+
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript （一）配置环境/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/07/10/iOS晋级知识汇总(二)runtime/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iOS晋级知识汇总(二)runtime
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/09/iOS晋级知识汇总(一)UI优化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS晋级知识汇总(一)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript （一）配置环境/">Cycript （一）配置环境</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/HSB:HSL、RGB他们的纯色/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/HSB:HSL、RGB他们的纯色/">HSB/HSL、RGB他们的纯色</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 推送步骤以及原理/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 推送步骤以及原理/">iOS 推送步骤以及原理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS----SIGPIPE信号终止进程/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS----SIGPIPE信号终止进程/">iOS----SIGPIPE信号终止进程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/">TCP创建连接的三次握手，关闭连接的四次挥手。</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/">iOS  深、浅拷贝的那些奇葩的事（四）</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/">iOS 深拷贝，完全深拷贝（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/8/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/10/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -412,8 +669,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

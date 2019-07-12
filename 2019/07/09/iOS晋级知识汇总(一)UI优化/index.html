@@ -6,19 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
-  <title>Archives | Struggle3g‘s Blog</title>
+  <title>iOS晋级知识汇总(一) | Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding yourself">
+  <meta name="description" content="UItableview相关重用机制通过下面方法得到cell： 1cell =  [self.TableView dequeueReusableCellWithIdentifier:identifer];">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Struggle3g‘s Blog">
-<meta property="og:url" content="https://www.struggle3g.com/archives/page/9/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS晋级知识汇总(一)">
+<meta property="og:url" content="https://www.struggle3g.com/2019/07/09/iOS晋级知识汇总(一)UI优化/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="Coding yourself">
+<meta property="og:description" content="UItableview相关重用机制通过下面方法得到cell： 1cell =  [self.TableView dequeueReusableCellWithIdentifier:identifer];">
 <meta property="og:locale" content="ch">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-b35c9f55da6eb647.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-b0fa7944d0381bb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-9142bf20a9125266.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-f8f748b4c5f8fd54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-52e819d72e569391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-eb9d5736afffb64f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-d76d83554c38d4e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-69945f8e6fb7c191.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-5c09a67006eaadab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-e05246b24bf4a915.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-acd3f7604ecfdac5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-233a80f61767698e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-1d8c64fbd2f24610.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-c8bcd88540d875d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-12T06:59:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="Coding yourself">
+<meta name="twitter:title" content="iOS晋级知识汇总(一)">
+<meta name="twitter:description" content="UItableview相关重用机制通过下面方法得到cell： 1cell =  [self.TableView dequeueReusableCellWithIdentifier:identifer];">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-b35c9f55da6eb647.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -163,241 +179,382 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-iOS晋级知识汇总(一)UI优化" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS晋级知识汇总(一)
+    </h1>
+  
+
+        
+        <a href="/2019/07/09/iOS晋级知识汇总(一)UI优化/" class="archive-article-date">
+  	<time datetime="2019-07-09T13:37:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-09</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="UItableview相关"><a href="#UItableview相关" class="headerlink" title="UItableview相关"></a>UItableview相关</h1><h2 id="重用机制"><a href="#重用机制" class="headerlink" title="重用机制"></a>重用机制</h2><p>通过下面方法得到cell：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cell =  [self.TableView dequeueReusableCellWithIdentifier:identifer];</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>一般在iOS中，tableview的重用机制，我们在<code>- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath</code>方法中，首先通过<code>dequeueReusableCellWithIdentifier</code>获取重用池中的cell，如果获取的cell是nil那么就重新创建一个新的cell，那么重用机制的原理是什么呢？</p>
+<ul>
+<li>首先我们刷新数据源的时候，整个重用池里面的cell跟屏幕的高度以及cell的个数有关，屏幕总共能够放下多少个cell那么重用池中就会创建多少个cell比如说：<ul>
+<li>当前屏幕中共放下了6个cell，当向上滑动的时候，cell1被隐藏了，相对的cell7从最下面露了出来，这时候就用到了重用机制，Cell1被隐藏时，Cell1的真的对象，就会放入到重用池当中，并且是待重用的状态，而cell7出来以后需要一个新的对象，重用池中有一个待使用的对象，正好被cell7使用，一次类推，随着界面滑动，cell的重用都是按照这个过程来进行的。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-b35c9f55da6eb647.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt=""></p>
+<h2 id="数据源同步"><a href="#数据源同步" class="headerlink" title="数据源同步"></a>数据源同步</h2><p>新闻、咨询类的App当中，数据源往往有一个删除操作、还同时需要LoadMore </p>
+<ul>
+<li>删除操作主线程、LoadMore在子线程</li>
+<li>这就需要考虑数据源的同步问题。</li>
+</ul>
+<p>解决方案一般有2种：</p>
+<ul>
+<li>并发访问 数据拷贝<ul>
+<li>需要记录操作，在子线程返回的数据源在同步记录</li>
+<li>在并发任务中没有用户操作延迟问题，对内存会增加</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-b0fa7944d0381bb1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt="并发方式数据同步.png"></p>
+<ul>
+<li>串行任务<ul>
+<li>子线程和主线程任务同步</li>
+<li>要求如果在子线程处理任务比较繁重的时候，删除操作就会出现延迟</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-9142bf20a9125266.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt="串行队列数据源同步.png"></p>
+<h1 id="事件传递和视图响应"><a href="#事件传递和视图响应" class="headerlink" title="事件传递和视图响应"></a>事件传递和视图响应</h1><p>UIView和CALayer的关系和区别：</p>
+<p>UIView中的一个属性layer是CALayer类型变量，UIView中的属性backgroundColor实际上是layer中同名属性的一个包装，UIView的现实部分是由CALayer的contents来决定，contents所对应的是backking store，实际上是bitmap类型的一个位图。</p>
+<ul>
+<li>UIView为其提供内容，以及负责处理触摸等事件，参与响应链</li>
+<li>CALayer负责显示内容contents</li>
+</ul>
+<p>为什么UIView为其提供内容，以及负责处理触摸等事件，参与响应链，CALayer负责显示内容contents？</p>
+<p>设计原则，符合单一原则 ，职责分工。</p>
+<h2 id="事件传递机制"><a href="#事件传递机制" class="headerlink" title="事件传递机制"></a>事件传递机制</h2><p>事件传递最主要的两个API： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">- (nullable UIView *)hitTest:(CGPoint)point withEvent:(nullable UIEvent *)event;</span><br><span class="line">- (BOOL)pointInside:(CGPoint)point withEvent:(nullable UIEvent *)event;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>hitTest</code>最终是哪个视图响应这个事件就返回这个UIView</li>
+<li><code>pointInside</code>判断某一个点击的位置是否在当前视图范围内，如果在就返回YES，不在返回NO</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-f8f748b4c5f8fd54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt=""></p>
+<p>事件传递的流程:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-52e819d72e569391.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="事件传递过程.png"></p>
+<h3 id="hitTest系统内部的调用过程"><a href="#hitTest系统内部的调用过程" class="headerlink" title="hitTest系统内部的调用过程"></a>hitTest系统内部的调用过程</h3><ul>
+<li>1、 首先判断view的hidden(是否隐藏)、userinteractionEnabled(是否可以交互)和Alpha(透明度)<ul>
+<li>如果不可以直接返回nil</li>
+<li>如果可以交互那么就调用走2、</li>
+</ul>
+</li>
+<li>2、 调用<code>pointInside</code>来判断这个点是否在当前视图范围内<ul>
+<li>如果不在当前视图，也会返回nil</li>
+<li>如果在当前视图，就走3、</li>
+</ul>
+</li>
+<li><p>3、 倒序的形式便利当前view的子视图，便利过程中会调用所有子视图的<code>hitTest</code>的方法。</p>
+<ul>
+<li>如果便利结束都没有找到对应的子视图去响应这个事件，如果当前位置在当前的视图范围内，就会把当前视图做为最终事件响应视图返回给调用方</li>
+<li>假如子视图中的某个<code>hitTest</code>返回了最终的UIView，那么这个视图就做为最终事件响应视图，返回给调用方</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-eb9d5736afffb64f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt=""></p>
+</li>
+</ul>
+<p>例子：</p>
+<p>方形的but，我们只需要在圆形范围响应事件：</p>
+<p>步骤：</p>
+<ul>
+<li>首先重写<code>hittest</code>和<code>pointInside</code>方法<ul>
+<li><code>hittest</code>方法实现：<ul>
+<li>1、判断userInteractionEnabled、isHidden、alpha是否允许，如果不允许直接返回nil</li>
+<li>2、调用<code>pointInside</code>方法判断点击事件是否在当前视图，如果不在返回nil</li>
+<li>3、如果在当前视图，倒序便利子视图并调用<code>hittest</code>方法，一直便利到最终视图，返回调用者</li>
+</ul>
+</li>
+<li><code>pointInside</code>方法中，根据这个<code>point</code>来判断是否在圆形空间内，如果在返回YES，如果不在返回NO</li>
+</ul>
+</li>
+</ul>
+<h2 id="视图响应流程"><a href="#视图响应流程" class="headerlink" title="视图响应流程"></a>视图响应流程</h2><p> uibutton-&gt;UIView-&gt;可能还存在view-&gt;uiwindow-&gt;UIApplication-&gt;UIApplicationDelegate<br>  uibutton-&gt;UIView-&gt;可能还存在view-&gt;UIViewcontroller-&gt;uiwindow-&gt;UIApplication-&gt;UIApplicationDelegate</p>
+<p>视图响应的API</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (void)touchesBegan:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br><span class="line">- (void)touchesMoved:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br><span class="line">- (void)touchesEnded:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br></pre></td></tr></table></figure>
+<p>上述方法都是<code>UIResponder</code>的方法，UIView和UIViewController是继承于<code>UIResponder</code>，所以都有这些方法。</p>
+<p><strong>事件传递让我们能够找到最终的视图，而最终这个事件是否由你找到的视图来处理的话呢？那就涉及到视图响应链的一个流程机制。</strong></p>
+<p>流程：</p>
+<ul>
+<li>如果说最终视图无法响应</li>
+<li>会传递给父视图进行响应，下一个响应者</li>
+<li>如果父视图不响应那么继续传给父视图的父视图。</li>
+<li>按照上述流程一直向上传递，直到传递给UIApplicationDelegate</li>
+<li>假如一直到UIApplicationDelegate还没有找到？<ul>
+<li>忽略这个响应</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-d76d83554c38d4e0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="响应链.png"></p>
+<h1 id="图像显示原理"><a href="#图像显示原理" class="headerlink" title="图像显示原理"></a>图像显示原理</h1><p>CPU和GPU两个硬件都是通过总线连接起来的。CPU输出的结果一般都是位图，在经过总线在合适的时机上传给GPU， GPU拿到位图以后，会做图层的一些渲染，包括纹理的合成之后会把结果放到Frame Buffer(缓冲区)由视频控制器根据信号在指定时间之前，去提取在帧缓冲区中的屏幕显示内容然后最终显示到手机屏幕上。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-69945f8e6fb7c191.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图像显示原理.png"></p>
+<p>UIView显示部分是由CALayer来负责的，而CALayer中有个属性contents就是最终要绘制到手机屏幕上的一个位图，比如说是一个UILabel，那么contents中最终放的结果就是关于helloworld一个文字的位图，然后系统会在合适的时机回调给UIView的一个<code>drawRect</code>方法，让程序员在此基础之上去绘制自己一些想要的自定义绘制的内容。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-5c09a67006eaadab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>绘制好的位图最终会由<code>Core Animation</code>这个框架提交给GPU中的OpenGL(ES)渲染管线，进行最终的位图的渲染包括纹理的合成然后显示在手机屏幕上。 </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-e05246b24bf4a915.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UIView的显示原理"></p>
+<h2 id="CPU工作"><a href="#CPU工作" class="headerlink" title="CPU工作"></a>CPU工作</h2><table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Display(显示)</th>
+<th>Prepare(准备)</th>
+<th>commit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UI布局、文本计算</td>
+<td>绘制(drawRect)</td>
+<td>图片编解码</td>
+<td>提交位图</td>
+</tr>
+</tbody>
+</table>
+<h2 id="GPU渲染管线"><a href="#GPU渲染管线" class="headerlink" title="GPU渲染管线"></a>GPU渲染管线</h2><p>实际上即使OpenGL的渲染管线，这个过程：</p>
+<ul>
+<li>顶点着色(对位图的一个处理)</li>
+<li>图元装配</li>
+<li>光栅化</li>
+<li>片段着色</li>
+<li>片段处理</li>
+</ul>
+<p>做完以后，最终把像素点提交到<code>FrameBuffer</code>帧缓冲区中，由视频控制器在VSync信号到来之前去<code>FrameBuffer</code>帧缓冲区当中提取最终要显示在屏幕上的内容，这就构成了OpenGL的显示原理</p>
+<h1 id="卡顿和掉帧"><a href="#卡顿和掉帧" class="headerlink" title="卡顿和掉帧"></a>卡顿和掉帧</h1><h2 id="UI卡顿和掉帧的原因"><a href="#UI卡顿和掉帧的原因" class="headerlink" title="UI卡顿和掉帧的原因"></a>UI卡顿和掉帧的原因</h2><p>一般来说页面滑动的流畅性是60FPS，指的就是每一秒钟会有60帧的画面更新，我们在人眼上面所看到的就是流畅的效果，那基于此每隔16.7ms(1/60)就要产生一帧的画面，那么在16.7ms之内需要CPU和GPU共同协同完成产生最终的一帧的数据。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-acd3f7604ecfdac5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="卡顿掉帧的原因.png"></p>
+<p>比如说CPU花费一定的时间(文本的布局，UI的计算包括一些视图的绘制，以及图片解码然后最终得到的位图提交给GPU)，再由GPU进行相应的图层的合成、管理、渲染，准备好下一帧的画面，然后在下一帧的VSync信号到来的时候，就可以显示这个画面。</p>
+<p>如果说CPU花费的时间特别长的话，那么留给GPU的时间就会减少，如果GPU进行相应的图层的合成、管理、渲染全部准备完毕可能就要总时间超过16.7ms，那么在下一帧VSync信号到来的时候<br>没有准备好这一帧的画面，那就由此产生掉帧，由此产生一个卡顿。</p>
+<p>那么上述就可以总结UI卡顿掉帧的原因。</p>
+<p>在规定的16.7ms之内在下一帧VSync到来之前并没有CPU和GPU共同完成下一帧画面的合成，于是就会造成卡顿掉帧。</p>
+<h2 id="滑动优化方案"><a href="#滑动优化方案" class="headerlink" title="滑动优化方案"></a>滑动优化方案</h2><p>基于TableView和ScrollView都有哪些优化方案，你又是怎么样做的？</p>
+<ul>
+<li><p>CPU：减轻CPU所做的工作时长、包括它的压力来达到优化的效果。</p>
+<ul>
+<li>对象创建、调整、销毁放入子线程</li>
+<li>预排版(布局计算、文本计算)放入到子线程去做</li>
+<li>上述2个方式主线程就可以有更多的时间去响应用户的交互</li>
+<li>预悬案(文本等异步绘制，图片编解码等)</li>
+</ul>
+</li>
+<li><p>GPU</p>
+<ul>
+<li>纹理渲染(masksToBounds、圆角、阴影、蒙层都会涉及到GPU的离屏渲染)这样工作量就会加大基于这种情况我们就可以对GPU进行优化，可以依靠CPU的异步绘制来减轻GPU的离屏渲染压力。</li>
+<li>视图混合(视图层级非常复杂，有多个视图层层叠加，那么GPU就要对这些视图进行合成，每一个像素点对应的像素值他需要做大量的计算，那么在一定程度上减轻视图层级的复杂性，那也可以减轻GPU的压力，也包括CPU的异步绘制来达到提交的位图本身就是层级少的视图，这样也可以减轻GPU的压力)。</li>
+</ul>
+</li>
+</ul>
+<h1 id="绘制原理和异步绘制"><a href="#绘制原理和异步绘制" class="headerlink" title="绘制原理和异步绘制"></a>绘制原理和异步绘制</h1><h2 id="UIView的绘制原理"><a href="#UIView的绘制原理" class="headerlink" title="UIView的绘制原理"></a>UIView的绘制原理</h2><p>当我们调用<code>[UIView setNeedsDisplay]</code>的时候，实际并没有立刻发生当前视图的绘制工作，而是在之后的某个时机才会进行当前UIView的绘制工作，基于这个问题，这是为什么？</p>
+<ul>
+<li>1、当调用这个方法<code>[UIView setNeedsDisplay]</code>这个方法</li>
+<li>2、系统会自动调用<code>[view.layer setNeedsDisplay]</code>这个方法</li>
+</ul>
+<p>相当于在<code>view.layer</code>上面打上了一个标记，然后会在当前Runloop将要结束的时候调用<code>view.layer</code>的<code>[view.layer display]</code>然后才能进入到当前视图的真正的绘制工作。</p>
+<p><code>[view.layer display]</code>中的方法会判断<code>view.layer.delegate</code>是否会响应<code>displaylayer</code>方法,假如不响应这个方法，就会进入到系统的绘制流程，<br>如果说<code>view.layer.delegate</code>响应<code>displaylayer</code>方法，那么就会进入到异步绘制入口。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-233a80f61767698e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UIView绘制的原理过程.png"></p>
+<h3 id="系统绘制的流程"><a href="#系统绘制的流程" class="headerlink" title="系统绘制的流程"></a>系统绘制的流程</h3><ul>
+<li><p>在CAlayer内部会创建创建一个backingstore(CGContextRef)，我们可以通过<code>drawRect</code>方法中可以通过上下文堆栈当中取出栈顶的(context)CGContextRef,也可以说是backingstore，然后判断是否有代理：</p>
+</li>
+<li><p>如果没有代理会调用<code>[view.layer drawInContext:]</code>方法。</p>
+</li>
+<li>如果有代理会调用<code>view.layer.delegate drawLayer: inContext:</code>方法，做当前视图的绘制工作，这是系统内部做的事情，然后在合适的时间回调给我们方法<code>[view drawRect:]</code>。</li>
+</ul>
+<p><code>[view drawRect:]</code>默认是什么都不做，在系统的绘制的基础上再做其他的工作</p>
+<p>无论是那种哪种方式最终都是CALayer来上传对应的backingstore到GPU，最后结束系统绘制的流程</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-1d8c64fbd2f24610.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="系统的绘制原理.png"></p>
+<h2 id="如何实现异步绘制"><a href="#如何实现异步绘制" class="headerlink" title="如何实现异步绘制"></a>如何实现异步绘制</h2><p>异步绘制基于系统给开发者开放一个API<code>[view.layer.delegate displayLayer:]</code>，如果我们实现了<code>displayLayer:</code>的方法，就可以进入到异步绘制的一个流程中。</p>
+<ul>
+<li>代理负责生成对应的Bitmap位图</li>
+<li>设置该bitmap作为layer.contents属性的值</li>
+</ul>
+<h3 id="原理流程"><a href="#原理流程" class="headerlink" title="原理流程"></a>原理流程</h3><ul>
+<li>首先调用了<code>[view setNeedsDisplay]</code>的方法之后</li>
+<li>在当前RunLoop将要结束的时候会由系统调用视图所对应layer的<code>[view.layer display]</code></li>
+<li>如果我们实现了这个代理方法<code>displayLayer:</code>,会通过子线程的切换在子线程中去做一个位图的绘制，此时主线程可以做其他的操作<ul>
+<li>子线程的主要工作</li>
+<li>CGBitmapContextCreate   (core graphic的一个函数来创建一个位图的上下文)</li>
+<li>CoreGraphic API 通过这个API可以做当前UI控件的一些绘制工作</li>
+<li>CGBitmapContextCreateImage 通过这个函数来根据上下文生成一张cgimage的图片</li>
+</ul>
+</li>
+<li>最后回到主队列，提交这个位图，设置当前视图的layer设置其<code>setContents</code>这样就完成了一个UI控件的异步绘制过程    </li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-c8bcd88540d875d7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UI异步绘制的一个原理.png"></p>
+<h1 id="离屏渲染"><a href="#离屏渲染" class="headerlink" title="离屏渲染"></a>离屏渲染</h1><p>什么是离屏渲染？你是怎么理解的？</p>
+<ul>
+<li><p>On-Screen Rendering</p>
+<ul>
+<li>意为当前屏幕渲染，指的是GPU的渲染操作是在当前用于显示的屏幕缓冲区中进行的</li>
+<li>在屏渲染是GPU层面中的一个概念</li>
+</ul>
+</li>
+<li><p>Off-Screen Rendering</p>
+<ul>
+<li>意为离屏渲染，指的是GPU在当前屏幕缓冲区以外新开辟的一个缓冲区进行渲染操作</li>
+<li>离屏渲染起源于GPU上面</li>
+</ul>
+</li>
+</ul>
+<p>当我们指定了UI视图的某些属性，标记为在未预合成之前不能用于当前屏幕上直接显示的时候，就会触发离屏渲染。</p>
+<h2 id="离屏渲染，何时会触发？"><a href="#离屏渲染，何时会触发？" class="headerlink" title="离屏渲染，何时会触发？"></a>离屏渲染，何时会触发？</h2><ul>
+<li>圆角(同时要设置maskToBounds一起使用的时候才能触发)</li>
+<li>图层蒙版</li>
+<li>阴影</li>
+<li>光栅化</li>
+</ul>
+<h2 id="为何要避免离屏渲染？"><a href="#为何要避免离屏渲染？" class="headerlink" title="为何要避免离屏渲染？"></a>为何要避免离屏渲染？</h2><p>触发离屏渲染的时候，会增加GPU的工作量，而增加了GPU的工作量很有可能导致了CPU和GPU工作耗时加起来的总耗时超出了16.7ms，那么就可能导致UI的卡顿和掉帧，所以我们需要比 main离屏渲染。</p>
+<h1 id="系统的UI事件传递机制是怎么样的？"><a href="#系统的UI事件传递机制是怎么样的？" class="headerlink" title="系统的UI事件传递机制是怎么样的？"></a>系统的UI事件传递机制是怎么样的？</h1><p>hittest和PointInside的流程</p>
+<h1 id="使UITableView滚动更流程的方案或思路都有哪些？"><a href="#使UITableView滚动更流程的方案或思路都有哪些？" class="headerlink" title="使UITableView滚动更流程的方案或思路都有哪些？"></a>使UITableView滚动更流程的方案或思路都有哪些？</h1><p>对于CPU在于子线程中对象的创建、调整和销毁、包括进行预排版以及图片的解码，采用异步绘制方案。这些都是对于UITableView滑动优化的方案</p>
+<h1 id="什么是离屏渲染？"><a href="#什么是离屏渲染？" class="headerlink" title="什么是离屏渲染？"></a>什么是离屏渲染？</h1><p>离屏渲染起源于GPU，在当前屏幕缓冲区之外新开辟一个缓存区进行渲染操作就是离屏渲染，</p>
+<h1 id="UIView和CALayer之间的关系是怎么样的？"><a href="#UIView和CALayer之间的关系是怎么样的？" class="headerlink" title="UIView和CALayer之间的关系是怎么样的？"></a>UIView和CALayer之间的关系是怎么样的？</h1><p>UIView是专门负责事件传递和视图响应的<br>而CALyaer全权负责视图的显示工作。</p>
+<p><strong>为什么要区分UIView和CALayer的职责划分</strong></p>
+<p>用到了六大设计原则的单一原则。</p>
+
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/">Cycript（二）非越狱调试、修改App中UI的数据</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+
+<!--MOB SHARE BEGIN-->
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/07/09/iOS晋级知识汇总(一)UI优化/" alt="二维码">
+     
+    </div>
+
+</div>
+
+<div class="mask js-mask"></div>
+<!--MOB SHARE END-->
+
+
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript （一）配置环境/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/07/10/iOS晋级知识汇总(三)语言特性/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iOS晋级知识汇总(三)语言特性
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/07/iOS基础全面分析之四(动画全面分析)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS基础全面分析之四(动画全面分析)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript （一）配置环境/">Cycript （一）配置环境</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/HSB:HSL、RGB他们的纯色/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/HSB:HSL、RGB他们的纯色/">HSB/HSL、RGB他们的纯色</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 推送步骤以及原理/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 推送步骤以及原理/">iOS 推送步骤以及原理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS----SIGPIPE信号终止进程/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS----SIGPIPE信号终止进程/">iOS----SIGPIPE信号终止进程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/">TCP创建连接的三次握手，关闭连接的四次挥手。</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/">iOS  深、浅拷贝的那些奇葩的事（四）</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/">iOS 深拷贝，完全深拷贝（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/8/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/10/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -412,8 +569,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

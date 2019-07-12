@@ -6,19 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
-  <title>Archives | Struggle3g‘s Blog</title>
+  <title>iOS晋级知识汇总(二)runtime | Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding yourself">
+  <meta name="description" content="Runtime数据结构 objc_object objc_class  isa指针 method_t">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Struggle3g‘s Blog">
-<meta property="og:url" content="https://www.struggle3g.com/archives/page/9/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS晋级知识汇总(二)runtime">
+<meta property="og:url" content="https://www.struggle3g.com/2019/07/10/iOS晋级知识汇总(二)runtime/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="Coding yourself">
+<meta property="og:description" content="Runtime数据结构 objc_object objc_class  isa指针 method_t">
 <meta property="og:locale" content="ch">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-b1d8ea4025a261c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-e418a62029f77935.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-e2c4b071d408ee2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-d434ee57c1966667.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-791420d88e56b75f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-0fb77cfe0a03c75c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-50692a54c4d7580f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-f9be7964abbac624.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-5f2e06a802c39e17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-32c330b26475b773.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-8552fd0619141d37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-2fc8edd865c4456c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-ad57f7f1a5a7ff98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-89dc5a523b768c00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-12T07:00:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="Coding yourself">
+<meta name="twitter:title" content="iOS晋级知识汇总(二)runtime">
+<meta name="twitter:description" content="Runtime数据结构 objc_object objc_class  isa指针 method_t">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-b1d8ea4025a261c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -163,241 +179,276 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-iOS晋级知识汇总(二)runtime" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS晋级知识汇总(二)runtime
+    </h1>
+  
+
+        
+        <a href="/2019/07/10/iOS晋级知识汇总(二)runtime/" class="archive-article-date">
+  	<time datetime="2019-07-10T10:40:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
+<li>objc_object</li>
+<li>objc_class </li>
+<li>isa指针</li>
+<li>method_t</li>
+</ul>
+<a id="more"></a>
+<h3 id="objc-object-id-objc-object"><a href="#objc-object-id-objc-object" class="headerlink" title="objc_object   id == objc_object"></a>objc_object   id == objc_object</h3><ul>
+<li>isa_t</li>
+<li>关于isa操作相关</li>
+<li>弱引用相关</li>
+<li>关联对象相关</li>
+<li>内存管理相关</li>
+</ul>
+<h3 id="objc-class-class-objc-class-继承于objc-object"><a href="#objc-class-class-objc-class-继承于objc-object" class="headerlink" title="objc_class  class ==  objc_class 继承于objc_object"></a>objc_class  class ==  objc_class 继承于objc_object</h3><h4 id="Class-superClass"><a href="#Class-superClass" class="headerlink" title="Class superClass"></a>Class superClass</h4><h4 id="cache-t-cache"><a href="#cache-t-cache" class="headerlink" title="cache_t cache"></a>cache_t cache</h4><ul>
+<li>快速查找方法执行函数</li>
+<li>可增量扩展的哈希表结构 </li>
+<li>局部性原理的最佳应用</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-b1d8ea4025a261c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Cache_t.png"></p>
+<h4 id="class-data-bits-t-bits"><a href="#class-data-bits-t-bits" class="headerlink" title="class_data_bits_t bits"></a>class_data_bits_t bits</h4><pre><code>- class\_data\_bits\_t主要是对class_rw_t的封装
+- class\_rw\_t代表了类相关的读写信息、对class\_ro\_t的封装
+</code></pre><p><strong>class_rw_t</strong></p>
+<ul>
+<li>class_ro_t  代表了类相关的只读信息</li>
+<li>protocols </li>
+<li>properties   </li>
+<li>methods</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-e418a62029f77935.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="class_rw_t.png"></p>
+<p><strong>class_ro_t</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-e2c4b071d408ee2f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Class_ro_t.png"></p>
+<h3 id="isa指针"><a href="#isa指针" class="headerlink" title="isa指针"></a>isa指针</h3><ul>
+<li>指针型isa    的值代表Class的地址</li>
+<li>非指针型isa  的值的部分代表Class的地址</li>
+<li>产生这两种的初衷：我们在寻址实际上30～40位数就可以保证我们寻找到所有class的地址，多出来的位可以存储一些别的内容，来达到节省内存的目的</li>
+<li>指向问题：<ul>
+<li>关于对象，其指向类对象</li>
+<li>关于类对象，其指向元类对象</li>
+<li>如果是实例方法从类对象查找，如果是类方法从元类对象查找</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-d434ee57c1966667.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="isa指针.png"></p>
+<h3 id="method-t"><a href="#method-t" class="headerlink" title="method_t"></a>method_t</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-791420d88e56b75f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="method_t.png"></p>
+<h4 id="const-char-types"><a href="#const-char-types" class="headerlink" title="const char * types"></a>const char * types</h4><p><strong>type Encodings技术</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-0fb77cfe0a03c75c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Type Encoding.png"></p>
+<h3 id="数据结构总结"><a href="#数据结构总结" class="headerlink" title="数据结构总结"></a>数据结构总结</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-50692a54c4d7580f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Runtime数据结构.png"></p>
+<h2 id="对象、类对象、元类对象"><a href="#对象、类对象、元类对象" class="headerlink" title="对象、类对象、元类对象"></a>对象、类对象、元类对象</h2><ul>
+<li>类对象存储实例方法列表等信息</li>
+<li><p>元类对象存储类方法类表等信息</p>
+</li>
+<li><p>类对象和元类对象都是objc_class数据结构，由于继承了objc_object数据结构所以才有isa指针，</p>
+</li>
+<li>所以才能实例对象找到类对象访问它的实例方法列表等信息，</li>
+<li>类对象通过isa可以找到元类对象访问类方法列表等信息</li>
+<li>元类对象的isa指针(包含根元类对象)都指向根元类对象</li>
+<li>根元类对象的superclass指向的根类对象<ul>
+<li>当在跟类中的类方法没找到，会指向根类对象中去查找它的同名的实例方法</li>
+</ul>
+</li>
+</ul>
+<h2 id="消息传递过程"><a href="#消息传递过程" class="headerlink" title="消息传递过程"></a>消息传递过程</h2><h3 id="实例方法消息传递过程"><a href="#实例方法消息传递过程" class="headerlink" title="实例方法消息传递过程"></a>实例方法消息传递过程</h3><p>1、 调用了一个实例对象A对象的实例方法<br>2、 通过A实例对象的isa指针找到它的类对象，类对象中遍历方法列表去查找同名的方法实现，找到后Runtime发送消息调用<br>3、 如果没有找到就会根据superclass指针指向的父类对象，并查找其方法列表。。。直到根类对象中的方法列表，如果找到Runtime发送消息调用，如果到根类对象还没有找到就会返回nil</p>
+<h3 id="类方的消息传递过程"><a href="#类方的消息传递过程" class="headerlink" title="类方的消息传递过程"></a>类方的消息传递过程</h3><p>1、 调用一个类对象的类方法。<br>2、 通过类对象的isa指针找到元类对象，元类对象中遍历方法列表查找同名的类方法是心啊，找到后直接调用<br>3、如果没有找到就会通过superclass指针指向父元类对象，并查找其类方法列表。。。直到根元类对象中的类方法列表，如果找到直接调用，如果没有找到进入到消息转发<br>4、根元类对象如果没有找到会superclass会指向根类对象，并查找同名的实例方法，如果找到直接调用，如果没有找到返回nil</p>
+<h2 id="消息传递"><a href="#消息传递" class="headerlink" title="消息传递"></a>消息传递</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-f9be7964abbac624.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="消息传递.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-5f2e06a802c39e17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="消息传递Supr.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-32c330b26475b773.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="消息传递流程.png"></p>
+<h3 id="1、缓存查找"><a href="#1、缓存查找" class="headerlink" title="1、缓存查找"></a>1、缓存查找</h3><p>例： 给定值是SEL 目标值是对应bucket_t的IMP。</p>
+<ul>
+<li>首先给定的函数选择器通过一个函数来映射出bucket_t在数组当中位置，这个过程是hash查找</li>
+<li>哈希查找实际上，通过给定的一个值比如说方法的选择器经过哈希函数的算法酸楚的值实际上就是给定值在对应数组当中所对应的索引位置。<ul>
+<li>f(key) = key &amp; mask</li>
+<li>通过哈希查 解决查找效率的问题</li>
+<li>通过哈希查找，找到对应的bucket_t，就可以拿到IMP</li>
+</ul>
+</li>
+</ul>
+<h3 id="2、当前类中查找"><a href="#2、当前类中查找" class="headerlink" title="2、当前类中查找"></a>2、当前类中查找</h3><p>对于已排序好的列表，采用二分查找算法查找方法对应执行函数<br>对于没有排序的列表，采用一般遍历查找方法对应执行函数</p>
+<h3 id="3、父类逐级查找"><a href="#3、父类逐级查找" class="headerlink" title="3、父类逐级查找"></a>3、父类逐级查找</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-8552fd0619141d37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="父类逐级查找的过程.png"></p>
+<h2 id="消息转发"><a href="#消息转发" class="headerlink" title="消息转发"></a>消息转发</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-2fc8edd865c4456c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="消息转发.png"></p>
+<h2 id="Method-Swizzling"><a href="#Method-Swizzling" class="headerlink" title="Method-Swizzling"></a>Method-Swizzling</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-ad57f7f1a5a7ff98.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MethodSwizzling.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Method method1 = class_getInstanceMethod(self, @selector(test));</span><br><span class="line">Method method2 = class_getInstanceMethod(self, @selector(Mytest));</span><br><span class="line">method_exchangeImplementations(method1, method2);</span><br></pre></td></tr></table></figure>
+<h2 id="动态添加方法"><a href="#动态添加方法" class="headerlink" title="动态添加方法"></a>动态添加方法</h2><p>编译的时候没有这个方法，运行时有这个方法需要调用<code>performSelector</code>方法,在消息转发中的第一次处理函数<code>resolveInstanceMethod</code>动态添加<code>DoThings:Num:</code>方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">+ (BOOL)resolveInstanceMethod:(SEL)sel&#123;</span><br><span class="line"></span><br><span class="line">    NSLog(@&quot;%@&quot;,NSStringFromSelector(sel));</span><br><span class="line"></span><br><span class="line">    if(sel == @selector(DoThings:Num:))&#123;</span><br><span class="line">        class_addMethod([self class], sel, (IMP)MyMethodIMP, &quot;v@:&quot;);</span><br><span class="line">        return YES;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return  [super resolveInstanceMethod:sel];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void MyMethodIMP(id self,SEL _cmd,NSString * name,NSInteger num)&#123;</span><br><span class="line">    </span><br><span class="line">    NSLog(@&quot;调用了消息转发的内容&quot;);</span><br><span class="line">    NSLog(@&quot;%@&quot;,NSStringFromSelector(_cmd));</span><br><span class="line">    NSLog(@&quot;%@&quot;,name);</span><br><span class="line">    NSLog(@&quot;%ld&quot;,(long)num);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="动态方法解析"><a href="#动态方法解析" class="headerlink" title="动态方法解析"></a>动态方法解析</h2><p>@dynamic</p>
+<ul>
+<li>动态运行时语言将函数决议推迟到运行时。<ul>
+<li>当我们把一个属性标示为@dynamic的时候代表着不需要编译器在编译时，为我们生成属性的setter跟getter方法的具体实现，而在在具体运行时我们调用了setter、geter方法的时候，再去添加具体的实现。</li>
+<li>这种功能也只有动态运行时特性的语言支持</li>
+</ul>
+</li>
+<li>编译时语言在编译期进行函数决议</li>
+</ul>
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="nsobject有父类吗？"><a href="#nsobject有父类吗？" class="headerlink" title="nsobject有父类吗？"></a>nsobject有父类吗？</h2><p>没有nsobject是根类</p>
+<h2 id="当在跟类中的类方法没找到，但是有同名的实例方法实现，那么会不会崩溃？会不会产生实际的调用？"><a href="#当在跟类中的类方法没找到，但是有同名的实例方法实现，那么会不会崩溃？会不会产生实际的调用？" class="headerlink" title="当在跟类中的类方法没找到，但是有同名的实例方法实现，那么会不会崩溃？会不会产生实际的调用？"></a>当在跟类中的类方法没找到，但是有同名的实例方法实现，那么会不会崩溃？会不会产生实际的调用？</h2><p>由于根元类对象的superclass指针指向了根类对象，去查找实例同名的实例方法，如果找到就会执行同名的实例方法调用</p>
+<h2 id="下图中打印的是什么？"><a href="#下图中打印的是什么？" class="headerlink" title="下图中打印的是什么？"></a>下图中打印的是什么？</h2><p> <img src="https://upload-images.jianshu.io/upload_images/7980283-89dc5a523b768c00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="笔试题1.png"></p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[self class]会转化成     </span><br><span class="line">objc_msgSend(&lt;#id  _Nullable self#&gt;, &lt;#SEL  _Nonnull op, ...#&gt;)</span><br><span class="line">phone的实例对象，[self class]，通过isa找到phone类对象，phone类对象是没有class的，通过superclass找到父类的。。。直到查找到根类nsobject，有calss的实现，打印出来的自然是phone</span><br><span class="line"></span><br><span class="line">[super class]会转化成</span><br><span class="line">objc_msgSendSuper(&lt;#struct objc_super * _Nonnull super#&gt;, &lt;#SEL  _Nonnull op, ...#&gt;)</span><br><span class="line"></span><br><span class="line">objc_msgSendSuper实际的接收者仍然是phone的这个实例对象，objc_msgSendSuper传递的含义，从phone的这个实例对象的父类开始查找，  直到查找到根类nsobject有class的实现，所以打印出来的结果还是phone</span><br></pre></td></tr></table></figure>
+<p> 打印结果都是phone</p>
+<h2 id="对页面的进出添加进出信息"><a href="#对页面的进出添加进出信息" class="headerlink" title="对页面的进出添加进出信息"></a>对页面的进出添加进出信息</h2><p> 使用MethodSwizzling来交换<code>viewDidLoad</code>和<code>viewWillAppear</code>，在替换代码中添加一些埋点操作</p>
+<h2 id="obj-foo-和objc-msgSend-函数之间有什么关系？"><a href="#obj-foo-和objc-msgSend-函数之间有什么关系？" class="headerlink" title="[obj foo]和objc_msgSend()函数之间有什么关系？"></a>[obj foo]和objc_msgSend()函数之间有什么关系？</h2><ul>
+<li>向 obj对象发送一条foo的消息，[obj foo]在编译期处理以后就变成了objc_msgSend(obj,@selector(foo))</li>
+<li>由于没有参数，所以 objc_msgSend函数调用只有2个参数</li>
+<li>然后就开始了runtime的消息传递过程</li>
+</ul>
+<h2 id="runtime如何通过Selector找到对应的IMP地址的？"><a href="#runtime如何通过Selector找到对应的IMP地址的？" class="headerlink" title="runtime如何通过Selector找到对应的IMP地址的？"></a>runtime如何通过Selector找到对应的IMP地址的？</h2><ul>
+<li>查找当前实例所对应类对象的缓存，是否有selelctor对应imp实现如果缓存命中了，<br>我们就把命中的缓存函数返回给调用方。</li>
+<li>如果缓存没有就去当前类的方法列表查找selector对应的imp实现</li>
+<li>当前类如果没有命中，就根据当前类的superclass逐级查找父类的方法列表。。。直到根类对象，直到查到selector方法的imp实现</li>
+</ul>
+<h2 id="能否向编译后的类中增加实例变量？"><a href="#能否向编译后的类中增加实例变量？" class="headerlink" title="能否向编译后的类中增加实例变量？"></a>能否向编译后的类中增加实例变量？</h2><p>class_ro_t ro代表的是<code>readonly</code></p>
+<p>编译后的类是无法添加实例变量的。</p>
+<h2 id="能否向动态添加的类中增加实例变量？"><a href="#能否向动态添加的类中增加实例变量？" class="headerlink" title="能否向动态添加的类中增加实例变量？"></a>能否向动态添加的类中增加实例变量？</h2><p>可以的,动态添加的这个类过程当中只要在它调用注册方法之前去完成实例变量的添加就是可以实现的</p>
+<h1 id="消息传递机制"><a href="#消息传递机制" class="headerlink" title="消息传递机制"></a>消息传递机制</h1><h2 id="当我们在消息传递的过程中如何通过缓存的方法查找？"><a href="#当我们在消息传递的过程中如何通过缓存的方法查找？" class="headerlink" title="当我们在消息传递的过程中如何通过缓存的方法查找？"></a>当我们在消息传递的过程中如何通过缓存的方法查找？</h2><h2 id="isa指针的含义？"><a href="#isa指针的含义？" class="headerlink" title="isa指针的含义？"></a>isa指针的含义？</h2><ul>
+<li>非指针类型 isa值的部分代表calss地址</li>
+<li>指针类型isa  代表class地址</li>
+</ul>
+
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/">Cycript（二）非越狱调试、修改App中UI的数据</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+
+<!--MOB SHARE BEGIN-->
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/07/10/iOS晋级知识汇总(二)runtime/" alt="二维码">
+     
+    </div>
+
+</div>
+
+<div class="mask js-mask"></div>
+<!--MOB SHARE END-->
+
+
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript （一）配置环境/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/07/11/iOS晋级知识汇总(四)算法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iOS晋级知识汇总(四)算法
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/10/iOS晋级知识汇总(三)语言特性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS晋级知识汇总(三)语言特性</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript （一）配置环境/">Cycript （一）配置环境</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/HSB:HSL、RGB他们的纯色/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/HSB:HSL、RGB他们的纯色/">HSB/HSL、RGB他们的纯色</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 推送步骤以及原理/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 推送步骤以及原理/">iOS 推送步骤以及原理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS----SIGPIPE信号终止进程/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS----SIGPIPE信号终止进程/">iOS----SIGPIPE信号终止进程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/">TCP创建连接的三次握手，关闭连接的四次挥手。</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/">iOS  深、浅拷贝的那些奇葩的事（四）</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/">iOS 深拷贝，完全深拷贝（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/8/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/10/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -412,8 +463,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
-  <title>Archives | Struggle3g‘s Blog</title>
+  <title>iOS晋级知识汇总(四)算法 | Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding yourself">
-<meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Struggle3g‘s Blog">
-<meta property="og:url" content="https://www.struggle3g.com/archives/page/9/index.html">
+  <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS晋级知识汇总(四)算法">
+<meta property="og:url" content="https://www.struggle3g.com/2019/07/11/iOS晋级知识汇总(四)算法/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="Coding yourself">
 <meta property="og:locale" content="ch">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-4ee9bc9777e16ab5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-12T06:59:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="Coding yourself">
+<meta name="twitter:title" content="iOS晋级知识汇总(四)算法">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-4ee9bc9777e16ab5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -163,241 +163,364 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-iOS晋级知识汇总(四)算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS晋级知识汇总(四)算法
+    </h1>
+  
+
+        
+        <a href="/2019/07/11/iOS晋级知识汇总(四)算法/" class="archive-article-date">
+  	<time datetime="2019-07-10T23:14:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/7980283-4ee9bc9777e16ab5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一般算法.png"></p>
+ <a id="more"></a>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><h2 id="字符串反转算法"><a href="#字符串反转算法" class="headerlink" title="字符串反转算法"></a>字符串反转算法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">//核心思想交换前后两个字符，同时移动指针</span><br><span class="line">void char_reverse(char *cha)&#123;</span><br><span class="line">    </span><br><span class="line">    char *begin = cha;  //指向第一个字符</span><br><span class="line">    char *end = cha + strlen(cha)-1;  //指向最后一个字符</span><br><span class="line">    while (begin &lt; end) &#123;</span><br><span class="line">        //交换前后两个字符，同时移动指针</span><br><span class="line">        char temp = *begin;</span><br><span class="line">        *(begin++) = *end; //将*end的的值赋值给 *begin   begin+1</span><br><span class="line">        *(end--) = temp;   //将temp的值赋值给 *end     end-1</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">## 链表反转算法</span><br><span class="line"></span><br><span class="line">![链表反转.png](https://upload-images.jianshu.io/upload_images/7980283-1b0e9ca4a4aa3ed5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br></pre></td></tr></table></figure>
+<p>struct Node{<br>    int data;<br>    struct Node <em>next;<br>};<br>//链表反转<br>struct Node</em> reverseList(struct Node *head){</p>
+<pre><code>//定义遍历指针，初始化为头节点
+struct Node *p = head;
+//反转后的链表头部
+struct Node *newH = NULL;
+//遍历链表
+while (p != NULL) {
+    //记录下一个节点
+    struct Node * temp = p-&gt;next;
+    //当前节点的next指向新链表头部
+    p-&gt;next = newH;
+    //更改新链表头部当前节点
+    newH = p;
+    //移动p指针
+    p = temp;
+}
+
+return newH;
+</code></pre><p>}<br>//构造一个链表<br>struct Node <em> constructList(void){<br>    //头部点定义<br>    struct Node </em>head = NULL;<br>    //记录当前尾节点<br>    struct Node <em>cur = NULL;<br>    for (int i = 0; i&lt;5; i++) {<br>        struct Node </em>node = malloc(sizeof(struct Node));<br>        node-&gt;data = i;<br>        //头节点为空，新节点即为头节点<br>        if(head == NULL){<br>            head = node;<br>        }else{<br>        //当前节点的next为新节点<br>            cur-&gt;next = node;<br>        }<br>        cur = node;<br>    }<br>    return head;<br>}<br>//打印链表中的数据<br>void printList(struct Node <em>head){<br>    struct Node </em> temp = head;<br>    while (temp != NULL) {<br>        printf(“node is %d \n”,temp-&gt;data);<br>        temp = temp-&gt;next;<br>    }</p>
+<p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 有序数组合并</span><br><span class="line"></span><br><span class="line">![有序数组合并.png](https://upload-images.jianshu.io/upload_images/7980283-a3eb29c778855cd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br></pre></td></tr></table></figure></p>
+<p>void OrderMergeList(int a[], int aLen, int b[], int bLen, int result[]){</p>
+<pre><code>int p = 0; // 遍历数组a的指针
+int q = 0; // 遍历数组b的指针
+int i = 0; // 记录当前存储位置
+
+// 任一数组没有到达边界则进行遍历
+while (p &lt; aLen &amp;&amp; q &lt; bLen) {
+    // 如果a数组对应位置的值小于b数组对应位置的值
+    if (a[p] &lt;= b[q]) {
+        // 存储a数组的值
+        result[i] = a[p];
+        // 移动a数组的遍历指针
+        p++;
+    }
+    else{
+        // 存储b数组的值
+        result[i] = b[q];
+        // 移动b数组的遍历指针
+        q++;
+    }
+    // 指向合并结果的下一个存储位置
+    i++;
+}
+
+// 如果a数组有剩余
+while (p &lt; aLen) {
+    // 将a数组剩余部分拼接到合并结果的后面
+    result[i] = a[p++];
+    i++;
+}
+
+// 如果b数组有剩余
+while (q &lt; bLen) {
+    // 将b数组剩余部分拼接到合并结果的后面
+    result[i] = b[q++];
+    i++;
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 排序算法</span><br><span class="line"></span><br><span class="line">（1）冒泡排序是比较相邻位置的两个数，而选择排序是按顺序比较，找最大值或者最小值；</span><br><span class="line"></span><br><span class="line">（2）冒泡排序每一轮比较后，位置不对都需要换位置，选择排序每一轮比较都只需要换一次位置；</span><br><span class="line"></span><br><span class="line">（3）冒泡排序是通过数去找位置，选择排序是给定位置去找数；</span><br><span class="line"></span><br><span class="line">- 冒泡排序优缺点：</span><br><span class="line">	- 优点:比较简单，空间复杂度较低，是稳定的；</span><br><span class="line">	- 缺点:时间复杂度太高，效率慢；</span><br><span class="line"></span><br><span class="line">- 选择排序优缺点：</span><br><span class="line">	- 优点：一轮比较只需要换一次位置；</span><br><span class="line">	- 缺点：效率慢，不稳定（举个例子5，8，5，2，9   我们知道第一遍选择第一个元素5会和2交换，那么原序列中2个5的相对位置前后顺序就破坏了）。</span><br><span class="line"></span><br><span class="line">### 冒泡</span><br></pre></td></tr></table></figure></p>
+<p>//冒泡<br>void BubbleSortList(int a[], int aLen){</p>
+<pre><code>int i,j;
+int temp;
+for (i = 0; i&lt;aLen; i++) {
+    for (j = 0; j&lt; aLen-i-1; j++) {
+        if(a[j]&gt;a[j+1]){
+            temp = a[j]; 
+            a[j] = a[j+1]; 
+            a[j+1] = temp; 
+        }
+    }
+}
+</code></pre><p>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">### 选择</span><br></pre></td></tr></table></figure>
+<p>void SelectionSortList(int a[], int aLen){</p>
+<pre><code>int i,j;
+int temp;
+int minIndex;
+for (i = 0; i&lt;aLen-1; i++) {
+    minIndex = i;
+    for (j = i+1; j&lt;aLen; j++) {
+        if(a[j]&lt;a[minIndex]){
+            minIndex = j;
+        }
+    }
+    temp = a[minIndex];
+    a[minIndex] = a[i];
+    a[i] = temp;
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 插入</span><br><span class="line"></span><br><span class="line">![插入排序.png](https://upload-images.jianshu.io/upload_images/7980283-2937de6c2a6486d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br></pre></td></tr></table></figure></p>
+<p>void interSortList(int a[],int alen){</p>
+<pre><code>int i,j;
+int temp;
+for (i = 1; i&lt;alen; i++) {
+    temp = a[i];
+    j = i;
+    if(a[j-1]&gt;temp){
+        while (j&gt;=1 &amp;&amp; a[j-1]&gt;temp) {
+            a[j] = a[j-1];
+            j--;
+        }
+    }
+    a[j] = temp;
+}
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">## Hash算法</span><br><span class="line"></span><br><span class="line">![哈希算法原理.png](https://upload-images.jianshu.io/upload_images/7980283-69f9c50874df88a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line">- 字母(char)是一个长度为8的数据类型，因此总共有可能256种可能。</span><br><span class="line">- 每个字母根据其ASCII码值作为数组的下标对应数组的一个数字。</span><br><span class="line">- 数组中存储的是每个字符出现的次数。</span><br></pre></td></tr></table></figure></p>
+<p>char findFirstChar(char<em> cha)<br>{<br>    char result = ‘\0’;<br>    // 定义一个数组 用来存储各个字母出现次数<br>    int array[256];<br>    // 对数组进行初始化操作<br>    for (int i=0; i&lt;256; i++) {<br>        array[i] =0;<br>    }<br>    // 定义一个指针 指向当前字符串头部<br>    char</em> p = cha;<br>    // 遍历每个字符<br>    while (<em>p != ‘\0’) {<br>        // 在字母对应存储位置 进行出现次数+1操作<br>        array[</em>(p++)]++;<br>    }</p>
+<pre><code>// 将P指针重新指向字符串头部
+p = cha;
+// 遍历每个字母的出现次数
+while (*p != &apos;\0&apos;) {
+    // 遇到第一个出现次数为1的字符，打印结果
+    if (array[*p] == 1)
+    {
+        result = *p;
+        break;
+    }
+    // 反之继续向后遍历
+    p++;
+}
+
+return result;
+</code></pre><p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">## 查找两个子视图的共同父视图</span><br><span class="line"></span><br><span class="line">![查找两个子视图的共同父视图.png](https://upload-images.jianshu.io/upload_images/7980283-5d457a0b14bf7cd7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>(NSArray <uiview *=""> <em>)findCommonSuperView:(UIView </em>)viewOne other:(UIView <em>)viewOther<br>{<br>  NSMutableArray </em>result = [NSMutableArray array];</uiview></p>
+<p>  // 查找第一个视图的所有父视图<br>  NSArray <em>arrayOne = [self findSuperViews:viewOne];<br>  // 查找第二个视图的所有父视图<br>  NSArray </em>arrayOther = [self findSuperViews:viewOther];</p>
+<p>  int i = 0;<br>  // 越界限制条件<br>  while (i &lt; MIN((int)arrayOne.count, (int)arrayOther.count)) {</p>
+<pre><code>// 倒序方式获取各个视图的父视图
+UIView *superOne = [arrayOne objectAtIndex:arrayOne.count - i - 1];
+UIView *superOther = [arrayOther objectAtIndex:arrayOther.count - i - 1];
+
+// 比较如果相等 则为共同父视图
+if (superOne == superOther) {
+    [result addObject:superOne];
+    i++;
+}
+// 如果不相等，则结束遍历
+else{
+    break;
+}
+</code></pre><p>  }</p>
+<p>  return result;<br>}</p>
+</li>
+<li><p>(NSArray <uiview *=""> <em>)findSuperViews:(UIView </em>)view<br>{<br>  // 初始化为第一父视图<br>  UIView <em>temp = view.superview;<br>  // 保存结果的数组<br>  NSMutableArray </em>result = [NSMutableArray array];<br>  while (temp) {</uiview></p>
+<pre><code>[result addObject:temp];
+// 顺着superview指针一直向上查找
+temp = temp.superview;
+</code></pre><p>  }<br>  return result;<br>}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">## 求无序数组当中的中位数</span><br><span class="line"></span><br><span class="line">- 中位数</span><br><span class="line">	- 当n为奇数时， (n+1)/2</span><br><span class="line">	- 当n为偶数时， (n/2+(n/2 +1))/2</span><br><span class="line"></span><br><span class="line">- 排序算法 + 中位数</span><br><span class="line">	- 冒牌排序、快速排序、堆排序...</span><br><span class="line">- 利用快排思想(分治思想)</span><br><span class="line">	- 选取关键字，高低交替扫描</span><br><span class="line"></span><br><span class="line">### 利用快排思想</span><br><span class="line"></span><br><span class="line">任意挑一个元素，以该元素为支点，划分集合为两部分</span><br><span class="line">如果左侧集合长度恰为(n-1)/2,那么支点就是中位数</span><br><span class="line">如果左侧长度&lt;(n-1)/2，那么中位点在右侧；反之，中位数在左侧</span><br><span class="line">进入相应的一侧继续寻找中位点</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>//求一个无序数组的中位数<br>int findMedian(int a[], int aLen)<br>{<br>    int low = 0;<br>    int high = aLen - 1;</p>
+<pre><code>int mid = (aLen - 1) / 2;
+int div = PartSort(a, low, high);
+
+while (div != mid)
+{
+    if (mid &lt; div)
+    {
+        //左半区间找
+        div = PartSort(a, low, div - 1);
+    }
+    else
+    {
+        //右半区间找
+        div = PartSort(a, div + 1, high);
+    }
+}
+//找到了
+return a[mid];
+</code></pre><p>}</p>
+<p>int PartSort(int a[], int start, int end)<br>{<br>    int low = start;<br>    int high = end;</p>
+<pre><code>//选取关键字
+int key = a[end];
+
+while (low &lt; high)
+{
+    //左边找比key大的值
+    while (low &lt; high &amp;&amp; a[low] &lt;= key)
+    {
+        ++low;
+    }
+
+    //右边找比key小的值
+    while (low &lt; high &amp;&amp; a[high] &gt;= key)
+    {
+        --high;
+    }
+
+    if (low &lt; high)
+    {
+        //找到之后交换左右的值
+        int temp = a[low];
+        a[low] = a[high];
+        a[high] = temp;
+    }
+}
+
+int temp = a[high];
+a[high] = a[end];
+a[end] = temp;
+
+return low;
+</code></pre><p>}<br><code>`</code></p>
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="链表反转"><a href="#链表反转" class="headerlink" title="*链表反转"></a>*链表反转</h2><h2 id="有序数组合并"><a href="#有序数组合并" class="headerlink" title="有序数组合并"></a>有序数组合并</h2><h2 id="hash算法"><a href="#hash算法" class="headerlink" title="hash算法"></a>hash算法</h2><h2 id="查找两个子视图的共同父视图"><a href="#查找两个子视图的共同父视图" class="headerlink" title="*查找两个子视图的共同父视图"></a>*查找两个子视图的共同父视图</h2>
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/">Cycript（二）非越狱调试、修改App中UI的数据</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+
+<!--MOB SHARE BEGIN-->
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/07/11/iOS晋级知识汇总(四)算法/" alt="二维码">
+     
+    </div>
+
+</div>
+
+<div class="mask js-mask"></div>
+<!--MOB SHARE END-->
+
+
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript （一）配置环境/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/07/11/iOS晋级知识汇总(七)第三方库/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iOS晋级知识汇总(七)第三方库
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/10/iOS晋级知识汇总(二)runtime/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS晋级知识汇总(二)runtime</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript （一）配置环境/">Cycript （一）配置环境</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/HSB:HSL、RGB他们的纯色/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/HSB:HSL、RGB他们的纯色/">HSB/HSL、RGB他们的纯色</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 推送步骤以及原理/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 推送步骤以及原理/">iOS 推送步骤以及原理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS----SIGPIPE信号终止进程/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS----SIGPIPE信号终止进程/">iOS----SIGPIPE信号终止进程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/">TCP创建连接的三次握手，关闭连接的四次挥手。</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/">iOS  深、浅拷贝的那些奇葩的事（四）</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/">iOS 深拷贝，完全深拷贝（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/8/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/10/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -412,8 +535,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

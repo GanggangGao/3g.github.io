@@ -165,6 +165,467 @@
             
   
     
+<article id="post-汇编基础（四）函数&amp;返回值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/汇编基础（四）函数&返回值/">汇编基础（四）函数&amp;返回值</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/汇编基础（四）函数&返回值/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:58:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="bl和ret指令"><a href="#bl和ret指令" class="headerlink" title="bl和ret指令"></a>bl和ret指令</h4><h6 id="bl标号"><a href="#bl标号" class="headerlink" title="bl标号"></a>bl标号</h6><ul>
+<li>将下一条指令的地址放入lr(x30)寄存器</li>
+<li>转到标号处执行指令<blockquote>
+<p>注意：当我们遇到bl指令的时候，是跳转指令，跳转之后我们是怎么回来的？怎么回到bl下面的指令？遇到bl后，CPU会将下一个指令的内存地址存到lr寄存器当中。</p>
+        
+          <a class="article-more-a" href="/2018/07/30/汇编基础（四）函数&返回值/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/汇编基础（四）函数&返回值/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-汇编基础（三）堆栈操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/汇编基础（三）堆栈操作/">汇编基础（三）堆栈操作</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/汇编基础（三）堆栈操作/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:58:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>当大家写程序的时候要压栈，比方说iOS里面push，pop界面的时候也就是说压栈出栈，还有当大家创建变量的时候，在栈分配空间，或者在堆分配空间，怎么分配的？带着疑问哥么开始学习了。<br>
+        
+          <a class="article-more-a" href="/2018/07/30/汇编基础（三）堆栈操作/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/汇编基础（三）堆栈操作/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-汇编基础（二）CPU寄存器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/汇编基础（二）CPU寄存器/">汇编基础（二）CPU寄存器</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/汇编基础（二）CPU寄存器/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:58:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##引言</p>
+<p>####概念<br><strong>CPU是什么？</strong><br>CPU是中央处理器，中央处理器（CPU，Central Processing Unit）是一块超大规模的<a href="https://baike.baidu.com/item/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF" target="_blank" rel="noopener">集成电路</a>，是一台计算机的运算核心（Core）和控制核心（ Control Unit）。它的功能主要是解释计算机<a href="https://baike.baidu.com/item/%E6%8C%87%E4%BB%A4" target="_blank" rel="noopener">指令</a>以及处理计算机软件中的数据。<br><strong>寄存器是什么？</strong><br><a href="https://baike.baidu.com/item/%E5%AF%84%E5%AD%98%E5%99%A8" target="_blank" rel="noopener">寄存器</a>是<a href="https://baike.baidu.com/item/%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8" target="_blank" rel="noopener">中央处理器</a>内的组成部分。寄存器是有限存贮容量的高速存贮部件，它们可用来暂存<a href="https://baike.baidu.com/item/%E6%8C%87%E4%BB%A4" target="_blank" rel="noopener">指令</a>、<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE/33305" target="_blank" rel="noopener">数据</a>和<a href="https://baike.baidu.com/item/%E5%9C%B0%E5%9D%80/80420" target="_blank" rel="noopener">地址</a>。<br>
+        
+          <a class="article-more-a" href="/2018/07/30/汇编基础（二）CPU寄存器/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/汇编基础（二）CPU寄存器/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-汇编基础（一）学习汇编需要了解掌握的知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/汇编基础（一）学习汇编需要了解掌握的知识点/">汇编基础（一）学习汇编需要了解掌握的知识点</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/汇编基础（一）学习汇编需要了解掌握的知识点/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><strong>什么是汇编语言？</strong><br>答：汇编语言是计算机语言，通俗来讲就是人类与计算机(CPU)交流的桥梁，计算机不认识人类的语言，想要让计算机去完成人们的工作，就需要俺们将这些工作翻译成计算机语言，属于低级计算机语言。<br><strong>APP与汇编语言的关系</strong><br>一个APP安装到操作系统上面的可执行的文件本质上来讲就是二进制文件，操作系统本质上执行的指令也是二进制，是由CPU执行的；<br>
+        
+          <a class="article-more-a" href="/2018/07/30/汇编基础（一）学习汇编需要了解掌握的知识点/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/汇编基础（一）学习汇编需要了解掌握的知识点/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-Cycript（二）非越狱调试、修改App中UI的数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/">Cycript（二）非越狱调试、修改App中UI的数据</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/7980283-e9b78edf00e07b25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt=""></p>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>上一篇介绍了，cycript安装、配置环境，那么安装完成过以后，说能够调试App，怎么调试、修改App的内存呐？<br> <code>此文只是用于学习，有哪些不便的、或者侵犯权益的问题，请告知删除！</code></p>
+<h4 id="准备工具、资料"><a href="#准备工具、资料" class="headerlink" title="准备工具、资料"></a>准备工具、资料</h4><ul>
+<li>砸壳后的ipa包</li>
+<li>MonkeyDev</li>
+<li>Cycript环境</li>
+<li>真机（俺是iPhoneX）
+        
+          <a class="article-more-a" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-Cycript （一）配置环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/Cycript （一）配置环境/">Cycript （一）配置环境</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/Cycript （一）配置环境/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Cycript是一个可以调试App的一个工具，目前只是了解到实时的去调试App、以及修改App内存数据； 待补充。。。<br><img src="https://upload-images.jianshu.io/upload_images/7980283-81f0fdd544cc7058.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="支持的语言"></p>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><h3 id="一-下载SDK-解压到本地"><a href="#一-下载SDK-解压到本地" class="headerlink" title="一 下载SDK 解压到本地"></a>一 下载SDK 解压到本地</h3><p>首先需要安装Cycript, 点击<a href="http://www.cycript.org/" target="_blank" rel="noopener">Cycript官网</a>下载最新的SDK包。<br><img src="https://upload-images.jianshu.io/upload_images/7980283-02d1e52bcb6d5bd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Cycript SDK 下载到本地"><br>直接解压到本地，放到自己指定的目录，我在这里放到了 /opt 下面<br>
+        
+          <a class="article-more-a" href="/2018/07/30/Cycript （一）配置环境/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/Cycript （一）配置环境/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
 <article id="post-HSB:HSL、RGB他们的纯色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
 
@@ -482,480 +943,9 @@
 
 
   
-    
-<article id="post-iOS  深、浅拷贝的那些奇葩的事（四）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/">iOS  深、浅拷贝的那些奇葩的事（四）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>&emsp;在前面两篇，讲到了深（单层深拷贝、完整深拷贝）、浅拷贝的概念、应用、验证，来认识深拷贝、浅拷贝，这篇就具体说一下在开发过程中遇到的一些深、浅拷贝那些奇葩的事情。</p>
-<h4 id="不可变类型变量Copy赋值给可变类型变量，调用可变类型变量的方法崩溃"><a href="#不可变类型变量Copy赋值给可变类型变量，调用可变类型变量的方法崩溃" class="headerlink" title="不可变类型变量Copy赋值给可变类型变量，调用可变类型变量的方法崩溃"></a>不可变类型变量Copy赋值给可变类型变量，调用可变类型变量的方法崩溃</h4><p>&emsp;步骤：</p>
-<ol>
-<li>创建一个不可变类型(NSDictionary)变量Dict1并初始化.</li>
-<li>将Dict1变量赋值给(NSMutableDictionary)变量的MutableDict1.</li>
-<li>调用Dict2的NSMutableDictionary的方法运行。
-        
-          <a class="article-more-a" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-iOS 深拷贝，完全深拷贝（三）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/">iOS 深拷贝，完全深拷贝（三）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://www.jianshu.com/p/46dc4d6c2ae6" target="_blank" rel="noopener">iOS 深、浅拷贝NSArray、NSMutableArray（二）</a>挖坑的内容</p>
-<p>上两篇，主要是讲了深、浅拷贝实现，以及理解。单层深拷贝、浅拷贝，最后挖坑没有介绍到完全深拷贝的实现。<br>
-        
-          <a class="article-more-a" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-iOS 深、浅拷贝NSArray、NSMutableArray（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/iOS 深、浅拷贝NSArray、NSMutableArray（二）/">iOS 深、浅拷贝NSArray、NSMutableArray（二）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/iOS 深、浅拷贝NSArray、NSMutableArray（二）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:51:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="疑问？"><a href="#疑问？" class="headerlink" title="疑问？"></a>疑问？</h1><pre><code>上篇文章主要介绍的内容是对字符串的深浅拷贝，那么其他类型的深浅拷贝也是一样的吗？
-
-集合的深浅拷贝呐？NSArray、NSMutableArray、NSDictionary、NSMutableDictionary、NSSet、NSMutableSet等等。
-</code></pre>
-        
-          <a class="article-more-a" href="/2018/07/30/iOS 深、浅拷贝NSArray、NSMutableArray（二）/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/iOS 深、浅拷贝NSArray、NSMutableArray（二）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-iOS 深、浅拷贝的认知（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/iOS 深、浅拷贝的认知（一）/">iOS 深、浅拷贝的认知（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/iOS 深、浅拷贝的认知（一）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:50:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><pre><code>先科普一下：
-
-    ***指针***就是一个存放地址的变量
-</code></pre><h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><pre><code>深拷贝就是完全的去复制一份对象，具有的特点是：
-
-    1.指针指向的内容内存地址不同。
-
-    2.两个对象之间不会互不影响、互不干涉。    
-
-    3.两个对象的内容一样。
-</code></pre>
-        
-          <a class="article-more-a" href="/2018/07/30/iOS 深、浅拷贝的认知（一）/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/iOS 深、浅拷贝的认知（一）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-怎么去处理学习的深度与广度？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/怎么去处理学习的深度与广度？/">怎么去处理学习的深度与广度？</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/怎么去处理学习的深度与广度？/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:50:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="科学的个人知识管理"><a href="#科学的个人知识管理" class="headerlink" title="科学的个人知识管理"></a>科学的个人知识管理</h1><h4 id="深度（专家？）"><a href="#深度（专家？）" class="headerlink" title="深度（专家？）"></a>深度（专家？）</h4><pre><code>有时候跟同事、朋友、讨论伙伴聊天的时候谈到深度，具体什么才是深度，怎么达到这样的深度；
-</code></pre>
-        
-          <a class="article-more-a" href="/2018/07/30/怎么去处理学习的深度与广度？/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/怎么去处理学习的深度与广度？/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-有必要了解手机定位几种实现方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/有必要了解手机定位几种实现方式/">有必要了解手机定位几种实现方式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/有必要了解手机定位几种实现方式/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:49:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>以前写项目的时候用到了定位的模块，对于定位只是一个模糊的概念，就是复制粘贴没有深入的去了解，最近又重新写一个定位相关的项目，目前来说全面的了解一下手机定位，是有必要的。
-</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/7980283-6f38ad0ee05f2ce4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br>
-        
-          <a class="article-more-a" href="/2018/07/30/有必要了解手机定位几种实现方式/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/有必要了解手机定位几种实现方式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
     </nav>
   
 

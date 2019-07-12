@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
-  <title>Archives | Struggle3g‘s Blog</title>
+  <title>iOS晋级知识汇总(五)设计模式 | Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding yourself">
+  <meta name="description" content="设计模式六大设计原则">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Struggle3g‘s Blog">
-<meta property="og:url" content="https://www.struggle3g.com/archives/page/9/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS晋级知识汇总(五)设计模式">
+<meta property="og:url" content="https://www.struggle3g.com/2019/07/11/iOS晋级知识汇总(五)设计模式/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="Coding yourself">
+<meta property="og:description" content="设计模式六大设计原则">
 <meta property="og:locale" content="ch">
+<meta property="og:updated_time" content="2019-07-12T06:59:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="Coding yourself">
+<meta name="twitter:title" content="iOS晋级知识汇总(五)设计模式">
+<meta name="twitter:description" content="设计模式六大设计原则">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -163,241 +164,245 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-iOS晋级知识汇总(五)设计模式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      iOS晋级知识汇总(五)设计模式
+    </h1>
+  
+
+        
+        <a href="/2019/07/11/iOS晋级知识汇总(五)设计模式/" class="archive-article-date">
+  	<time datetime="2019-07-11T08:50:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="六大设计原则"><a href="#六大设计原则" class="headerlink" title="六大设计原则"></a>六大设计原则</h2><a id="more"></a>
+<ul>
+<li>单一职责<ul>
+<li>一个类只负责一件事情，比如UIView和CALayer的职责分离原理，UIVIew只负责事件传递和事件响应，CALayer负责动画、视图的展示。</li>
+</ul>
+</li>
+<li>开闭原则<ul>
+<li>对修改关闭、对扩展开放，在项目当中，</li>
+<li>对修改关闭定义一个类，往往需要考虑到这个类的扩展性，灵活性。对于一个需求考虑到后期多个版本的迭代，这就要求对类的成员变量定义要非常谨慎，得到一个目的尽量避免后期反复修改这个类，</li>
+<li>地扩展开放，在这个类定义好以后，往往需要做一些子类继承，或者适配器，这个数据结构不会改变。这就是对扩展开放</li>
+</ul>
+</li>
+<li>接口隔离原则<ul>
+<li>使用多个专门的协议，而不是一个庞大臃肿的协议uitableview的两个协议可以去解释它，tableviewdelegate专门去做一些用户交互、回调事件，而uitableviewdatasource专门区搞数据源，</li>
+<li>协议中的方法尽量少</li>
+</ul>
+</li>
+<li>依赖倒置原则<ul>
+<li>抽象不应该依赖于具体实现，具体实现可以依赖抽象</li>
+<li>在定义一些数据访问，比如说增删改查，依赖于你所定义的一些抽象的接口。而具体接口内部具体实现，用数据库也好还是用文件也好以及用plist、userdefalut，对上层业务来讲，它应该是感知不到的，这就体现出了通过抽象接口来去反转依赖，对于业务来讲它值依赖于我们的接口定义，比如说增删改查，对于内部实现采用哪种增删改查上层是不关注的，没必要将存储方案变量也好参数也好暴漏给使用方，这就体现具体实现可以依赖抽象，而抽象不应该依赖于具体实现。</li>
+</ul>
+</li>
+<li><p>里氏替换原则</p>
+<ul>
+<li>父类可以被子类无缝替换，且原有功能不受任何影响</li>
+<li>当调用Addobserver方法时，系统在动态运行时，悄悄的创建了一个子类NSNotifing_person，然后我们虽然感受到的是使用原有的父类，而实际上使用的类已经被系统悄无声息的替换对应的子类，而我们感知的是还是使用原有的类。这就体现了这个设计原则</li>
+</ul>
+</li>
+<li><p>迪米特法则</p>
+<ul>
+<li>一对对象应当对其他对象有尽可能少的了解</li>
+<li>高内聚、低耦合</li>
+<li>每一个对象内部定义的变量、方法，在不影响其他类对象使用的情况下，尽量少的暴漏给外部使用，这就是迪米特法则，比如一些第三方库的编写</li>
+</ul>
+</li>
+</ul>
+<h2 id="责任链"><a href="#责任链" class="headerlink" title="责任链"></a>责任链</h2><p>在开发过程中有这么一条任务，</p>
+<p>业务A-&gt;业务B-&gt;业务C 然后产品经理过来 业务C-&gt;业务B-&gt;业务A</p>
+<p>责任链的类构成，一个类对象的成员变量，这个成员变量的类型和缘由的类是一样的，这就构成一个基础的实例。</p>
+<p>业务A-&gt;业务B-&gt;业务C 然后产品经理过来 业务C-&gt;业务B-&gt;业务A<br>总结：</p>
+<p>在创刊Business对象的时候设置它的nextBusiness对象，这样就能简单的修改业务逻辑的顺序。</p>
+<p>BusinessC-&gt;BusinessB-&gt;BusinessA</p>
+<h2 id="桥接"><a href="#桥接" class="headerlink" title="桥接"></a>桥接</h2><p>同一套列表，对应的网络数据A，编程网络数据B，又变成了网络数据C，而这几次变化是并存的，通过一些逻辑判断后端来控制应该使用哪套数据，面对这个问题谈谈你的看法？</p>
+<p>类构成：</p>
+<p>抽象A有一个成员变量抽象B就可以说是构成了桥接模式的关键<br>抽象A有三个子类，抽象B也有3个子类。</p>
+<h2 id="适配器"><a href="#适配器" class="headerlink" title="适配器"></a>适配器</h2><p>一个现有类需要适应变化的问题？<br>在开发过程中，有一个类在很久之前就已经创建，并且运行还是相当的稳定，如果说想要使用新的接口，而新接口之中还需要去使用旧的接口</p>
+<p>对象适配器<br>角色 适配对象  被适配对象<br>适配对象当中以成员变量形式集成被适配对象到适配对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- (void)request&#123;</span><br><span class="line">	//适配逻辑</span><br><span class="line">	[被适配对象 某方法];</span><br><span class="line">	//适配逻辑</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>类适配器</p>
+<h2 id="单例"><a href="#单例" class="headerlink" title="单例"></a>单例</h2><p>注意事项：</p>
+<p>1、重写+ (id)allocWithZone:(struct _NSZone *)方法，为了防止外界使用这个方法获取新对象<br>2、创建单例的时候使用[[super allocWithZone:NULL] init]形式创建，因为在类对象本身已经重写了allocWithZone,[self allocWithZone:NULL]会造成循环调用<br>3、重写copywithzone方法，为了防止外界通过copy创建新的对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">+ (id)sharedInstance</span><br><span class="line">&#123;</span><br><span class="line">    // 静态局部变量</span><br><span class="line">    static Mooc *instance = nil;</span><br><span class="line">    </span><br><span class="line">    // 通过dispatch_once方式 确保instance在多线程环境下只被创建一次</span><br><span class="line">    static dispatch_once_t onceToken;</span><br><span class="line">    dispatch_once(&amp;onceToken, ^&#123;</span><br><span class="line">    	  //规避当在单例初始化单例的时候，重写了allocWithZone方法，那么我们在初始化的时候使用allocWithZone创建会出现循环调用，所以使用super初始化</span><br><span class="line">        // 创建实例</span><br><span class="line">        //第一点</span><br><span class="line">        instance = [[super allocWithZone:NULL] init];</span><br><span class="line">    &#125;);</span><br><span class="line">    return instance;</span><br><span class="line">&#125;</span><br><span class="line">//第二点</span><br><span class="line">// 重写方法【必不可少】  </span><br><span class="line">//外界可能通过allocwithZone来创建这个对象，所以我们需要重写这个方法</span><br><span class="line">+ (id)allocWithZone:(struct _NSZone *)zone&#123;</span><br><span class="line">    return [self sharedInstance];</span><br><span class="line">&#125;</span><br><span class="line">//第三点</span><br><span class="line">//外界也可能对单例对象进行copy来获取对象，所以我们需要重写这个方法，直接返回self</span><br><span class="line">// 重写方法【必不可少】</span><br><span class="line">- (id)copyWithZone:(nullable NSZone *)zone&#123;</span><br><span class="line">    return self;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><ul>
+<li>行为参数化</li>
+<li>降低代码重合度</li>
+<li>可撤销</li>
+</ul>
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="请手写单例实现？"><a href="#请手写单例实现？" class="headerlink" title="请手写单例实现？"></a>请手写单例实现？</h2><h2 id="你都知道哪些设计原则，请谈谈你的理解"><a href="#你都知道哪些设计原则，请谈谈你的理解" class="headerlink" title="你都知道哪些设计原则，请谈谈你的理解"></a>你都知道哪些设计原则，请谈谈你的理解</h2><h2 id="能否用一幅简单的表示桥接模式的主题结构"><a href="#能否用一幅简单的表示桥接模式的主题结构" class="headerlink" title="能否用一幅简单的表示桥接模式的主题结构"></a>能否用一幅简单的表示桥接模式的主题结构</h2><p>2种方式：</p>
+<p>使用协议抽象，使用base对象抽象</p>
+<ul>
+<li>抽象角色</li>
+<li>扩展抽象角色</li>
+<li>实现抽象角色      多个</li>
+<li>实现扩展抽象角色   多个</li>
+</ul>
+<p>抽象角色持有扩展抽象角色， 在使用的时候我们可以通过服务器的下发、文件读取，或者得到某个条件时候，来给具体抽象角色非配不同的具体扩展抽象角色</p>
+<h2 id="UI事件传递机制是怎么样实现的？你对其中运用到的设计模式是怎么理解的？"><a href="#UI事件传递机制是怎么样实现的？你对其中运用到的设计模式是怎么理解的？" class="headerlink" title="UI事件传递机制是怎么样实现的？你对其中运用到的设计模式是怎么理解的？"></a>UI事件传递机制是怎么样实现的？你对其中运用到的设计模式是怎么理解的？</h2><p>责任链设计模式：</p>
+<p>简单的责任链，和相对复杂的责任链模式</p>
+<p>两个特点：</p>
+<p>1、使多个对象有机会处理请求。避免了请求者跟接收者之间的耦合<br>2、 将这些对象连成一条链，并沿着这条链传递请求，直到该请求被处理，或者没有找到该请求</p>
+<p>复杂的责任链</p>
+<p>角色一： 抽象处理角色   角色二具体处理角色</p>
+<p>角色三： 抽象请求角色   角色四 具体请求角色</p>
+<ul>
+<li>比如我做过的一个项目，资金报销流程、电脑办公审批流程、假期审批，</li>
+<li>抽象处理角色，获取这些权限CEO属于公司执行官最大权限审批金额、CTO技术管理次之权限、审批金额、技术经理次次之权限审批金额、开发者没有权限没有审批金额</li>
+<li><p>具体处理角色就是实现这个抽象类(继承抽象处理角色)， 通过具体处理请求对象进行逻辑业务处理，</p>
+</li>
+<li><p>报销单有金额权限、电脑办公有行政部门权限、假期审批需要职位权限</p>
+</li>
+<li><p>需要报销1w块钱买imac，加班报销费，打车报销、假期请多少天假，抽象成请求对象，这就是角色三，根据具体的职位权限去创建相应的</p>
+</li>
+<li><p>多个处理对象通过NextBusiness对象相连，将具体请求对象发送给处理对象链首位置进行处理。</p>
+</li>
+</ul>
+
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/">Cycript（二）非越狱调试、修改App中UI的数据</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+
+<!--MOB SHARE BEGIN-->
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/07/11/iOS晋级知识汇总(五)设计模式/" alt="二维码">
+     
+    </div>
+
+</div>
+
+<div class="mask js-mask"></div>
+<!--MOB SHARE END-->
+
+
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript （一）配置环境/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/07/11/iOS晋级知识汇总(六)框架和架构/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          iOS晋级知识汇总(六)框架和架构
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/11/iOS晋级知识汇总(七)第三方库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">iOS晋级知识汇总(七)第三方库</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript （一）配置环境/">Cycript （一）配置环境</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/HSB:HSL、RGB他们的纯色/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/HSB:HSL、RGB他们的纯色/">HSB/HSL、RGB他们的纯色</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 推送步骤以及原理/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 推送步骤以及原理/">iOS 推送步骤以及原理</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS----SIGPIPE信号终止进程/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS----SIGPIPE信号终止进程/">iOS----SIGPIPE信号终止进程</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/">TCP创建连接的三次握手，关闭连接的四次挥手。</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/">iOS  深、浅拷贝的那些奇葩的事（四）</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/">iOS 深拷贝，完全深拷贝（三）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/8/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/10/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -412,8 +417,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

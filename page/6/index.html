@@ -165,6 +165,493 @@
             
   
     
+<article id="post-IPhone一起玩越狱 -（四）- 必备工具篇" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/IPhone一起玩越狱 -（四）- 必备工具篇/">IPhone一起玩越狱 -（四）- 必备工具篇</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/IPhone一起玩越狱 -（四）- 必备工具篇/" class="archive-article-date">
+  	<time datetime="2018-07-30T12:02:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/7980283-80ddebf85116dd04.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt="养眼"></p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>越狱以后，我们需要做一些事情，当然必备需要安装一些工具，如果你很牛逼，可以自己写<br>版本iOS 10.3.3</p>
+<h2 id="工具列表、及功能"><a href="#工具列表、及功能" class="headerlink" title="工具列表、及功能"></a>工具列表、及功能</h2><ul>
+<li><strong>AppSync Unified</strong><ul>
+<li>绕过苹果验证安装App的工具</li>
+<li>支持：版本：iOS (&gt;= 5.0), iOS (&lt;= 11.1.2)</li>
+<li>安装成功以后，可以使用xcode进行安装，也可以直接用PP助手工具进行安装越狱ipa文件</li>
+</ul>
+</li>
+<li><strong>Apple File Conduit “2”</strong><ul>
+<li>在电脑上对手机system等系统目录进行操作的插件</li>
+<li>在电脑上安装iFunBox可以查看你的Iphone的系统的目录</li>
+</ul>
+</li>
+<li><strong>OpenSSH</strong><ul>
+<li>通过openSSH连接(登录)手机(访问手机里面所有的东西)</li>
+<li>SSH的原理：<br> server、client<br> <code>server</code>生成公钥给<code>client</code><br>  <code>client</code>将密码加密给<code>server</code><br>  <code>server</code>使用私钥解密，如果密码正确就登录
+        
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（四）- 必备工具篇/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（四）- 必备工具篇/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-IPhone一起玩越狱 -（三）- 修复越狱iOS 10.3.3 还原-&gt;抹除以后cydia不能正常使用问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/IPhone一起玩越狱 -（三）- 修复越狱iOS 10.3.3 还原->抹除以后cydia不能正常使用问题/">IPhone一起玩越狱 -（三）- 修复越狱iOS 10.3.3 还原-&gt;抹除以后cydia不能正常使用问题</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/IPhone一起玩越狱 -（三）- 修复越狱iOS 10.3.3 还原->抹除以后cydia不能正常使用问题/" class="archive-article-date">
+  	<time datetime="2018-07-30T12:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>因为是iOS10.3.3版本越狱的时候是非完美越狱，然后还原所有设置就可以就可以将越狱变回非越狱，但是哥们手贱点了抹掉所有内容和设置，导致在怎么刷机也是cydia不能使用</p>
+<p><strong>注意</strong><br>此文仅限于非完美越狱中出现的问题。</p>
+<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p> 因为越狱完成以后会自动安装cydia这个app，当你抹掉所有内容以后，cydia的文件丢失了，所以当你打开App的时候会提示<br><img src="https://upload-images.jianshu.io/upload_images/7980283-5a5c9eb7eb192195.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt=""><br>
+        
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（三）- 修复越狱iOS 10.3.3 还原->抹除以后cydia不能正常使用问题/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（三）- 修复越狱iOS 10.3.3 还原->抹除以后cydia不能正常使用问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-IPhone一起玩越狱 -（二）- iOS10.3.3非完美越狱   g0blin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/IPhone一起玩越狱 -（二）- iOS10.3.3非完美越狱   g0blin/">IPhone一起玩越狱 -（二）- iOS10.3.3非完美越狱   g0blin</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/IPhone一起玩越狱 -（二）- iOS10.3.3非完美越狱   g0blin/" class="archive-article-date">
+  	<time datetime="2018-07-30T12:01:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/7980283-cb27f0c0e0727693.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt=""></p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>上篇文章提到用爱思助手越狱，得到非完美越狱版本</p>
+<ul>
+<li>优点：<ol>
+<li>快速</li>
+<li>简单、不复杂</li>
+</ol>
+</li>
+<li>缺点：<ol>
+<li>没法使用网络的坑，越狱完成cydia没有网</li>
+<li>一旦抹除所有设置，cydia将丢失文件，如果没有备份就没法找回，报错，not found什么的黄字  <a href="https://www.jianshu.com/p/d69fcaef19ac" target="_blank" rel="noopener">修复越狱iOS 10.3.3 还原-&gt;抹除以后cydia不能正常使用问题</a>这里有解决</li>
+<li>而且爱思助手在windows上面的，Mac还没有
+        
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（二）- iOS10.3.3非完美越狱   g0blin/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（二）- iOS10.3.3非完美越狱   g0blin/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-IPhone一起玩越狱 -（一）- iOS10.3.3非完美越狱  爱思助手" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/IPhone一起玩越狱 -（一）- iOS10.3.3非完美越狱  爱思助手/">IPhone一起玩越狱 -（一）- iOS10.3.3非完美越狱  爱思助手</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/IPhone一起玩越狱 -（一）- iOS10.3.3非完美越狱  爱思助手/" class="archive-article-date">
+  	<time datetime="2018-07-30T12:01:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><h2 id="越狱的概念"><a href="#越狱的概念" class="headerlink" title="越狱的概念"></a>越狱的概念</h2><p>iOS 越狱(iOS Jailbreaking)，是用于获取<a href="https://baike.baidu.com/item/%E8%8B%B9%E6%9E%9C%E5%85%AC%E5%8F%B8" target="_blank" rel="noopener">苹果公司</a>便携装置操作系统iOS最高权限的一种技术手段，用户使用这种技术及软件可以获取到 iOS 的最高权限，甚至可能可以进一步解开运营商对手机网络的限制。</p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><ul>
+<li>解除 iOS 上的限制，安装 <a href="https://baike.baidu.com/item/App%20Store" target="_blank" rel="noopener">App Store</a> 以外以及未经 Apple 许可的社群软件以及自由软件，甚至自行编译软件。</li>
+<li>改装操作系统</li>
+<li>使用命令行<a href="https://baike.baidu.com/item/shell" target="_blank" rel="noopener">shell</a>程序</li>
+<li>访问 root 内部的文件，可写入</li>
+<li>提取重要文件（如移植系统功能等需要破解提取文件）
+        
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（一）- iOS10.3.3非完美越狱  爱思助手/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（一）- iOS10.3.3非完美越狱  爱思助手/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-汇编基础（十）编译器优化、多线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/汇编基础（十）编译器优化、多线程/">汇编基础（十）编译器优化、多线程</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/汇编基础（十）编译器优化、多线程/" class="archive-article-date">
+  	<time datetime="2018-07-30T12:00:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="编译器的优化"><a href="#编译器的优化" class="headerlink" title="编译器的优化"></a>编译器的优化</h1><p>有的时候你不得不佩服，开发编译器的这堆人，很牛逼，比如说平时写的代码，肯定里面有一堆没有使用过的代码，比方说定义一个局部变量，整个类里面并没有调用它，那么编译器在编译的时候会将没用过的代码也编译到汇编当中吗<br>
+        
+          <a class="article-more-a" href="/2018/07/30/汇编基础（十）编译器优化、多线程/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/汇编基础（十）编译器优化、多线程/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-汇编基础（九）switch汇编分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/汇编基础（九）switch汇编分析/">汇编基础（九）switch汇编分析</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/汇编基础（九）switch汇编分析/" class="archive-article-date">
+  	<time datetime="2018-07-30T12:00:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/7980283-5f8eaddf4bb52e10.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt=""></p>
+<p>#引言<br>最近工作比较忙，没怎么去研究汇编的内容，这么多天，感觉有点生疏，有的时候累死累活很晚才回来，还要在学习别的东西，在写一些总结，力不从心，就算是强迫自己去写去学习，我认为效率也是低下的。这种情况，既影响了第二天的工作，学习的时候也不会太过专注，只为一味的应付了事，学习是一个枯燥、兴趣使向、有目的性的</p>
+<p>一些概念上的内容，其实光看光听、光说不练，基本上也就相当于拍脑袋做事情，正儿八经的研究应该是：构思-&gt;过程-&gt;验证 往往复复每次都会有新的体会<br>
+        
+          <a class="article-more-a" href="/2018/07/30/汇编基础（九）switch汇编分析/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/汇编基础（九）switch汇编分析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
 <article id="post-汇编基础（八） if、循环的汇编识别" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
 
@@ -477,470 +964,9 @@
 
 
   
-    
-<article id="post-汇编基础（四）函数&amp;返回值" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/汇编基础（四）函数&返回值/">汇编基础（四）函数&amp;返回值</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/汇编基础（四）函数&返回值/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:58:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="bl和ret指令"><a href="#bl和ret指令" class="headerlink" title="bl和ret指令"></a>bl和ret指令</h4><h6 id="bl标号"><a href="#bl标号" class="headerlink" title="bl标号"></a>bl标号</h6><ul>
-<li>将下一条指令的地址放入lr(x30)寄存器</li>
-<li>转到标号处执行指令<blockquote>
-<p>注意：当我们遇到bl指令的时候，是跳转指令，跳转之后我们是怎么回来的？怎么回到bl下面的指令？遇到bl后，CPU会将下一个指令的内存地址存到lr寄存器当中。</p>
-        
-          <a class="article-more-a" href="/2018/07/30/汇编基础（四）函数&返回值/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/汇编基础（四）函数&返回值/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-汇编基础（三）堆栈操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/汇编基础（三）堆栈操作/">汇编基础（三）堆栈操作</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/汇编基础（三）堆栈操作/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:58:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>当大家写程序的时候要压栈，比方说iOS里面push，pop界面的时候也就是说压栈出栈，还有当大家创建变量的时候，在栈分配空间，或者在堆分配空间，怎么分配的？带着疑问哥么开始学习了。<br>
-        
-          <a class="article-more-a" href="/2018/07/30/汇编基础（三）堆栈操作/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/汇编基础（三）堆栈操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-汇编基础（二）CPU寄存器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/汇编基础（二）CPU寄存器/">汇编基础（二）CPU寄存器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/汇编基础（二）CPU寄存器/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:58:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>##引言</p>
-<p>####概念<br><strong>CPU是什么？</strong><br>CPU是中央处理器，中央处理器（CPU，Central Processing Unit）是一块超大规模的<a href="https://baike.baidu.com/item/%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF" target="_blank" rel="noopener">集成电路</a>，是一台计算机的运算核心（Core）和控制核心（ Control Unit）。它的功能主要是解释计算机<a href="https://baike.baidu.com/item/%E6%8C%87%E4%BB%A4" target="_blank" rel="noopener">指令</a>以及处理计算机软件中的数据。<br><strong>寄存器是什么？</strong><br><a href="https://baike.baidu.com/item/%E5%AF%84%E5%AD%98%E5%99%A8" target="_blank" rel="noopener">寄存器</a>是<a href="https://baike.baidu.com/item/%E4%B8%AD%E5%A4%AE%E5%A4%84%E7%90%86%E5%99%A8" target="_blank" rel="noopener">中央处理器</a>内的组成部分。寄存器是有限存贮容量的高速存贮部件，它们可用来暂存<a href="https://baike.baidu.com/item/%E6%8C%87%E4%BB%A4" target="_blank" rel="noopener">指令</a>、<a href="https://baike.baidu.com/item/%E6%95%B0%E6%8D%AE/33305" target="_blank" rel="noopener">数据</a>和<a href="https://baike.baidu.com/item/%E5%9C%B0%E5%9D%80/80420" target="_blank" rel="noopener">地址</a>。<br>
-        
-          <a class="article-more-a" href="/2018/07/30/汇编基础（二）CPU寄存器/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/汇编基础（二）CPU寄存器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-汇编基础（一）学习汇编需要了解掌握的知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/汇编基础（一）学习汇编需要了解掌握的知识点/">汇编基础（一）学习汇编需要了解掌握的知识点</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/汇编基础（一）学习汇编需要了解掌握的知识点/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><strong>什么是汇编语言？</strong><br>答：汇编语言是计算机语言，通俗来讲就是人类与计算机(CPU)交流的桥梁，计算机不认识人类的语言，想要让计算机去完成人们的工作，就需要俺们将这些工作翻译成计算机语言，属于低级计算机语言。<br><strong>APP与汇编语言的关系</strong><br>一个APP安装到操作系统上面的可执行的文件本质上来讲就是二进制文件，操作系统本质上执行的指令也是二进制，是由CPU执行的；<br>
-        
-          <a class="article-more-a" href="/2018/07/30/汇编基础（一）学习汇编需要了解掌握的知识点/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/汇编基础（一）学习汇编需要了解掌握的知识点/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-Cycript（二）非越狱调试、修改App中UI的数据" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/">Cycript（二）非越狱调试、修改App中UI的数据</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://upload-images.jianshu.io/upload_images/7980283-e9b78edf00e07b25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt=""></p>
-<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>上一篇介绍了，cycript安装、配置环境，那么安装完成过以后，说能够调试App，怎么调试、修改App的内存呐？<br> <code>此文只是用于学习，有哪些不便的、或者侵犯权益的问题，请告知删除！</code></p>
-<h4 id="准备工具、资料"><a href="#准备工具、资料" class="headerlink" title="准备工具、资料"></a>准备工具、资料</h4><ul>
-<li>砸壳后的ipa包</li>
-<li>MonkeyDev</li>
-<li>Cycript环境</li>
-<li>真机（俺是iPhoneX）
-        
-          <a class="article-more-a" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-Cycript （一）配置环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/Cycript （一）配置环境/">Cycript （一）配置环境</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/Cycript （一）配置环境/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Cycript是一个可以调试App的一个工具，目前只是了解到实时的去调试App、以及修改App内存数据； 待补充。。。<br><img src="https://upload-images.jianshu.io/upload_images/7980283-81f0fdd544cc7058.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="支持的语言"></p>
-<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><h3 id="一-下载SDK-解压到本地"><a href="#一-下载SDK-解压到本地" class="headerlink" title="一 下载SDK 解压到本地"></a>一 下载SDK 解压到本地</h3><p>首先需要安装Cycript, 点击<a href="http://www.cycript.org/" target="_blank" rel="noopener">Cycript官网</a>下载最新的SDK包。<br><img src="https://upload-images.jianshu.io/upload_images/7980283-02d1e52bcb6d5bd8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Cycript SDK 下载到本地"><br>直接解压到本地，放到自己指定的目录，我在这里放到了 /opt 下面<br>
-        
-          <a class="article-more-a" href="/2018/07/30/Cycript （一）配置环境/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/Cycript （一）配置环境/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 

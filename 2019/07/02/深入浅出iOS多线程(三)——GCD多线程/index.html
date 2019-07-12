@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
   <title>深入浅出iOS多线程(三)——GCD多线程 | Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="GCD简介前面分析的pthread和NSThread多线程技术，直接操作线程，而下面分析的GCD以及下一篇NSOpration都是并发解决技术 什么是GCD 全称是Grand Central Dispatch，可译为“宏大的中央调度” 纯C语言，提供了非常强大的函数 GCD完全面向过程的并发解决技术  GCD的优势 GCD是苹果公司为多核的并行运算提出的解决方案 GCD会自动利用更多的CPU内核(">
+  <meta name="description" content="GCD简介前面分析的pthread和NSThread多线程技术，直接操作线程，而下面分析的GCD以及下一篇NSOpration都是并发解决技术">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入浅出iOS多线程(三)——GCD多线程">
 <meta property="og:url" content="https://www.struggle3g.com/2019/07/02/深入浅出iOS多线程(三)——GCD多线程/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="GCD简介前面分析的pthread和NSThread多线程技术，直接操作线程，而下面分析的GCD以及下一篇NSOpration都是并发解决技术 什么是GCD 全称是Grand Central Dispatch，可译为“宏大的中央调度” 纯C语言，提供了非常强大的函数 GCD完全面向过程的并发解决技术  GCD的优势 GCD是苹果公司为多核的并行运算提出的解决方案 GCD会自动利用更多的CPU内核(">
+<meta property="og:description" content="GCD简介前面分析的pthread和NSThread多线程技术，直接操作线程，而下面分析的GCD以及下一篇NSOpration都是并发解决技术">
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-28702f9671e4ef50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-09T18:30:43.000Z">
+<meta property="og:updated_time" content="2019-07-12T07:03:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入浅出iOS多线程(三)——GCD多线程">
-<meta name="twitter:description" content="GCD简介前面分析的pthread和NSThread多线程技术，直接操作线程，而下面分析的GCD以及下一篇NSOpration都是并发解决技术 什么是GCD 全称是Grand Central Dispatch，可译为“宏大的中央调度” 纯C语言，提供了非常强大的函数 GCD完全面向过程的并发解决技术  GCD的优势 GCD是苹果公司为多核的并行运算提出的解决方案 GCD会自动利用更多的CPU内核(">
+<meta name="twitter:description" content="GCD简介前面分析的pthread和NSThread多线程技术，直接操作线程，而下面分析的GCD以及下一篇NSOpration都是并发解决技术">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-28702f9671e4ef50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
@@ -188,6 +188,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="GCD简介"><a href="#GCD简介" class="headerlink" title="GCD简介"></a>GCD简介</h1><p>前面分析的pthread和NSThread多线程技术，直接操作线程，而下面分析的GCD以及下一篇NSOpration都是并发解决技术</p>
+<a id="more"></a>
 <h2 id="什么是GCD"><a href="#什么是GCD" class="headerlink" title="什么是GCD"></a>什么是GCD</h2><ul>
 <li>全称是Grand Central Dispatch，可译为“宏大的中央调度”</li>
 <li>纯C语言，提供了非常强大的函数</li>

@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
   <title>iOS基础全面分析之三(KVO全面分析) | Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="KVO全面分析简介KVO的全程是  Key-Value Observing，翻译过来就是键值监听，可以用于监听某个对象属性值的改变 API相关的API在NSKeyValueObserving.h文件中都有声明 常用的API主要是下面几种方法，这是KVO的基本组成部分 基本使用API1234//基本使用- (void)addObserver:(NSObject *)observer forKeyPa">
+  <meta name="description" content="KVO全面分析简介KVO的全程是  Key-Value Observing，翻译过来就是键值监听，可以用于监听某个对象属性值的改变">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS基础全面分析之三(KVO全面分析)">
 <meta property="og:url" content="https://www.struggle3g.com/2019/06/29/iOS基础全面分析之三(KVO全面分析)/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="KVO全面分析简介KVO的全程是  Key-Value Observing，翻译过来就是键值监听，可以用于监听某个对象属性值的改变 API相关的API在NSKeyValueObserving.h文件中都有声明 常用的API主要是下面几种方法，这是KVO的基本组成部分 基本使用API1234//基本使用- (void)addObserver:(NSObject *)observer forKeyPa">
+<meta property="og:description" content="KVO全面分析简介KVO的全程是  Key-Value Observing，翻译过来就是键值监听，可以用于监听某个对象属性值的改变">
 <meta property="og:locale" content="ch">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-2d02894c178d3582.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/651">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-794f4c40f84f8f53.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-078a244d33c2f215.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-bf4485ecb77cf606.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-d1e86943ffa54623.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-09T18:26:56.000Z">
+<meta property="og:updated_time" content="2019-07-12T07:00:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS基础全面分析之三(KVO全面分析)">
-<meta name="twitter:description" content="KVO全面分析简介KVO的全程是  Key-Value Observing，翻译过来就是键值监听，可以用于监听某个对象属性值的改变 API相关的API在NSKeyValueObserving.h文件中都有声明 常用的API主要是下面几种方法，这是KVO的基本组成部分 基本使用API1234//基本使用- (void)addObserver:(NSObject *)observer forKeyPa">
+<meta name="twitter:description" content="KVO全面分析简介KVO的全程是  Key-Value Observing，翻译过来就是键值监听，可以用于监听某个对象属性值的改变">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-2d02894c178d3582.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/651">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
@@ -192,6 +192,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="KVO全面分析"><a href="#KVO全面分析" class="headerlink" title="KVO全面分析"></a>KVO全面分析</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>KVO的全程是  Key-Value Observing，翻译过来就是键值监听，可以用于监听某个对象属性值的改变</p>
+<a id="more"></a>
 <h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>相关的API在NSKeyValueObserving.h文件中都有声明</p>
 <h3 id="常用的API"><a href="#常用的API" class="headerlink" title="常用的API"></a>常用的API</h3><p>主要是下面几种方法，这是KVO的基本组成部分</p>
 <h4 id="基本使用API"><a href="#基本使用API" class="headerlink" title="基本使用API"></a>基本使用API</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//基本使用</span><br><span class="line">- (void)addObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath options:(NSKeyValueObservingOptions)options context:(nullable void *)context;  //添加观察者</span><br><span class="line">- (void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath context:(nullable void *)context API_AVAILABLE(macos(10.7), ios(5.0), watchos(2.0), tvos(9.0)); //删除观察者</span><br><span class="line">- (void)removeObserver:(NSObject *)observer forKeyPath:(NSString *)keyPath;  //删除观察者</span><br></pre></td></tr></table></figure>

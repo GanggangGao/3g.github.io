@@ -165,6 +165,477 @@
             
   
     
+<article id="post-iOS  深、浅拷贝的那些奇葩的事（四）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/">iOS  深、浅拷贝的那些奇葩的事（四）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>&emsp;在前面两篇，讲到了深（单层深拷贝、完整深拷贝）、浅拷贝的概念、应用、验证，来认识深拷贝、浅拷贝，这篇就具体说一下在开发过程中遇到的一些深、浅拷贝那些奇葩的事情。</p>
+<h4 id="不可变类型变量Copy赋值给可变类型变量，调用可变类型变量的方法崩溃"><a href="#不可变类型变量Copy赋值给可变类型变量，调用可变类型变量的方法崩溃" class="headerlink" title="不可变类型变量Copy赋值给可变类型变量，调用可变类型变量的方法崩溃"></a>不可变类型变量Copy赋值给可变类型变量，调用可变类型变量的方法崩溃</h4><p>&emsp;步骤：</p>
+<ol>
+<li>创建一个不可变类型(NSDictionary)变量Dict1并初始化.</li>
+<li>将Dict1变量赋值给(NSMutableDictionary)变量的MutableDict1.</li>
+<li>调用Dict2的NSMutableDictionary的方法运行。
+        
+          <a class="article-more-a" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-iOS 深拷贝，完全深拷贝（三）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/">iOS 深拷贝，完全深拷贝（三）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:52:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://www.jianshu.com/p/46dc4d6c2ae6" target="_blank" rel="noopener">iOS 深、浅拷贝NSArray、NSMutableArray（二）</a>挖坑的内容</p>
+<p>上两篇，主要是讲了深、浅拷贝实现，以及理解。单层深拷贝、浅拷贝，最后挖坑没有介绍到完全深拷贝的实现。<br>
+        
+          <a class="article-more-a" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-iOS 深、浅拷贝NSArray、NSMutableArray（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/iOS 深、浅拷贝NSArray、NSMutableArray（二）/">iOS 深、浅拷贝NSArray、NSMutableArray（二）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/iOS 深、浅拷贝NSArray、NSMutableArray（二）/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:51:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="疑问？"><a href="#疑问？" class="headerlink" title="疑问？"></a>疑问？</h1><pre><code>上篇文章主要介绍的内容是对字符串的深浅拷贝，那么其他类型的深浅拷贝也是一样的吗？
+
+集合的深浅拷贝呐？NSArray、NSMutableArray、NSDictionary、NSMutableDictionary、NSSet、NSMutableSet等等。
+</code></pre>
+        
+          <a class="article-more-a" href="/2018/07/30/iOS 深、浅拷贝NSArray、NSMutableArray（二）/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/iOS 深、浅拷贝NSArray、NSMutableArray（二）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-iOS 深、浅拷贝的认知（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/iOS 深、浅拷贝的认知（一）/">iOS 深、浅拷贝的认知（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/iOS 深、浅拷贝的认知（一）/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:50:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><pre><code>先科普一下：
+
+    ***指针***就是一个存放地址的变量
+</code></pre><h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><pre><code>深拷贝就是完全的去复制一份对象，具有的特点是：
+
+    1.指针指向的内容内存地址不同。
+
+    2.两个对象之间不会互不影响、互不干涉。    
+
+    3.两个对象的内容一样。
+</code></pre>
+        
+          <a class="article-more-a" href="/2018/07/30/iOS 深、浅拷贝的认知（一）/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/iOS 深、浅拷贝的认知（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-怎么去处理学习的深度与广度？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/怎么去处理学习的深度与广度？/">怎么去处理学习的深度与广度？</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/怎么去处理学习的深度与广度？/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:50:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="科学的个人知识管理"><a href="#科学的个人知识管理" class="headerlink" title="科学的个人知识管理"></a>科学的个人知识管理</h1><h4 id="深度（专家？）"><a href="#深度（专家？）" class="headerlink" title="深度（专家？）"></a>深度（专家？）</h4><pre><code>有时候跟同事、朋友、讨论伙伴聊天的时候谈到深度，具体什么才是深度，怎么达到这样的深度；
+</code></pre>
+        
+          <a class="article-more-a" href="/2018/07/30/怎么去处理学习的深度与广度？/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/怎么去处理学习的深度与广度？/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-有必要了解手机定位几种实现方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/有必要了解手机定位几种实现方式/">有必要了解手机定位几种实现方式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/有必要了解手机定位几种实现方式/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:49:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <pre><code>以前写项目的时候用到了定位的模块，对于定位只是一个模糊的概念，就是复制粘贴没有深入的去了解，最近又重新写一个定位相关的项目，目前来说全面的了解一下手机定位，是有必要的。
+</code></pre><p><img src="http://upload-images.jianshu.io/upload_images/7980283-6f38ad0ee05f2ce4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"><br>
+        
+          <a class="article-more-a" href="/2018/07/30/有必要了解手机定位几种实现方式/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/有必要了解手机定位几种实现方式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
 <article id="post-iOS Objective-C为什么属性（property）同时重写setter、getter方法会报错？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
 
@@ -470,397 +941,9 @@
 
 
   
-    
-<article id="post-CLAuthorizationStatus详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/CLAuthorizationStatus详解/">CLAuthorizationStatus详解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/CLAuthorizationStatus详解/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:45:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://upload-images.jianshu.io/upload_images/7980283-899087eb931ad02d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<h1 id="CLAuthorizationStatus"><a href="#CLAuthorizationStatus" class="headerlink" title="CLAuthorizationStatus"></a>CLAuthorizationStatus</h1><h4 id="告诉开发者App是否被授权使用定位服务，枚举："><a href="#告诉开发者App是否被授权使用定位服务，枚举：" class="headerlink" title="告诉开发者App是否被授权使用定位服务，枚举："></a>告诉开发者App是否被授权使用定位服务，枚举：</h4><pre><code>[kCLAuthorizationStatusNotDetermined](https://developer.apple.com/documentation/corelocation/clauthorizationstatus/kclauthorizationstatusnotdetermined?language=objc)  //用户没有选择是否要使用定位服务（弹框没选择，或者根本没有弹框）
-</code></pre>
-        
-          <a class="article-more-a" href="/2018/07/30/CLAuthorizationStatus详解/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/CLAuthorizationStatus详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-NSLocale 本地区域化 - Swift" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/NSLocale 本地区域化 - Swift/">NSLocale 本地区域化 - Swift</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/NSLocale 本地区域化 - Swift/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:41:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>围绕着[NSLocale 区域化 - Objective-C](https://www.jianshu.com/p/38318cfbf986) 这篇来介绍一下 Swift 版本NSLocale的内容，并且会给出一些与Objective-C的一些不同之处。  Swift4.0版本
-</code></pre><h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><p><a href="https://developer.apple.com/documentation/foundation/nslocale" target="_blank" rel="noopener">    public init(localeIdentifier string: String)</a><br>
-        
-          <a class="article-more-a" href="/2018/07/30/NSLocale 本地区域化 - Swift/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/NSLocale 本地区域化 - Swift/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-NSLocale 本地区域化 - Objective-C" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/NSLocale 本地区域化 - Objective-C/">NSLocale 本地区域化 - Objective-C</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/NSLocale 本地区域化 - Objective-C/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h1><hr>
-<pre><code>有的时候在项目当中会使用到本地区域化的一些内容，还有可能需要使用别的区域的一些标识、属性、或者这个标识所对应的展示的内容（NSString等等），大概的了解还是有必要的。
-</code></pre><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><ul>
-<li><a href="https://developer.apple.com/documentation/foundation/nslocale/1414217-initwithlocaleidentifier?language=objc" target="_blank" rel="noopener">initWithLocaleIdentifier</a>                实例方式创建</li>
-</ul>
-<ul>
-<li><p><a href="https://developer.apple.com/documentation/foundation/nslocale/1488627-localewithlocaleidentifier?language=objc" target="_blank" rel="noopener">localeWithLocaleIdentifier:</a>         类方式创建</p>
-        
-          <a class="article-more-a" href="/2018/07/30/NSLocale 本地区域化 - Objective-C/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/NSLocale 本地区域化 - Objective-C/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-volatitle关键字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/volatitle关键字/">volatitle关键字</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/volatitle关键字/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:40:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在写程序的过程当中，创建一个单例，然后static volatile 实例的时候volatile这个关键字的含义有点不知其含义。</p>
-<p>总的来说告诉编译器这个volatile修饰的变量是易变的，当需要读取这个变量的值时，应该从内存中读取，而不是从寄存器中读取。<br>
-        
-          <a class="article-more-a" href="/2018/07/30/volatitle关键字/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/volatitle关键字/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-**为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？**" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/**为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？**/">为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/**为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？**/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:39:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-首先Objectvice-c的语言的动态运行时"><a href="#1-首先Objectvice-c的语言的动态运行时" class="headerlink" title="1.首先Objectvice-c的语言的动态运行时;"></a>1.首先Objectvice-c的语言的动态运行时;</h2><pre><code>每个对象调用方法的时候都是调用Object_msgSend(self, method,value).
-
-当self为空的时候直接返回的空，并不会抛出cash.
-</code></pre><h2 id="2-而为什么向实例对象发送消息的时候，实例对象没有找到method时会抛出cash"><a href="#2-而为什么向实例对象发送消息的时候，实例对象没有找到method时会抛出cash" class="headerlink" title="2.而为什么向实例对象发送消息的时候，实例对象没有找到method时会抛出cash."></a>2.而为什么向实例对象发送消息的时候，实例对象没有找到method时会抛出cash.</h2>
-        
-          <a class="article-more-a" href="/2018/07/30/**为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？**/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/**为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？**/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
     </nav>
   
 
