@@ -172,133 +172,19 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h2 id="title-iOS晋级知识汇总-二-runtime"><a href="#title-iOS晋级知识汇总-二-runtime" class="headerlink" title="title: iOS晋级知识汇总(二)runtime"></a>title: iOS晋级知识汇总(二)runtime</h2><h1 id="怎样设计一个图片缓存框架-基本框架"><a href="#怎样设计一个图片缓存框架-基本框架" class="headerlink" title="怎样设计一个图片缓存框架(基本框架)"></a>怎样设计一个图片缓存框架(基本框架)</h1><ul>
-<li>Manager</li>
-<li>内存缓存</li>
-<li>磁盘缓存</li>
-<li>网络下载</li>
-<li>CodeManager<ul>
-<li>图片解码</li>
-<li>图片压缩/解压缩</li>
+<h2 id="title-iOS晋级知识汇总-八-内存管理"><a href="#title-iOS晋级知识汇总-八-内存管理" class="headerlink" title="title:iOS晋级知识汇总(八)内存管理"></a>title:iOS晋级知识汇总(八)内存管理</h2><h1 id="iOS的内存管理"><a href="#iOS的内存管理" class="headerlink" title="iOS的内存管理"></a>iOS的内存管理</h1><ul>
+<li>内存布局</li>
+<li>内存管理方案</li>
+<li>数据结构</li>
+<li>ARC&amp;MRC</li>
+<li>引用计数</li>
+<li>弱引用</li>
+<li>自动释放池</li>
+<li>循环引用</li>
 </ul>
-</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7980283-a3bc2f735c776395.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" 图片缓存框架.png"></p>
-<h2 id="图片通过什么方式进行读写，过程是怎么样额？"><a href="#图片通过什么方式进行读写，过程是怎么样额？" class="headerlink" title="图片通过什么方式进行读写，过程是怎么样额？"></a>图片通过什么方式进行读写，过程是怎么样额？</h2><ul>
-<li>以图片URL的单向Hash值作为key 来存储到存储框架中<ul>
-<li>为什么要使用内存为了提高系统的查找效率所以才要设置多级缓存，节省流量<br><img src="https://upload-images.jianshu.io/upload_images/7980283-bb12b5c8e1cff1c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片缓存的过程.png"></li>
-</ul>
-</li>
-</ul>
-<h2 id="内存的设计上需要考虑哪些问题"><a href="#内存的设计上需要考虑哪些问题" class="headerlink" title="内存的设计上需要考虑哪些问题"></a>内存的设计上需要考虑哪些问题</h2><ul>
-<li>存储size<ul>
-<li>队列方式存储图片，先进先出</li>
-<li>根据使用情况存储10kb以下的 50个，100kb以下的20个，100kb以上的10个<br><img src="https://upload-images.jianshu.io/upload_images/7980283-5119de32eea24327.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="根据使用情况来设置size的大小.png"></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>淘汰策略<ul>
-<li>先进先出的淘汰策略</li>
-<li>LRU 最近最久未使用算法， 如果30分钟是否使用过<ul>
-<li>定时检查，优化：每次进行读写的时，前后台切换也可以去检查</li>
-</ul>
-</li>
-<li>通过缓存大小清除</li>
-</ul>
-</li>
-</ul>
-<h2 id="磁盘设计"><a href="#磁盘设计" class="headerlink" title="磁盘设计"></a>磁盘设计</h2><ul>
-<li>存储方式的选择</li>
-<li>大小限制(如100MB)</li>
-<li>淘汰策略（距今超过7天）</li>
-</ul>
-<h2 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h2><ul>
-<li>图片请求最大并发量</li>
-<li>请求超时策略<ul>
-<li>重试机制</li>
-<li>请求优先级</li>
-</ul>
-</li>
-</ul>
-<h2 id="图片解码"><a href="#图片解码" class="headerlink" title="图片解码"></a>图片解码</h2><h3 id="不同格式的图片，解码采用什么方式来做？"><a href="#不同格式的图片，解码采用什么方式来做？" class="headerlink" title="不同格式的图片，解码采用什么方式来做？"></a>不同格式的图片，解码采用什么方式来做？</h3><ul>
-<li><p>应用策略模式对不同图片格式进行解码</p>
-</li>
-<li><p>在哪个阶段做图片解码处理？</p>
-</li>
-</ul>
-<p>磁盘读取之后网络请求后进行图片解码。</p>
-<h2 id="图片缓存过程？"><a href="#图片缓存过程？" class="headerlink" title="图片缓存过程？"></a>图片缓存过程？</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-05c760b68509d18a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片缓存工作流程线程交互.png"></p>
-<h1 id="怎么设计一个时长统计框架？"><a href="#怎么设计一个时长统计框架？" class="headerlink" title="怎么设计一个时长统计框架？"></a>怎么设计一个时长统计框架？</h1><ul>
-<li>记录管理者<ul>
-<li>记录缓存模块 <ul>
-<li>内存缓存在程序崩溃的时候怼是怎么办，</li>
-<li>磁盘来处理异常场景  </li>
-<li>上传器 本地时长数据上传给server</li>
-</ul>
-</li>
-<li>流式</li>
-</ul>
-</li>
-<li>记录器  (记录的数据交给记录管理者进行管理)<ul>
-<li>页面式记录器    用户访问一个页面的时长</li>
-<li>流式记录器      访问新闻阅读时长记录</li>
-<li>自定义记录器    横条新闻播放有业务方控制</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7980283-f13f5f398edb3417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="阅读时长统计.png"></p>
-<h2 id="为何要有不同类型的记录器，你的考虑是什么？"><a href="#为何要有不同类型的记录器，你的考虑是什么？" class="headerlink" title="为何要有不同类型的记录器，你的考虑是什么？"></a>为何要有不同类型的记录器，你的考虑是什么？</h2><ul>
-<li>基于不同分类场景提供的关于记录的封装、适配</li>
-</ul>
-<h2 id="记录的缓存-存储"><a href="#记录的缓存-存储" class="headerlink" title="记录的缓存*存储"></a>记录的缓存*存储</h2><h3 id="记录的数据由于某些原因丢失，你怎么处理？"><a href="#记录的数据由于某些原因丢失，你怎么处理？" class="headerlink" title="记录的数据由于某些原因丢失，你怎么处理？"></a>记录的数据由于某些原因丢失，你怎么处理？</h3><ul>
-<li>定时写磁盘，每次满足多少条就存储磁盘</li>
-</ul>
-<h2 id="关于延时上传的具体场景有哪些？"><a href="#关于延时上传的具体场景有哪些？" class="headerlink" title="关于延时上传的具体场景有哪些？"></a>关于延时上传的具体场景有哪些？</h2><ul>
-<li>每满多少条上传</li>
-<li>前后台切换</li>
-<li>无网到有网的变化</li>
-</ul>
-<h2 id="上传时机是怎么样把控的？"><a href="#上传时机是怎么样把控的？" class="headerlink" title="上传时机是怎么样把控的？"></a>上传时机是怎么样把控的？</h2><ul>
-<li>立即上传</li>
-<li>延迟上传</li>
-<li>定时上传</li>
-</ul>
-<h1 id="复杂页面架构总结"><a href="#复杂页面架构总结" class="headerlink" title="复杂页面架构总结"></a>复杂页面架构总结</h1><h2 id="MVVM框架思想"><a href="#MVVM框架思想" class="headerlink" title="MVVM框架思想"></a>MVVM框架思想</h2><ul>
-<li>View对MVVM有一个强引用，ViewModel作为view的成员变量，ViewModel可以通过block形式把输出结果回传给使用方，或者是RAC响应式编程方来把对应的输出回传给这个视图<ul>
-<li>View包含ViewController</li>
-</ul>
-</li>
-<li>ViewModel对model有一个强引用，或者是成员变量，model可以用block或者代理会传给Viewmodel</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7980283-a0cffba771fbcb4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MVVM架构图.png"></p>
-<h2 id="ReactNative的数据流思想"><a href="#ReactNative的数据流思想" class="headerlink" title="ReactNative的数据流思想"></a>ReactNative的数据流思想</h2><p>首先会反向回到根节点，通过自顶向下遍历查找对应打了脏标记的节点，然后去更新对应的视图<br>任何一个子孙节点是没法做自己的变化更新的。他必须把这个变化消息传递给根节点， 根节点自顶向下的顺序去遍历子孙节点，<br>从主动行为编程被动行为。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7980283-d959394fd1b57760.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RN数据流思想.png"></p>
-<h2 id="系统UIView更新机制的思想"><a href="#系统UIView更新机制的思想" class="headerlink" title="系统UIView更新机制的思想"></a>系统UIView更新机制的思想</h2><p>微博正文页，反向更新机制，实际上就是模拟了系统的UIView更新机制的思想，<br>UIView更新机制，就是UIView的绘制流程，调用UIView的setneedsplay只是给对应视图打了一个脏标记，而它真正绘制的时候是在RunLoop将要结束时才进行的实际绘制。view通过反向查找到对应的ViewModel然后变更对应的业务数据，打脏标记，然后在下次reload之前去反向更新从新走一遍RN的数据流来驱动UI的变化，借鉴了系统UIView更新机制的思想</p>
-<p>或者是借鉴了AsyncDisplayKit的预排版思想</p>
-<h2 id="FaceBook的开源框架AsyncDisplayKit关于预排版的设计思想"><a href="#FaceBook的开源框架AsyncDisplayKit关于预排版的设计思想" class="headerlink" title="FaceBook的开源框架AsyncDisplayKit关于预排版的设计思想"></a>FaceBook的开源框架AsyncDisplayKit关于预排版的设计思想</h2><p>预排版，也是解决了性能方面的问题，也是性能优化的一种</p>
-<h1 id="客户端整体架构面试问题"><a href="#客户端整体架构面试问题" class="headerlink" title="客户端整体架构面试问题"></a>客户端整体架构面试问题</h1><h2 id="如何自己设计客户端的整体架构"><a href="#如何自己设计客户端的整体架构" class="headerlink" title="如何自己设计客户端的整体架构"></a>如何自己设计客户端的整体架构</h2><ul>
-<li>独立于App的通用层<ul>
-<li>时长统计、崩溃统计、网络的第三方库</li>
-</ul>
-</li>
-<li>通用的业务层<ul>
-<li>自定义的当下公司业务相关的控件</li>
-</ul>
-</li>
-<li>中间层     协调解耦  </li>
-<li>业务A、业务B、业务C、业务D  中间层就是为了解耦这些业务</li>
-</ul>
-<p>完全单独拿出来一个业务A就能直接运用</p>
-<h2 id="业务之间的解耦通信方式"><a href="#业务之间的解耦通信方式" class="headerlink" title="业务之间的解耦通信方式"></a>业务之间的解耦通信方式</h2><ul>
-<li>OpenURL</li>
-<li>依赖注入方式</li>
-</ul>
-<h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><p>业务A需要使用业务C的一些某些模块，业务C、业务A不产生依赖就可以解耦，那么可以使用中间层，业务A通过中间层获取业务C的方法和成员变量<br>iOS使用的时候， 让某一个业务方注册一个protocol，注册到中间层当中，同时实现中间层的代理方法，来返回给中间层具体的一个实例对象<br>然后业务A在使用的时候，通过跟其他业务开发人员商量好的协议，再从中间层中通过某一个方法<br>获取遵从某个协议的实例然后在业务A当中，把这个实例当作完全遵从这个协议的透明对象来使用，这样就接触了业务A和业务C的耦合称之为依赖注入</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="图片缓存设计"><a href="#图片缓存设计" class="headerlink" title="图片缓存设计"></a>图片缓存设计</h2><h2 id="阅读时长统计"><a href="#阅读时长统计" class="headerlink" title="阅读时长统计"></a>阅读时长统计</h2><p>时长统计数据丢失率</p>
-<h2 id="复杂页面架构"><a href="#复杂页面架构" class="headerlink" title="复杂页面架构"></a>复杂页面架构</h2><h2 id="客户端整体架构"><a href="#客户端整体架构" class="headerlink" title="客户端整体架构"></a>客户端整体架构</h2><p> 上层可以依赖下层 下层不能依赖上层</p>
-<p>业务解耦<br>OpenUrl<br>依赖注入</p>
-
+        
+          <a class="article-more-a" href="/2019/07/12/iOS晋级知识汇总(八)内存管理/#more">more >></a>
+        
       
 
 
@@ -313,7 +199,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/11/iOS晋级知识汇总(八)内存管理/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/07/12/iOS晋级知识汇总(八)内存管理/">展开全文 >></a>
         </p>
       
 

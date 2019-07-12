@@ -8,26 +8,39 @@
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
   <title>Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="title: iOS晋级知识汇总(二)runtime怎样设计一个图片缓存框架(基本框架) Manager 内存缓存 磁盘缓存 网络下载 CodeManager 图片解码 图片压缩/解压缩     图片通过什么方式进行读写，过程是怎么样额？ 以图片URL的单向Hash值作为key 来存储到存储框架中 为什么要使用内存为了提高系统的查找效率所以才要设置多级缓存，节省流量    内存的设计上需要考虑哪">
+  <meta name="description" content="title:iOS晋级知识汇总(八)内存管理iOS的内存管理 内存布局 内存管理方案 数据结构 ARC&amp;amp;MRC 引用计数 弱引用 自动释放池 循环引用">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Struggle3g‘s Blog">
-<meta property="og:url" content="https://www.struggle3g.com/2019/07/11/iOS晋级知识汇总(八)内存管理/index.html">
+<meta property="og:url" content="https://www.struggle3g.com/2019/07/12/iOS晋级知识汇总(八)内存管理/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="title: iOS晋级知识汇总(二)runtime怎样设计一个图片缓存框架(基本框架) Manager 内存缓存 磁盘缓存 网络下载 CodeManager 图片解码 图片压缩/解压缩     图片通过什么方式进行读写，过程是怎么样额？ 以图片URL的单向Hash值作为key 来存储到存储框架中 为什么要使用内存为了提高系统的查找效率所以才要设置多级缓存，节省流量    内存的设计上需要考虑哪">
+<meta property="og:description" content="title:iOS晋级知识汇总(八)内存管理iOS的内存管理 内存布局 内存管理方案 数据结构 ARC&amp;amp;MRC 引用计数 弱引用 自动释放池 循环引用">
 <meta property="og:locale" content="ch">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-a3bc2f735c776395.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-bb12b5c8e1cff1c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-5119de32eea24327.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-05c760b68509d18a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-f13f5f398edb3417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-a0cffba771fbcb4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-d959394fd1b57760.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-07-12T15:34:46.000Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-43375c449fac1d68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-def016eefb532952.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-c1859d660bda4aef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-0af4f94db0a74897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-8f26b87aa9f00cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-d84cea79a63e79be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-3ac8e2578056035a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-4c1173989d721067.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-e4d846a3d751e386.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-29d3076aef391fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-9947d1f78b6c2929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-76bd1e312634c10f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-9c4018ae632f1a70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-04de2e6a27b6ff20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-0d17f0c8cc37787f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-d40223e70abfbe82.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-e49c9fb6edbfc15d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-b9ae18b3d1b8b9b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-a2a55fb973b80cf0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-77606fd4ab8e3dae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-12T15:38:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="title: iOS晋级知识汇总(二)runtime怎样设计一个图片缓存框架(基本框架) Manager 内存缓存 磁盘缓存 网络下载 CodeManager 图片解码 图片压缩/解压缩     图片通过什么方式进行读写，过程是怎么样额？ 以图片URL的单向Hash值作为key 来存储到存储框架中 为什么要使用内存为了提高系统的查找效率所以才要设置多级缓存，节省流量    内存的设计上需要考虑哪">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-a3bc2f735c776395.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:description" content="title:iOS晋级知识汇总(八)内存管理iOS的内存管理 内存布局 内存管理方案 数据结构 ARC&amp;amp;MRC 引用计数 弱引用 自动释放池 循环引用">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-43375c449fac1d68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -179,132 +192,374 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h2 id="title-iOS晋级知识汇总-二-runtime"><a href="#title-iOS晋级知识汇总-二-runtime" class="headerlink" title="title: iOS晋级知识汇总(二)runtime"></a>title: iOS晋级知识汇总(二)runtime</h2><h1 id="怎样设计一个图片缓存框架-基本框架"><a href="#怎样设计一个图片缓存框架-基本框架" class="headerlink" title="怎样设计一个图片缓存框架(基本框架)"></a>怎样设计一个图片缓存框架(基本框架)</h1><ul>
-<li>Manager</li>
-<li>内存缓存</li>
-<li>磁盘缓存</li>
-<li>网络下载</li>
-<li>CodeManager<ul>
-<li>图片解码</li>
-<li>图片压缩/解压缩</li>
+<h2 id="title-iOS晋级知识汇总-八-内存管理"><a href="#title-iOS晋级知识汇总-八-内存管理" class="headerlink" title="title:iOS晋级知识汇总(八)内存管理"></a>title:iOS晋级知识汇总(八)内存管理</h2><h1 id="iOS的内存管理"><a href="#iOS的内存管理" class="headerlink" title="iOS的内存管理"></a>iOS的内存管理</h1><ul>
+<li>内存布局</li>
+<li>内存管理方案</li>
+<li>数据结构</li>
+<li>ARC&amp;MRC</li>
+<li>引用计数</li>
+<li>弱引用</li>
+<li>自动释放池</li>
+<li>循环引用</li>
 </ul>
-</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7980283-a3bc2f735c776395.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" 图片缓存框架.png"></p>
-<h2 id="图片通过什么方式进行读写，过程是怎么样额？"><a href="#图片通过什么方式进行读写，过程是怎么样额？" class="headerlink" title="图片通过什么方式进行读写，过程是怎么样额？"></a>图片通过什么方式进行读写，过程是怎么样额？</h2><ul>
-<li>以图片URL的单向Hash值作为key 来存储到存储框架中<ul>
-<li>为什么要使用内存为了提高系统的查找效率所以才要设置多级缓存，节省流量<br><img src="https://upload-images.jianshu.io/upload_images/7980283-bb12b5c8e1cff1c0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片缓存的过程.png"></li>
-</ul>
-</li>
-</ul>
-<h2 id="内存的设计上需要考虑哪些问题"><a href="#内存的设计上需要考虑哪些问题" class="headerlink" title="内存的设计上需要考虑哪些问题"></a>内存的设计上需要考虑哪些问题</h2><ul>
-<li>存储size<ul>
-<li>队列方式存储图片，先进先出</li>
-<li>根据使用情况存储10kb以下的 50个，100kb以下的20个，100kb以上的10个<br><img src="https://upload-images.jianshu.io/upload_images/7980283-5119de32eea24327.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="根据使用情况来设置size的大小.png"></li>
-</ul>
-</li>
-</ul>
+<a id="more"></a>
+<h2 id="内存布局"><a href="#内存布局" class="headerlink" title="内存布局"></a>内存布局</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-43375c449fac1d68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内存分区.png"></p>
 <ul>
-<li>淘汰策略<ul>
-<li>先进先出的淘汰策略</li>
-<li>LRU 最近最久未使用算法， 如果30分钟是否使用过<ul>
-<li>定时检查，优化：每次进行读写的时，前后台切换也可以去检查</li>
+<li>stack区 <ul>
+<li>方法调用</li>
 </ul>
 </li>
-<li>通过缓存大小清除</li>
+<li>heap区 (堆区)<ul>
+<li>alloc分配的一些对象</li>
 </ul>
 </li>
+<li>bss ：未初始化的全局变量</li>
+<li>data：已初始化的全局变量</li>
+<li>text：程序代码</li>
 </ul>
-<h2 id="磁盘设计"><a href="#磁盘设计" class="headerlink" title="磁盘设计"></a>磁盘设计</h2><ul>
-<li>存储方式的选择</li>
-<li>大小限制(如100MB)</li>
-<li>淘汰策略（距今超过7天）</li>
-</ul>
-<h2 id="网络设计"><a href="#网络设计" class="headerlink" title="网络设计"></a>网络设计</h2><ul>
-<li>图片请求最大并发量</li>
-<li>请求超时策略<ul>
-<li>重试机制</li>
-<li>请求优先级</li>
+<h2 id="内存管理方案"><a href="#内存管理方案" class="headerlink" title="内存管理方案"></a>内存管理方案</h2><ul>
+<li>TageedPointer</li>
+<li>NONPOINTER_ISA<ul>
+<li>64位  isa占64位，一般用30～40就够用了，所以在剩余的位中做了内存管理</li>
 </ul>
 </li>
-</ul>
-<h2 id="图片解码"><a href="#图片解码" class="headerlink" title="图片解码"></a>图片解码</h2><h3 id="不同格式的图片，解码采用什么方式来做？"><a href="#不同格式的图片，解码采用什么方式来做？" class="headerlink" title="不同格式的图片，解码采用什么方式来做？"></a>不同格式的图片，解码采用什么方式来做？</h3><ul>
-<li><p>应用策略模式对不同图片格式进行解码</p>
-</li>
-<li><p>在哪个阶段做图片解码处理？</p>
-</li>
-</ul>
-<p>磁盘读取之后网络请求后进行图片解码。</p>
-<h2 id="图片缓存过程？"><a href="#图片缓存过程？" class="headerlink" title="图片缓存过程？"></a>图片缓存过程？</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-05c760b68509d18a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片缓存工作流程线程交互.png"></p>
-<h1 id="怎么设计一个时长统计框架？"><a href="#怎么设计一个时长统计框架？" class="headerlink" title="怎么设计一个时长统计框架？"></a>怎么设计一个时长统计框架？</h1><ul>
-<li>记录管理者<ul>
-<li>记录缓存模块 <ul>
-<li>内存缓存在程序崩溃的时候怼是怎么办，</li>
-<li>磁盘来处理异常场景  </li>
-<li>上传器 本地时长数据上传给server</li>
-</ul>
-</li>
-<li>流式</li>
-</ul>
-</li>
-<li>记录器  (记录的数据交给记录管理者进行管理)<ul>
-<li>页面式记录器    用户访问一个页面的时长</li>
-<li>流式记录器      访问新闻阅读时长记录</li>
-<li>自定义记录器    横条新闻播放有业务方控制</li>
+<li>散列表   是复杂的数据结构<ul>
+<li>引用计数表</li>
+<li>弱引用表</li>
 </ul>
 </li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7980283-f13f5f398edb3417.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="阅读时长统计.png"></p>
-<h2 id="为何要有不同类型的记录器，你的考虑是什么？"><a href="#为何要有不同类型的记录器，你的考虑是什么？" class="headerlink" title="为何要有不同类型的记录器，你的考虑是什么？"></a>为何要有不同类型的记录器，你的考虑是什么？</h2><ul>
-<li>基于不同分类场景提供的关于记录的封装、适配</li>
-</ul>
-<h2 id="记录的缓存-存储"><a href="#记录的缓存-存储" class="headerlink" title="记录的缓存*存储"></a>记录的缓存*存储</h2><h3 id="记录的数据由于某些原因丢失，你怎么处理？"><a href="#记录的数据由于某些原因丢失，你怎么处理？" class="headerlink" title="记录的数据由于某些原因丢失，你怎么处理？"></a>记录的数据由于某些原因丢失，你怎么处理？</h3><ul>
-<li>定时写磁盘，每次满足多少条就存储磁盘</li>
-</ul>
-<h2 id="关于延时上传的具体场景有哪些？"><a href="#关于延时上传的具体场景有哪些？" class="headerlink" title="关于延时上传的具体场景有哪些？"></a>关于延时上传的具体场景有哪些？</h2><ul>
-<li>每满多少条上传</li>
-<li>前后台切换</li>
-<li>无网到有网的变化</li>
-</ul>
-<h2 id="上传时机是怎么样把控的？"><a href="#上传时机是怎么样把控的？" class="headerlink" title="上传时机是怎么样把控的？"></a>上传时机是怎么样把控的？</h2><ul>
-<li>立即上传</li>
-<li>延迟上传</li>
-<li>定时上传</li>
-</ul>
-<h1 id="复杂页面架构总结"><a href="#复杂页面架构总结" class="headerlink" title="复杂页面架构总结"></a>复杂页面架构总结</h1><h2 id="MVVM框架思想"><a href="#MVVM框架思想" class="headerlink" title="MVVM框架思想"></a>MVVM框架思想</h2><ul>
-<li>View对MVVM有一个强引用，ViewModel作为view的成员变量，ViewModel可以通过block形式把输出结果回传给使用方，或者是RAC响应式编程方来把对应的输出回传给这个视图<ul>
-<li>View包含ViewController</li>
+<p>内存管理的分析全部都是基于开源代码objc-reuntime的讲解</p>
+<h3 id="NONPOINTER-ISA"><a href="#NONPOINTER-ISA" class="headerlink" title="NONPOINTER_ISA"></a>NONPOINTER_ISA</h3><p>arm64结构下是64位</p>
+<ul>
+<li>第一位indexed  <ul>
+<li>0代表isa只是一个纯的isa指针，里面内容指向当前的类对象地址，</li>
+<li>1代表不单单是isa指针，还有一些关于内存管理的一些数据</li>
 </ul>
 </li>
-<li>ViewModel对model有一个强引用，或者是成员变量，model可以用block或者代理会传给Viewmodel</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/7980283-a0cffba771fbcb4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="MVVM架构图.png"></p>
-<h2 id="ReactNative的数据流思想"><a href="#ReactNative的数据流思想" class="headerlink" title="ReactNative的数据流思想"></a>ReactNative的数据流思想</h2><p>首先会反向回到根节点，通过自顶向下遍历查找对应打了脏标记的节点，然后去更新对应的视图<br>任何一个子孙节点是没法做自己的变化更新的。他必须把这个变化消息传递给根节点， 根节点自顶向下的顺序去遍历子孙节点，<br>从主动行为编程被动行为。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/7980283-d959394fd1b57760.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="RN数据流思想.png"></p>
-<h2 id="系统UIView更新机制的思想"><a href="#系统UIView更新机制的思想" class="headerlink" title="系统UIView更新机制的思想"></a>系统UIView更新机制的思想</h2><p>微博正文页，反向更新机制，实际上就是模拟了系统的UIView更新机制的思想，<br>UIView更新机制，就是UIView的绘制流程，调用UIView的setneedsplay只是给对应视图打了一个脏标记，而它真正绘制的时候是在RunLoop将要结束时才进行的实际绘制。view通过反向查找到对应的ViewModel然后变更对应的业务数据，打脏标记，然后在下次reload之前去反向更新从新走一遍RN的数据流来驱动UI的变化，借鉴了系统UIView更新机制的思想</p>
-<p>或者是借鉴了AsyncDisplayKit的预排版思想</p>
-<h2 id="FaceBook的开源框架AsyncDisplayKit关于预排版的设计思想"><a href="#FaceBook的开源框架AsyncDisplayKit关于预排版的设计思想" class="headerlink" title="FaceBook的开源框架AsyncDisplayKit关于预排版的设计思想"></a>FaceBook的开源框架AsyncDisplayKit关于预排版的设计思想</h2><p>预排版，也是解决了性能方面的问题，也是性能优化的一种</p>
-<h1 id="客户端整体架构面试问题"><a href="#客户端整体架构面试问题" class="headerlink" title="客户端整体架构面试问题"></a>客户端整体架构面试问题</h1><h2 id="如何自己设计客户端的整体架构"><a href="#如何自己设计客户端的整体架构" class="headerlink" title="如何自己设计客户端的整体架构"></a>如何自己设计客户端的整体架构</h2><ul>
-<li>独立于App的通用层<ul>
-<li>时长统计、崩溃统计、网络的第三方库</li>
+<li>第二位has_assoc<ul>
+<li>0代表  没有关联对象</li>
+<li>1代表   有关联对象</li>
 </ul>
 </li>
-<li>通用的业务层<ul>
-<li>自定义的当下公司业务相关的控件</li>
+<li>第三位has_cxx_dtor 当前对象是否用到c++<ul>
+<li>0 没有</li>
+<li>1 有</li>
 </ul>
 </li>
-<li>中间层     协调解耦  </li>
-<li>业务A、业务B、业务C、业务D  中间层就是为了解耦这些业务</li>
+<li>shiftcls 4 ～ 36  33位  比特位是类对象的地址<ul>
+<li>当前类对象的内存地址</li>
 </ul>
-<p>完全单独拿出来一个业务A就能直接运用</p>
-<h2 id="业务之间的解耦通信方式"><a href="#业务之间的解耦通信方式" class="headerlink" title="业务之间的解耦通信方式"></a>业务之间的解耦通信方式</h2><ul>
-<li>OpenURL</li>
-<li>依赖注入方式</li>
+</li>
+<li>magic</li>
+<li>weakly_referenced<ul>
+<li>是否有弱引用指针</li>
 </ul>
-<h3 id="依赖注入"><a href="#依赖注入" class="headerlink" title="依赖注入"></a>依赖注入</h3><p>业务A需要使用业务C的一些某些模块，业务C、业务A不产生依赖就可以解耦，那么可以使用中间层，业务A通过中间层获取业务C的方法和成员变量<br>iOS使用的时候， 让某一个业务方注册一个protocol，注册到中间层当中，同时实现中间层的代理方法，来返回给中间层具体的一个实例对象<br>然后业务A在使用的时候，通过跟其他业务开发人员商量好的协议，再从中间层中通过某一个方法<br>获取遵从某个协议的实例然后在业务A当中，把这个实例当作完全遵从这个协议的透明对象来使用，这样就接触了业务A和业务C的耦合称之为依赖注入</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="图片缓存设计"><a href="#图片缓存设计" class="headerlink" title="图片缓存设计"></a>图片缓存设计</h2><h2 id="阅读时长统计"><a href="#阅读时长统计" class="headerlink" title="阅读时长统计"></a>阅读时长统计</h2><p>时长统计数据丢失率</p>
-<h2 id="复杂页面架构"><a href="#复杂页面架构" class="headerlink" title="复杂页面架构"></a>复杂页面架构</h2><h2 id="客户端整体架构"><a href="#客户端整体架构" class="headerlink" title="客户端整体架构"></a>客户端整体架构</h2><p> 上层可以依赖下层 下层不能依赖上层</p>
-<p>业务解耦<br>OpenUrl<br>依赖注入</p>
+</li>
+<li>deallocating<ul>
+<li>是否有dealloc的操作</li>
+</ul>
+</li>
+<li>has_sidetable_rc<ul>
+<li>如果当前的引用计数已经达到上限，需要外挂一个has_sidetable_rc一个数据结构去存储相关的引用计数内容</li>
+</ul>
+</li>
+<li>extra_rc 44～63  都是 extra_rc 引用计数<ul>
+<li>引用计数在很小的范围内，会直接存储到isa这里，而不需要单独的引用计数表来单独存储</li>
+</ul>
+</li>
+</ul>
+<h3 id="散列表方式"><a href="#散列表方式" class="headerlink" title="散列表方式"></a>散列表方式</h3><ul>
+<li>sideTables()结构<ul>
+<li>SideTable (数据结构)</li>
+<li>64个(非嵌入式系统)</li>
+</ul>
+</li>
+</ul>
+<h4 id="SideTable"><a href="#SideTable" class="headerlink" title="SideTable"></a>SideTable</h4><p><img src="https://upload-images.jianshu.io/upload_images/7980283-def016eefb532952.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="散列表方式.png"></p>
+<h4 id="为什么不是一个SideTable？-为什么要组成SideTables呢？"><a href="#为什么不是一个SideTable？-为什么要组成SideTables呢？" class="headerlink" title="为什么不是一个SideTable？ 为什么要组成SideTables呢？"></a>为什么不是一个SideTable？ 为什么要组成SideTables呢？</h4><ul>
+<li>对象可能需要在不同线程操作创建，这个时候进行操作的时候需要进行加锁处理才能保证安全，这样存在效率问题</li>
+<li>用户的内存空间需要4gb，我们可以分配成千上万的引用对象，如果每个引用对象我们都要对齐进行引用计数改变，都操作这张表就会出现效率问题。如果一个对象操作这张表，会加锁下一个对象需要在等上一个对象的锁加完以后在处理，这就造成了效率低下的问题</li>
+<li>系统为了解决这个效率低下，系统给我们提供了一个<strong>分离锁</strong>的概念</li>
+<li>系统为我们分配了8个这个表(64位)，这样就可以并发的去修改引用解决问题。</li>
+</ul>
+<h4 id="怎么样实现快速分流？"><a href="#怎么样实现快速分流？" class="headerlink" title="怎么样实现快速分流？"></a>怎么样实现快速分流？</h4><p>SideTables的本质是一张Hash表。<br>可能有64个SideTable存储不同的引用计数表、和弱引用表</p>
+<p><strong>什么是hash算法</strong></p>
+<p>对象指针可以作为Key通过hash函数计算计算出hash表中你的value值的下标也就是索引。</p>
+<p><strong>hash查找的过程</strong></p>
+<p>给定值是对象内存地址，目标是数组下标索引。</p>
+<p>给了一个对象的内存地址，通过哈希函数的运算，得到了一个集合的下标索引值</p>
+<p>对象的内存地址指针 % 数组的count就可以得到这个数组中的索引</p>
+<p>这样就查找速度快了</p>
+<h4 id="散列表方案设计的数据结构"><a href="#散列表方案设计的数据结构" class="headerlink" title="散列表方案设计的数据结构"></a>散列表方案设计的数据结构</h4><ul>
+<li>Spinlock_t<ul>
+<li>自旋锁 是”忙等”的锁，如果当前锁已经被其他线程获取，那么当前线程会不断的探测这个锁是否被其他线程释放，如果释放自己第一时间去获取这个锁</li>
+<li>特点：适合轻量访问(这个中+1 -1 计算逻辑不复杂的情况下称之为轻量)</li>
+</ul>
+</li>
+<li>信号量<ul>
+<li>当前线程获取不到锁的时候，会把自己的线程阻塞休眠，等这个锁被释放的时候，会唤醒它获取这个锁</li>
+</ul>
+</li>
+</ul>
+<h4 id="引用计数表"><a href="#引用计数表" class="headerlink" title="引用计数表"></a>引用计数表</h4><ul>
+<li>实际上是一个refcountMap(hash表或者是字典)，提高查找效率，存储查找都是hsah，找到<ul>
+<li>size_t引用技术使用64位存储的</li>
+<li>第一位是否有weak</li>
+<li>第二位是否deallocating</li>
+</ul>
+</li>
+</ul>
+<h4 id="弱引用表"><a href="#弱引用表" class="headerlink" title="弱引用表"></a>弱引用表</h4><ul>
+<li>weak_table_t也是一张hash表，<ul>
+<li>通过对象指针，hash算法的到我们的weak_entry_t的表</li>
+<li>weak_entry_t里面存储的就是弱引用指针。</li>
+</ul>
+</li>
+</ul>
+<h1 id="MRC和ARC"><a href="#MRC和ARC" class="headerlink" title="MRC和ARC"></a>MRC和ARC</h1><h2 id="MRC"><a href="#MRC" class="headerlink" title="MRC"></a>MRC</h2><p>手动引用计数，进行内存管理</p>
+<ul>
+<li>alloc 分配一个对象的内存空间</li>
+<li>retain  引用计数加1</li>
+<li>release  引用计数-1</li>
+<li>retainCount 当前引用计数的值</li>
+<li>autorelease 会在autoreleasepool结束的时候，向其每一个对象发送release消息</li>
+<li>dealloc  在MRC中需要显示的调用super dealloc需要废弃父类的相关成员变量</li>
+</ul>
+<h2 id="ARC"><a href="#ARC" class="headerlink" title="ARC"></a>ARC</h2><p><strong>什么事ARC</strong></p>
+<p>全名自动引用计数</p>
+<ul>
+<li>ARC是由LLVM和Runtime写作完成</li>
+<li>ARC中禁止手动调用retain、release、retainCount、dealloc、<ul>
+<li>可以重写dealloc但是不能调用super dealloc</li>
+</ul>
+</li>
+<li>ARC中新增weak、strong属性关键字</li>
+</ul>
+<h2 id="ARC和MRC的区别"><a href="#ARC和MRC的区别" class="headerlink" title="ARC和MRC的区别"></a>ARC和MRC的区别</h2><ul>
+<li>MRC是手动管理，ARC是LLVM和Runtime协作进行自动引用计数管理</li>
+<li>MRC可以调用一些引用计数相关的+-1操作方法，而ARC是不能的</li>
+<li>ARC有weak和strong</li>
+</ul>
+<h2 id="引用计数管理"><a href="#引用计数管理" class="headerlink" title="引用计数管理"></a>引用计数管理</h2><p>实现原理分析</p>
+<h3 id="alloc实现"><a href="#alloc实现" class="headerlink" title="alloc实现"></a>alloc实现</h3><ul>
+<li>经过一些列调用，最终调用了C函数calloc(初始化完成会自己置0 而malloc是垃圾数据)。</li>
+<li>此时并没有设置引用计数为1</li>
+</ul>
+<h3 id="retain实现"><a href="#retain实现" class="headerlink" title="retain实现"></a>retain实现</h3><ol>
+<li>SideTable &amp;table = SideTables()[this]  先获取对应的SideTable</li>
+<li>size_t &amp; refcntStorage = table.refcnts[this]; 获取到SideTable中的引用计数值</li>
+<li>refcntstorage += SIDE_TABLE_RC_ONE;  对其+1<ul>
+<li>SIDE_TABLE_RC_ONE不是1，前两个位置是存储弱引用计数，和是否正在dealloc的，是后面62位，所以需要做一个偏移量。  所以说是4.</li>
+</ul>
+</li>
+</ol>
+<h3 id="release实现"><a href="#release实现" class="headerlink" title="release实现"></a>release实现</h3><ol>
+<li>SideTable &amp;table = SideTables()[this]  先获取对应的SideTable</li>
+<li>RefcountMap:iterator it = table.refcnts.find(this); 获取到SideTable中的引用计数值</li>
+<li>it-&gt;second -= SIDE_TABLE_RC_ONE;  和retain正好相反</li>
+</ol>
+<h3 id="retainCount的实现"><a href="#retainCount的实现" class="headerlink" title="retainCount的实现"></a>retainCount的实现</h3><ol>
+<li>SideTable &amp;table = SideTables()[this]  先获取对应的SideTable</li>
+<li>size_t refcnt_result = 1；    声明一个局部变量</li>
+<li>RefcountMap::iterator it = table.refcnts.find(this) 获取到SideTable中的引用计数值，刚去alloc的对象其实里面是为0的</li>
+<li>refcnt_result += it-&gt; second &gt;&gt; SIDE_TABLE_RC_SHIFT  把查找的结果做一个向右偏移的操作，然后在+1</li>
+</ol>
+<h3 id="dealloc的实现"><a href="#dealloc的实现" class="headerlink" title="dealloc的实现"></a>dealloc的实现</h3><ul>
+<li>调用_objc_rootDealloc</li>
+<li>rootDealloc</li>
+<li>是否直接释放的判断标准<ul>
+<li>nonpointer_isa   是否是非指针型的isa指针</li>
+<li>weakly_referenced  是否有weak指针指向它</li>
+<li>has_assoc  当前对象是否有关连对象</li>
+<li>has_cXX_dtor 是否使用了C++相关的代码，是否ARC</li>
+<li>has_sidetable_rc 是否是通过sidtable表来存储的。</li>
+</ul>
+</li>
+<li>以上都不是 就可以释放，如果可以就使用c函数的free函数释放</li>
+<li>如果不可以就使用object_dispose函数来进行后续的处理，然后结束</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-c1859d660bda4aef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="dealloc的内部实现.png"></p>
+<h4 id="object-dispose实现"><a href="#object-dispose实现" class="headerlink" title="object_dispose实现"></a>object_dispose实现</h4><ul>
+<li>objc_destructInstance</li>
+<li>C函数的free</li>
+<li>结束</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-0af4f94db0a74897.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="dealloc内部实现中dispose函数.png"></p>
+<h4 id="objc-destructInstance的实现"><a href="#objc-destructInstance的实现" class="headerlink" title="objc_destructInstance的实现"></a>objc_destructInstance的实现</h4><ul>
+<li>是否有C++或者是否有ARC<ul>
+<li>YES object_cxxDestruct</li>
+<li>NO 调用AssociatedObjects</li>
+</ul>
+</li>
+<li>如果没有C++或者ARC 就调用AssociatedObjects方法<ul>
+<li>YES _object_remove_assocations()  </li>
+<li>NO clearDealloccating</li>
+</ul>
+</li>
+<li>_object_remove_assocations，以后还是没有关联对象那么都会调用clearDealloccating结束objc_destructInstance方法。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-8f26b87aa9f00cd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="objc_destructInstance函数实现.png"></p>
+<h4 id="clearDealloccating的实现"><a href="#clearDealloccating的实现" class="headerlink" title="clearDealloccating的实现"></a>clearDealloccating的实现</h4><ul>
+<li>sidetable_clearDeallocating</li>
+<li>weak_clear_no_lock<ul>
+<li>将指向该对象的弱引用指针置为nil</li>
+</ul>
+</li>
+<li>table.refcnts.erase <ul>
+<li>从引用计数表中擦除该对象的引用计数</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-d84cea79a63e79be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="clearDealloccating.png"></p>
+<h2 id="弱引用管理"><a href="#弱引用管理" class="headerlink" title="弱引用管理"></a>弱引用管理</h2><h3 id="弱引用调用栈"><a href="#弱引用调用栈" class="headerlink" title="弱引用调用栈"></a>弱引用调用栈</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-3ac8e2578056035a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="弱引用调用栈.png"></p>
+<ul>
+<li><p>一个被声明为__weak弱引用的指针，经过编译器编译以后，会调用objc_initWeak方法，经过一系列的函数调用栈，会调用weak_register_no_lock这个函数，进行弱引用变量的添加。</p>
+</li>
+<li><p>具体添加的位置，是通过一个hash算法来进行进行位置查找的，</p>
+</li>
+<li>如果说我们查找位置当中已经有了当前对象所有的弱引用数组，我们新的弱引用变量添加到引用数组当中，如果没有弱引用数组，那么就创建一个新的弱引用数组，然后第0个位置添加wek指针，后面的都置为0。</li>
+</ul>
+<h3 id="当清除weak变量-通知设置指向为nil，-它是如何置nil的"><a href="#当清除weak变量-通知设置指向为nil，-它是如何置nil的" class="headerlink" title="当清除weak变量  通知设置指向为nil， 它是如何置nil的"></a>当清除weak变量  通知设置指向为nil， 它是如何置nil的</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-4c1173989d721067.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="如何将weak自动置为nil.png"></p>
+<p>完整过程</p>
+<ul>
+<li>通过被废弃对象的指针经过hash算法的到，求出弱引用数组对应的数组索引位置，然后通过这个索引返回给对象我这个弱引用数组</li>
+<li>如果弱引用数组为空就调用，当前对象，没有弱引用对象返回就成</li>
+<li>如果弱引用数组大于4调用entry-&gt;referrers如果小于4就使用entry-&gt;inline_referrers</li>
+<li>遍历这个数组，如果数组中的指针就是被废弃的弱引用指针那么就将其置为nil。</li>
+</ul>
+<p>总结</p>
+<ul>
+<li>当一个对象呗dealloc之后，dealloc内部的实现会去调用弱引用清除这个函数</li>
+<li>然后函数会通过，当前对象指针查找弱引用表 ，把一个对象的所有弱引用表都拿出来，是一个数组</li>
+<li>编译所有这个数组当中的弱引用指针分别置为nil</li>
+</ul>
+<h2 id="自动释放池"><a href="#自动释放池" class="headerlink" title="自动释放池"></a>自动释放池</h2><p><img src="https://upload-images.jianshu.io/upload_images/7980283-e4d846a3d751e386.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自动释放池的面试题.png"></p>
+<h3 id="编译器改写"><a href="#编译器改写" class="headerlink" title="编译器改写"></a>编译器改写</h3><ul>
+<li>objc_autoreleasepoolPush()和objc_autoreleasePoolPop中间是代码</li>
+<li>push返回值是一个无类型的指针</li>
+<li>objc_autoreleasePoolPop需要这个无类型指针作为标记也就是push返回的无类型的指针<br><img src="https://upload-images.jianshu.io/upload_images/7980283-29d3076aef391fba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="autoreleasePool改写.png"></li>
+</ul>
+<h3 id="objc-autoreleasepoolPush和objc-autoreleasePoolPop的函数调用栈"><a href="#objc-autoreleasepoolPush和objc-autoreleasePoolPop的函数调用栈" class="headerlink" title="objc_autoreleasepoolPush和objc_autoreleasePoolPop的函数调用栈"></a>objc_autoreleasepoolPush和objc_autoreleasePoolPop的函数调用栈</h3><ul>
+<li>内部会调用AutoreleasePoolPage::push方法</li>
+<li>AutoreleasePoolPage::pop方法<ul>
+<li>一次Pop当然于一次批量的Pop操作（AutoreleasePool中的对象都会放入到自动释放池中当Pop之后，AutoreleasePool中的对象的对象都会发送一次release消息所以是批量操作）</li>
+</ul>
+</li>
+</ul>
+<h3 id="自动释放池的数据结构"><a href="#自动释放池的数据结构" class="headerlink" title="自动释放池的数据结构"></a>自动释放池的数据结构</h3><ul>
+<li>以栈为节点通过双向链表的形式组合而成</li>
+<li>适合线程一一对应的。</li>
+</ul>
+<h4 id="AtuoreleasePoolPage的数据结构"><a href="#AtuoreleasePoolPage的数据结构" class="headerlink" title="AtuoreleasePoolPage的数据结构"></a>AtuoreleasePoolPage的数据结构</h4><ul>
+<li>id*next<ul>
+<li>当前栈的空的位置</li>
+</ul>
+</li>
+<li>autoreleasePollPage * const parent;<ul>
+<li>链表的父指针</li>
+</ul>
+</li>
+<li>autoreleasePollPage *child;<ul>
+<li>链表的孩子指针</li>
+</ul>
+</li>
+<li>pthread_t const thread;<ul>
+<li>与线程一一对应的</li>
+</ul>
+</li>
+</ul>
+<p><strong>AtuoreleasePoolPage::Push</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-9947d1f78b6c2929.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="AutoreleasePoolpagePush操作的原理.png"></p>
+<p><strong>autorelease</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-76bd1e312634c10f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="autorelease的实现过程.png"></p>
+<ul>
+<li>一个对象调用了autorelease方法，这个对象添加到next指针之后，next移动到新的位置，下一个调用autorelease方法的对象就会添加到这个位置</li>
+</ul>
+<p><strong>AtuoreleasePoolPage::Pop</strong></p>
+<ul>
+<li>根据传入的哨兵对象找到对应位置</li>
+<li>给上次Push操作之后添加的对象依次发送release消息(next指针到哨兵对象之间的对象依次发送release消息)</li>
+<li>回退指针搭配正确位置</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-9c4018ae632f1a70.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="AutoreleasePoolpagePop的原理操作.png"></p>
+<h4 id="双向链表的概念"><a href="#双向链表的概念" class="headerlink" title="双向链表的概念"></a>双向链表的概念</h4><p><img src="https://upload-images.jianshu.io/upload_images/7980283-04de2e6a27b6ff20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="双向链表的结构.png"></p>
+<h4 id="栈结构概念"><a href="#栈结构概念" class="headerlink" title="栈结构概念"></a>栈结构概念</h4><p><img src="https://upload-images.jianshu.io/upload_images/7980283-0d17f0c8cc37787f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="栈结构.png"></p>
+<h4 id="面试题自动释放池的实现结构是什么？"><a href="#面试题自动释放池的实现结构是什么？" class="headerlink" title="面试题自动释放池的实现结构是什么？"></a>面试题自动释放池的实现结构是什么？</h4><ul>
+<li>以栈为节点通过双向链表的形式组合而成</li>
+</ul>
+<h3 id="自动释放池的总结"><a href="#自动释放池的总结" class="headerlink" title="自动释放池的总结"></a>自动释放池的总结</h3><p><strong>下面代码什么时候释放</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">viewdidload&#123;</span><br><span class="line">	NSMutableArray *array = [NSSmutableArray array];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>在当次runloop将要结束的时候调用AutoreleasePoolPage::Pop()<ul>
+<li>每一次runloop循环将要结束的时候都会对前一次创建的autoreleasePool进行Pop操作，同时会Push进来一个新的autoreleasePool</li>
+<li>viewdidload创建的对象，是在当次runloop将要结束的时候，调用autoreleasePoolpage::Pop方法时候，把对应的array对象调用它的release方法。</li>
+</ul>
+</li>
+</ul>
+<p><strong>多次嵌套就是多次插入哨兵对象</strong></p>
+<p>关于autoreleasepool为和可以嵌套调用？</p>
+<p>实际上多次嵌套插入哨兵对象，每次进行autoreleasePool的代码块创建的时候，假如autoreleasePoolpage没有满的情况下，系统就会在当前autoreleasePoolpage栈中进行一次哨兵对象的插入，如果满了会创建一个新的autoreleasePoolpage，然后当前的autoreleasePoolpage中的child指针指向新创建的autoreleasePoolpage。</p>
+<p>所以autoreleasepool可以多层嵌套调用</p>
+<h2 id="循环引用"><a href="#循环引用" class="headerlink" title="循环引用"></a>循环引用</h2><p>三种循环引用：</p>
+<ul>
+<li>自循环引用</li>
+<li>相互循环引用</li>
+<li>多循环引用(大环)</li>
+</ul>
+<h3 id="自循环引用"><a href="#自循环引用" class="headerlink" title="自循环引用"></a>自循环引用</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-d40223e70abfbe82.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自循环引用.png"></p>
+<h3 id="相互循环引用"><a href="#相互循环引用" class="headerlink" title="相互循环引用"></a>相互循环引用</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-e49c9fb6edbfc15d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="相互循环引用.png"></p>
+<h3 id="多循环引用-大环"><a href="#多循环引用-大环" class="headerlink" title="多循环引用(大环)"></a>多循环引用(大环)</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-b9ae18b3d1b8b9b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=" 大环循环引用(多循环引用).png"></p>
+<h3 id="如何破除循环引用？"><a href="#如何破除循环引用？" class="headerlink" title="如何破除循环引用？"></a>如何破除循环引用？</h3><ul>
+<li>避免产生循环引用</li>
+<li>在合适的时机手动断环</li>
+</ul>
+<h3 id="具体解决方案："><a href="#具体解决方案：" class="headerlink" title="具体解决方案："></a>具体解决方案：</h3><ul>
+<li>__weak</li>
+<li>__block</li>
+<li>__unsafe_unretained</li>
+</ul>
+<h4 id="weak-破解循环引用"><a href="#weak-破解循环引用" class="headerlink" title="__weak   破解循环引用"></a>__weak   破解循环引用</h4><p><img src="https://upload-images.jianshu.io/upload_images/7980283-a2a55fb973b80cf0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="__weak避免产生循环引用.png"></p>
+<h4 id="block破解-破解循环引用"><a href="#block破解-破解循环引用" class="headerlink" title="__block破解* 破解循环引用"></a>__block破解* 破解循环引用</h4><ul>
+<li>MRC __block修饰对象不会增加其引用计数，避免了循环引用</li>
+<li>ARC __block修饰对象会被强引用，无法避免循环引用，需手动解环</li>
+</ul>
+<h4 id="unsafe-unretained-破解循环引用"><a href="#unsafe-unretained-破解循环引用" class="headerlink" title="__unsafe_unretained  破解循环引用"></a>__unsafe_unretained  破解循环引用</h4><ul>
+<li>修饰对象不会增加引用计数，避免了循环引用</li>
+<li>如果被修饰对象在某一时机被释放，会产生悬垂指针，悬垂指针又可能会出现不可预见的问题</li>
+</ul>
+<h3 id="循环引用示例"><a href="#循环引用示例" class="headerlink" title="循环引用示例"></a>循环引用示例</h3><h4 id="在开发过程中，你遇到过哪些循环引用问题，你又是如何解决的？"><a href="#在开发过程中，你遇到过哪些循环引用问题，你又是如何解决的？" class="headerlink" title="在开发过程中，你遇到过哪些循环引用问题，你又是如何解决的？"></a>在开发过程中，你遇到过哪些循环引用问题，你又是如何解决的？</h4><ul>
+<li><p>Block的使用示例</p>
+</li>
+<li><p>NSTimer的循环引用问题</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">有一个页面有一个banner滚动栏，每3秒滚到一次。一般有一个banner对象，VC对它强持有，</span><br><span class="line">banner对象的需求是每3秒滚动一次。需要添加一个NSTimer，当我向banner对象添加回调的时候，NSTimer会对banner对象施加一个强引用，这个时候就产生了相互循环引用问题。</span><br><span class="line"></span><br><span class="line">实际上，NSTimer创建完成以后会有一个主线程RunLoop去强引用NSTimer强引用。就算是VC退出释放掉，那么banner对象也不会释放，因为主线程runLoop强引用了这个对象。</span><br><span class="line"></span><br><span class="line">NSTimer有重复，以及非重复定时器，假如是非重复定时器，那么在NSTimer回调完成以后设置无效并置nil，那么就破解了循环引用。</span><br><span class="line"></span><br><span class="line">假如NSTimer重复多次回调</span><br><span class="line"></span><br><span class="line">第一种：在NSTimer和Banner之间设置一个中间对象，这个中间对象分别弱引用NSTimer和banner对象。那么当VC释放掉，banner对象也就释放掉了，NSTimer的回调会去中间对象，而中间对象只要判断banner对象为不为nil 如果为nil就直接无效化NSTimer。</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-77606fd4ab8e3dae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="NSTimer的循环引用问题.png"></p>
+<h3 id="考点"><a href="#考点" class="headerlink" title="考点"></a>考点</h3><ul>
+<li>代理</li>
+<li>Block</li>
+<li>NSTimer</li>
+<li>大环引用</li>
+</ul>
+<h1 id="面试题总结"><a href="#面试题总结" class="headerlink" title="面试题总结"></a>面试题总结</h1><h2 id="如果我们对一个类添加了关联对象，那么在这个类被释放以后会清除掉这个关联对象吗？"><a href="#如果我们对一个类添加了关联对象，那么在这个类被释放以后会清除掉这个关联对象吗？" class="headerlink" title="如果我们对一个类添加了关联对象，那么在这个类被释放以后会清除掉这个关联对象吗？"></a>如果我们对一个类添加了关联对象，那么在这个类被释放以后会清除掉这个关联对象吗？</h2><p>会的，因为系统在dealloc中释放了关联对象</p>
+<h2 id="关于autoreleasepool为和可以嵌套调用？"><a href="#关于autoreleasepool为和可以嵌套调用？" class="headerlink" title="关于autoreleasepool为和可以嵌套调用？"></a>关于autoreleasepool为和可以嵌套调用？</h2><p>实际上多次嵌套插入哨兵对象，每次进行autoreleasePool的代码块创建的时候，假如autoreleasePoolpage没有满的情况下，系统就会在当前autoreleasePoolpage栈中进行一次哨兵对象的插入，如果满了会创建一个新的autoreleasePoolpage，然后当前的autoreleasePoolpage中的child指针指向新创建的autoreleasePoolpage。</p>
+<h2 id="autoreleasePool的应用场景"><a href="#autoreleasePool的应用场景" class="headerlink" title="autoreleasePool的应用场景"></a>autoreleasePool的应用场景</h2><p>在for循环中alloc图片数据等内存消耗较大的场景手动插入autoreleasePool。</p>
+<h2 id="autoreleasePool的实现原理是什么？"><a href="#autoreleasePool的实现原理是什么？" class="headerlink" title="autoreleasePool的实现原理是什么？"></a>autoreleasePool的实现原理是什么？</h2><p>autoreleasePool实现原理：</p>
+<ul>
+<li>以栈为节点，通过双向链表的形式组合而成的数据结构</li>
+</ul>
+<h2 id="什么是ARC"><a href="#什么是ARC" class="headerlink" title="什么是ARC"></a>什么是ARC</h2><ul>
+<li>ARC是由LLVM编译器以及runtime协作来为我们实现自动引用计数的管理</li>
+</ul>
+<h2 id="为什么weak指针指向的对象在废弃之后会被自动置为nil"><a href="#为什么weak指针指向的对象在废弃之后会被自动置为nil" class="headerlink" title="为什么weak指针指向的对象在废弃之后会被自动置为nil"></a>为什么weak指针指向的对象在废弃之后会被自动置为nil</h2><p>当对象在被废弃之后，dealloc的内部方法实现当中会调用清除弱引用的方法，然后在清除弱引用的方法中会通过hash算法来查找被废弃对象在弱引用表当中的位置来提取它所对的人用引用指针的列表数组，然后进行for循环遍历，把每一个弱引用指针都置为nil</p>
+<h2 id="苹果是如何实现AutoreleasePool"><a href="#苹果是如何实现AutoreleasePool" class="headerlink" title="苹果是如何实现AutoreleasePool"></a>苹果是如何实现AutoreleasePool</h2><p>AutoreleasePool是以栈为节点，双向链表形式来合成的数据结构。</p>
+<h2 id="什么是循环引用？你遇到过哪些循环引用，是怎么解决的？"><a href="#什么是循环引用？你遇到过哪些循环引用，是怎么解决的？" class="headerlink" title="什么是循环引用？你遇到过哪些循环引用，是怎么解决的？"></a>什么是循环引用？你遇到过哪些循环引用，是怎么解决的？</h2><ul>
+<li>自循环引用</li>
+<li>双向循环引用</li>
+<li>大环引用</li>
+</ul>
+<p>比如说NStimer的循环引用。</p>
 
       
 
@@ -368,7 +623,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/07/11/iOS晋级知识汇总(八)内存管理/" alt="二维码">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/07/12/iOS晋级知识汇总(八)内存管理/" alt="二维码">
      
     </div>
 
