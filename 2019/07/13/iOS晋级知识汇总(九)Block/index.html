@@ -6,19 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
-  <title>Archives | Struggle3g‘s Blog</title>
+  <title>Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding yourself">
+  <meta name="description" content="1title:iOS晋级知识汇总(九)Block block Block介绍 截获变量 __block修饰符 Block的内存管理 Block的循环引用">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Struggle3g‘s Blog">
-<meta property="og:url" content="https://www.struggle3g.com/archives/page/9/index.html">
+<meta property="og:url" content="https://www.struggle3g.com/2019/07/13/iOS晋级知识汇总(九)Block/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="Coding yourself">
+<meta property="og:description" content="1title:iOS晋级知识汇总(九)Block block Block介绍 截获变量 __block修饰符 Block的内存管理 Block的循环引用">
 <meta property="og:locale" content="ch">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-a757247d124b4a55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-1a02c20e90c7a978.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-ee03872343f4bbe8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-c5539baf57cf868b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-3e6bb2e25173bcea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-beaf09e3a36abe2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-7273af840571ddd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-13T10:25:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="Coding yourself">
+<meta name="twitter:description" content="1title:iOS晋级知识汇总(九)Block block Block介绍 截获变量 __block修饰符 Block的内存管理 Block的循环引用">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-a757247d124b4a55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -163,241 +172,300 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-iOS晋级知识汇总(九)Block" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title:iOS晋级知识汇总(九)Block</span><br></pre></td></tr></table></figure>
+<h1 id="block"><a href="#block" class="headerlink" title="block"></a>block</h1><ul>
+<li>Block介绍</li>
+<li>截获变量</li>
+<li>__block修饰符</li>
+<li>Block的内存管理</li>
+<li>Block的循环引用</li>
+</ul>
+<a id="more"></a>
+<h2 id="什么是Block？"><a href="#什么是Block？" class="headerlink" title="什么是Block？"></a>什么是Block？</h2><p>Block是将函数及其执行上下文封装起来的对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//想要更彻底的理解block需要clang它的中间码</span><br><span class="line">clang -rewrite-objc file.m  查看编译之后的文件内容</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Block是一个对象</li>
+<li>对象封装了函数和执行上下文</li>
+</ul>
+<h2 id="block的调用"><a href="#block的调用" class="headerlink" title="block的调用"></a>block的调用</h2><p>Block调用就是函数的调用</p>
+<h2 id="截获变量"><a href="#截获变量" class="headerlink" title="截获变量"></a>截获变量</h2><p>下述代码的结果是16，因为block对局部变量multiplier进行了截获</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">int multiplier = 8;</span><br><span class="line">    </span><br><span class="line">int(^MuBlock)(int) = ^int(int num)&#123;</span><br><span class="line">    </span><br><span class="line">    return num * multiplier;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line">    </span><br><span class="line">multiplier = 6</span><br><span class="line">    </span><br><span class="line">MuBlock(2);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>局部变量<ul>
+<li>基本数据类型</li>
+<li>对象类型</li>
+</ul>
+</li>
+<li>静态局部变量</li>
+<li>全局变量</li>
+<li>静态全局变量</li>
+</ul>
+<h3 id="什么是block截获变量？"><a href="#什么是block截获变量？" class="headerlink" title="什么是block截获变量？"></a>什么是block截获变量？</h3><ul>
+<li><strong>基本数据类型的局部变量截获其值</strong></li>
+<li><strong>对于对象类型的局部变量联通所有权修饰符一起截获</strong></li>
+<li><strong>以指针形式截获局部静态变量</strong></li>
+<li><strong>不截获全局变量、静态全局变量</strong></li>
+</ul>
+<p>如何理解我们需要编译中间码来帮我理解</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//因为在ARC中的block跟MRC不一样</span><br><span class="line">//因为MRC中没有block循环引用问题，下面会有解释</span><br><span class="line">clang -rewrite-objc -fobjc-arc file.m</span><br></pre></td></tr></table></figure>
+<p>编译代码，以及OC代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">struct __MyBlock__MyMethod_block_impl_0 &#123;</span><br><span class="line">  struct __block_impl impl;</span><br><span class="line">  struct __MyBlock__MyMethod_block_desc_0* Desc;</span><br><span class="line">  //截获局部变量的值(基本数据类型)</span><br><span class="line">  int var;</span><br><span class="line">  //连同所有权修饰符一起截获</span><br><span class="line">  __unsafe_unretained id unsafe_obj;</span><br><span class="line">  __strong id strong_obj;</span><br><span class="line">  </span><br><span class="line">  //以指针形式截获静态局部变量</span><br><span class="line">  int *static_var;</span><br><span class="line">  </span><br><span class="line">  //对全局变量、静态全局变量不截获</span><br><span class="line">  </span><br><span class="line">  __MyBlock__MyMethod_block_impl_0(void *fp, struct __MyBlock__MyMethod_block_desc_0 *desc, int _var, __unsafe_unretained id _unsafe_obj, __strong id _strong_obj, int *_static_var, int flags=0) : var(_var), unsafe_obj(_unsafe_obj), strong_obj(_strong_obj), static_var(_static_var) &#123;</span><br><span class="line">    impl.isa = &amp;_NSConcreteStackBlock;</span><br><span class="line">    impl.Flags = flags;</span><br><span class="line">    impl.FuncPtr = fp;</span><br><span class="line">    Desc = desc;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">//全局变量</span><br><span class="line">int global_var = 6;</span><br><span class="line">//静态全局变量</span><br><span class="line">static int static_global_var = 8;</span><br><span class="line"></span><br><span class="line">- (void)MyMethod&#123;</span><br><span class="line">    </span><br><span class="line">    //基本数据类型的变量</span><br><span class="line">    int var = 1;</span><br><span class="line">    //对象类型的局部变量</span><br><span class="line">    __unsafe_unretained id unsafe_obj = nil;</span><br><span class="line">    __strong id strong_obj = nil;</span><br><span class="line">    </span><br><span class="line">    //静态局部变量</span><br><span class="line">    static int static_var = 3;</span><br><span class="line">    </span><br><span class="line">    void(^Block)(void) = ^&#123;</span><br><span class="line">        </span><br><span class="line">        NSLog(@&quot;局部变量&lt;基本数据类型&gt; var %d&quot;,var);</span><br><span class="line">        NSLog(@&quot;局部变量&lt;__unsafe_unretained 对象类型&gt; unsafe_obj %@&quot;,unsafe_obj);</span><br><span class="line">        NSLog(@&quot;局部变量&lt;__strong 对象类型&gt; strong_obj %@&quot;,strong_obj);</span><br><span class="line">        NSLog(@&quot;静态局部变量 static_var %d&quot;,static_var);</span><br><span class="line">        NSLog(@&quot;全局变量 global_var %d&quot;,global_var);</span><br><span class="line">        NSLog(@&quot;静态全局变量 static_global_var %d&quot;,static_global_var);</span><br><span class="line">        </span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    Block();</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="截获变量的总结"><a href="#截获变量的总结" class="headerlink" title="截获变量的总结"></a>截获变量的总结</h3><ul>
+<li>局部变量<ul>
+<li>基本数据类型<ul>
+<li>截获其值</li>
+</ul>
+</li>
+<li>对象类型<ul>
+<li>指针连同所有权一起截获</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>静态局部变量<ul>
+<li>截获其指针</li>
+</ul>
+</li>
+<li>全局变量<ul>
+<li>不截获</li>
+</ul>
+</li>
+<li>静态全局变量<ul>
+<li>不截获</li>
+</ul>
+</li>
+</ul>
+<h2 id="block修饰符"><a href="#block修饰符" class="headerlink" title="__block修饰符"></a>__block修饰符</h2><h3 id="什么场景需要使用-block？"><a href="#什么场景需要使用-block？" class="headerlink" title="什么场景需要使用__block？"></a>什么场景需要使用__block？</h3><p>一般情况下，对截获变量进行赋值(跟使用操作不一样)操作需添加__block修饰符。</p>
+<p>例子：下面代码有什么问题吗？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)test&#123;</span><br><span class="line">    </span><br><span class="line">    NSMutableArray *array = [NSMutableArray array];</span><br><span class="line">    void(^Block)(void) = ^&#123;</span><br><span class="line">        [array addObject:@21];</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    Block();</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>答案：没有问题，因为array并没有去赋值。不需要使用__block。</p>
+<p>再来看一个例子：下面代码有什么问题吗？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (void)test&#123;</span><br><span class="line">    </span><br><span class="line">    NSMutableArray *array = nil;</span><br><span class="line">    void(^Block)(void) = ^&#123;</span><br><span class="line">        array = [NSMutableArray array];</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    Block();</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>答案： array需要添加__block修饰符。</p>
+<h3 id="对变量进行赋值时，合适需要添加-block？"><a href="#对变量进行赋值时，合适需要添加-block？" class="headerlink" title="对变量进行赋值时，合适需要添加__block？"></a>对变量进行赋值时，合适需要添加__block？</h3><ul>
+<li>需要添加__block修饰符的情况？<ul>
+<li>局部变量<ul>
+<li>基本数据类型</li>
+<li>对象类型</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>不需要添加__block修饰符<ul>
+<li>静态局部变量</li>
+<li>全局变量</li>
+<li>静态全局变量    </li>
+</ul>
+</li>
+</ul>
+<h3 id="block-修饰的变量最终变成了什么"><a href="#block-修饰的变量最终变成了什么" class="headerlink" title="__block 修饰的变量最终变成了什么?"></a>__block 修饰的变量最终变成了什么?</h3><p>还是通过clang 命令来编译出中间码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)MyMethod&#123;</span><br><span class="line">    __block int multiplier = 8;</span><br><span class="line">    int(^MuBlock)(int) = ^int(int num)&#123;</span><br><span class="line">        return num * multiplier;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    multiplier = 6;</span><br><span class="line">    NSLog(@&quot;%d&quot;,MuBlock(2));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// @implementation MyBlock</span><br><span class="line">struct __Block_byref_multiplier_0 &#123;</span><br><span class="line">//因为有isa指针</span><br><span class="line">  void *__isa;  </span><br><span class="line">  //指向同类指针的__forwarding</span><br><span class="line">__Block_byref_multiplier_0 *__forwarding;</span><br><span class="line"> int __flags;</span><br><span class="line"> int __size;</span><br><span class="line"> //我们截获的变量</span><br><span class="line"> int multiplier;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>综合上述说明通过__block修饰的变量最终变成了对象，如果在OC代码中直接修改这个变量的值，就会走下面的步骤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">static void _I_MyBlock_MyMethod(MyBlock * self, SEL _cmd) &#123;</span><br><span class="line"></span><br><span class="line">    __attribute__((__blocks__(byref))) __Block_byref_multiplier_0 multiplier = &#123;(void*)0,(__Block_byref_multiplier_0 *)&amp;multiplier, 0, sizeof(__Block_byref_multiplier_0), 8&#125;;</span><br><span class="line"></span><br><span class="line">    int(*MuBlock)(int) = ((int (*)(int))&amp;__MyBlock__MyMethod_block_impl_0((void *)__MyBlock__MyMethod_block_func_0, &amp;__MyBlock__MyMethod_block_desc_0_DATA, (__Block_byref_multiplier_0 *)&amp;multiplier, 570425344));</span><br><span class="line">	//打印代码之前，我们给这个__block修饰的变量对象的值赋值到了6</span><br><span class="line">    (multiplier.__forwarding-&gt;multiplier) = 6;</span><br><span class="line">    NSLog((NSString *)&amp;__NSConstantStringImpl__var_folders_8z_j2rlh3t16m9cdrljdz_r67380000gn_T_Myblock_5bd0fd_mi_0,((int (*)(__block_impl *, int))((__block_impl *)MuBlock)-&gt;FuncPtr)((__block_impl *)MuBlock, 2));</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">//block方法实现</span><br><span class="line">static int __MyBlock__MyMethod_block_func_0(struct __MyBlock__MyMethod_block_impl_0 *__cself, int num) &#123;</span><br><span class="line">  __Block_byref_multiplier_0 *multiplier = __cself-&gt;multiplier; // bound by ref</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        return num * (multiplier-&gt;__forwarding-&gt;multiplier);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>打印代码之前，给这个<strong>block修饰的变量对象的值赋值到了6，并且在block中的实现是直接通过(multiplier-&gt;</strong>forwarding-&gt;multiplier)来进行操作，所以打印结果应该会是修改过后的值。也就是12.</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-a757247d124b4a55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="栈的__Block修饰的变量.png"></p>
+<h4 id="forwarding存在的意义？"><a href="#forwarding存在的意义？" class="headerlink" title="__forwarding存在的意义？"></a>__forwarding存在的意义？</h4><ul>
+<li>不论在任何内存位置，都可以访问同一个__block变量。</li>
+</ul>
+<h4 id="block相关的笔试题"><a href="#block相关的笔试题" class="headerlink" title="__block相关的笔试题"></a>__block相关的笔试题</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)MyMethod&#123;</span><br><span class="line">    </span><br><span class="line">    __block int multiplier = 8;</span><br><span class="line">    int(^MuBlock)(int) = ^int(int num)&#123;</span><br><span class="line">        return num * multiplier;</span><br><span class="line">    &#125;;</span><br><span class="line">    multiplier = 6;</span><br><span class="line">    NSLog(@&quot;%d&quot;,MuBlock(2));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述调用结果是12.</p>
+<h2 id="Block的内存管理"><a href="#Block的内存管理" class="headerlink" title="Block的内存管理"></a>Block的内存管理</h2><ul>
+<li>_NSConcreteGlobalBlock  全局block</li>
+<li>_NSConcreteStackBlock   栈block</li>
+<li>_NSConcreteMallocBlock  堆block</li>
+</ul>
+<p><strong>Block的内粗分布：</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-1a02c20e90c7a978.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="全局、栈、堆Block的内存分布.png"></p>
+<p><strong>Block的copy操作</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-ee03872343f4bbe8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Block的copy操作.png"></p>
+<p>声明一个成员变量是block，如果这个block使用的是assign，通过成员变量去访问block的话，可能栈所对应的函数退出之后，在内存中就销毁掉了，所以继续访问可能崩溃</p>
+<p><strong>栈上Block的copy</strong></p>
+<p>当我们在栈上面的block进行copy以后，那么在MRC环境下是否会引起内存泄漏？<br>产生内存泄漏。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-c5539baf57cf868b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="栈上block的copy操作.png"></p>
+<p><strong>栈上的Block的销毁</strong></p>
+<p>栈上，等作用域</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-3e6bb2e25173bcea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="栈block的销毁.png"></p>
+<p><strong>栈上__block变量的copy</strong></p>
+<p><strong>block修饰的变量都会转换成一个对象，而这个对象被copy的时候会在堆上面开辟一块空间生成一个全新的</strong>block修饰的变量对象，而这两个对象的<strong>forwarding指针都指向了堆上面的对象。如果没有做copy操作那么就使用的是栈上面的</strong>block对象。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-beaf09e3a36abe2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="栈的__Block修饰的变量.png"></p>
+<h3 id="Block代码的解读"><a href="#Block代码的解读" class="headerlink" title="Block代码的解读"></a>Block代码的解读</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">@property(nonatomic,copy)MuBlock blk;</span><br><span class="line">- (void)MyMethod&#123;</span><br><span class="line">    </span><br><span class="line">    //用__block修饰的变量会在栈上生成一个block对象，里面有__forwarding指针和成员变量multiplier。__forwarding指针指向这个block对象自己</span><br><span class="line">    __block int multiplier = 8;</span><br><span class="line">    </span><br><span class="line">    //当我向_blk属性赋值的时候实际上是对这个block进行copy，所以这个block会在堆上开辟一个空间。在堆上有另外一个副本</span><br><span class="line">    _blk = ^int(int num)&#123;</span><br><span class="line">        return num * multiplier;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    /这个时候修改的值是__forwarding指向的对象的成员变量multiplier，因为_blk实际上是堆上面的block，下面的代码实际上是修改堆上面的__block对象</span><br><span class="line">    multiplier = 6;</span><br><span class="line">    [self excMuBlock];</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)excMuBlock&#123;</span><br><span class="line">    int result = _blk(4);</span><br><span class="line">    NSLog(@&quot;%d&quot;,result);</span><br><span class="line">    结果应该是24.</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="代码分析题"><a href="#代码分析题" class="headerlink" title="代码分析题"></a>代码分析题</h1><h2 id="block循环引用的问题"><a href="#block循环引用的问题" class="headerlink" title="block循环引用的问题"></a>block循环引用的问题</h2><p>下面代码有何问题？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//在ARC环境下</span><br><span class="line">- (void)MyMethod&#123;</span><br><span class="line">    //默认是strong属性</span><br><span class="line">    _array = [NSMutableArray arrayWithObjects:@&quot;111&quot;, nil];</span><br><span class="line">    //默认是copy属性</span><br><span class="line">    //_array、 _strblk都是当前属性的_array是strong，_strblk是copy</span><br><span class="line">    _strblk = ^NSString *(NSString * str)&#123;</span><br><span class="line">        return [NSString stringWithFormat:@&quot;%@&quot;,_array[0]];</span><br><span class="line">    &#125;;</span><br><span class="line">    _strblk(@&quot;hello&quot;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面继续分析clang代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">static void _I_MyBlock_MyMethod(MyBlock * self, SEL _cmd) &#123;</span><br><span class="line"></span><br><span class="line">    (*(NSMutableArray *__strong *)((char *)self + OBJC_IVAR_$_MyBlock$_array)) = ((NSMutableArray * _Nonnull (*)(id, SEL, ObjectType  _Nonnull __strong, ...))(void *)objc_msgSend)((id)objc_getClass(&quot;NSMutableArray&quot;), sel_registerName(&quot;arrayWithObjects:&quot;), (id _Nonnull)(NSString *)&amp;__NSConstantStringImpl__var_folders_8z_j2rlh3t16m9cdrljdz_r67380000gn_T_Myblock_e9f218_mi_0, __null);</span><br><span class="line"></span><br><span class="line">    (*(__strong xhBlock *)((char *)self + OBJC_IVAR_$_MyBlock$_strblk)) = ((NSString *(*)(NSString *__strong))&amp;__MyBlock__MyMethod_block_impl_0((void *)__MyBlock__MyMethod_block_func_0, &amp;__MyBlock__MyMethod_block_desc_0_DATA, self, 570425344));</span><br><span class="line"></span><br><span class="line">    ((NSString *(*)(__block_impl *, NSString *__strong))((__block_impl *)(*(__strong xhBlock *)((char *)self + OBJC_IVAR_$_MyBlock$_strblk)))-&gt;FuncPtr)((__block_impl *)(*(__strong xhBlock *)((char *)self + OBJC_IVAR_$_MyBlock$_strblk)), (NSString *)&amp;__NSConstantStringImpl__var_folders_8z_j2rlh3t16m9cdrljdz_r67380000gn_T_Myblock_e9f218_mi_2);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由中间码我们可以分析出来，当在block中使用_array的时候实际上是通过<code>(*(NSMutableArray *__strong *)((char *)self + OBJC_IVAR_$_MyBlock$_array))</code>这样的形式获取到_array，这样的话，相当于，在self中的block中又强引用了self这样就是循环引用。自循环引用</p>
+<h2 id="解决方案："><a href="#解决方案：" class="headerlink" title="解决方案："></a>解决方案：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">//第一种</span><br><span class="line">- (void)MyMethod&#123;</span><br><span class="line">    </span><br><span class="line">    _array = [NSMutableArray arrayWithObjects:@&quot;111&quot;, nil];</span><br><span class="line">    </span><br><span class="line">    __weak NSArray *weakarray = _array;</span><br><span class="line">    </span><br><span class="line">    _strblk = ^NSString *(NSString * str)&#123;</span><br><span class="line">        return [NSString stringWithFormat:@&quot;%@&quot;,weakarray[0]];</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    _strblk(@&quot;hello&quot;);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line">//第二种</span><br><span class="line">- (void)MyMethod&#123;</span><br><span class="line">    </span><br><span class="line">    _array = [NSMutableArray arrayWithObjects:@&quot;111&quot;, nil];</span><br><span class="line">    </span><br><span class="line">     __weak typeof(self)weakself = self;</span><br><span class="line">    </span><br><span class="line">    _strblk = ^NSString *(NSString * str)&#123;</span><br><span class="line">        return [NSString stringWithFormat:@&quot;%@&quot;, weakself.array[0]];</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    _strblk(@&quot;hello&quot;);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建一个弱引用指针指向_array，这样在block中，使用的就是弱引用指针,当前对象释放后，弱引用也就会自动释放，当前当前对象的block也会被释放掉。</p>
+<p>分析下面代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">- (void)MyMethod&#123;</span><br><span class="line">    </span><br><span class="line">    __block MyBlock *blockself = self;</span><br><span class="line">    </span><br><span class="line">    _blk = ^int(int num)&#123;</span><br><span class="line"></span><br><span class="line">        return num * blockself.var;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    _blk(3);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>分析</strong></p>
+<ul>
+<li>MRC下，不会产生循环引用</li>
+<li>在ARC下会产生循环引用，引起内存泄漏</li>
+</ul>
+<p>在self修饰为<strong>block的时候，系统会自动生成一个对象`</strong>Block_byref_blockself_0`<br>而这个对象强持有self。最终导致了，当前对象持有block，block持有<strong>block对象，</strong>block对象对象持有self造成大环引用。</p>
+<p>ARC下的解决方案</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-7273af840571ddd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="大环循环引用.png"></p>
+<p>断环，当我block中的__block使用完成以后，需要直接赋值为nil这样就可以断环了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (void)MyMethod&#123;</span><br><span class="line">    </span><br><span class="line">    __block MyBlock *blockself = self;</span><br><span class="line">    </span><br><span class="line">    _blk = ^int(int num)&#123;</span><br><span class="line"></span><br><span class="line">		 int = num * blockself.var;</span><br><span class="line">		 blockself = nil;</span><br><span class="line">        return num * blockself.var;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    _blk(3);</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="BLock面试题"><a href="#BLock面试题" class="headerlink" title="BLock面试题"></a>BLock面试题</h1><h2 id="什么是block？"><a href="#什么是block？" class="headerlink" title="什么是block？"></a>什么是block？</h2><p>block就是一个对象，这个对象封装了函数以及其上下文。</p>
+<h2 id="为什么block会产生循环引用？"><a href="#为什么block会产生循环引用？" class="headerlink" title="为什么block会产生循环引用？"></a>为什么block会产生循环引用？</h2><ul>
+<li><p>如果当前block对当前对象的成员变量有一个强引用，对象的成员变量归根究底的还是需要通过self去访问它，那么就是当前对象强引用了blcok，而block中又调用了self并将其强引用，这样就造成了自循环引用，解决方案使用__weak修饰你的成员变量，或者修饰当前对象。在block直接调用weak变量，</p>
+</li>
+<li><p>大环引用，当使用<strong>block修饰self，并且self强引用了block。这样就造成了大环引用。<br>self强持有block，block强持有</strong>block对象，<strong>block对象强持有了self，这就是大环循环引用。解决方案就是使用断环的方式，但是有一个缺点就是，如果这个block不去执行的话永远不会解除这个循环引用。将</strong>block修饰的self在block中使用完成置nil。</p>
+</li>
+</ul>
+<h2 id="怎么样理解Block截获变量的特性？"><a href="#怎么样理解Block截获变量的特性？" class="headerlink" title="怎么样理解Block截获变量的特性？"></a>怎么样理解Block截获变量的特性？</h2><ul>
+<li>基本数据局部变量 <ul>
+<li>值</li>
+</ul>
+</li>
+<li>对象类型局部变量<ul>
+<li>对其持有一个强引用，连同它的所有权</li>
+</ul>
+</li>
+<li>对于静态局部变量<ul>
+<li>对其指针进行截获</li>
+</ul>
+</li>
+<li>静态全局变量、全局变量<ul>
+<li>不产生截获的</li>
+</ul>
+</li>
+</ul>
+<h2 id="你都遇到过哪些循环引用？你又是如何解决的？"><a href="#你都遇到过哪些循环引用？你又是如何解决的？" class="headerlink" title="你都遇到过哪些循环引用？你又是如何解决的？"></a>你都遇到过哪些循环引用？你又是如何解决的？</h2><p>block捕获的变量是当前的成员变量，block也是当前对象的成员变量，就会造成自循环引用，可以避免这种情况，对当前当前成员变量使用<strong>weak所有权修饰符去解除
+</strong>block的情况也会造成循环引用，这种情况跟自循环引用不太一样，大环循环引用有个弊端就是当你在不调用block的情况下，这个循环引用会一直解不开。</p>
+
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/汇编基础（二）CPU寄存器/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:58:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/汇编基础（二）CPU寄存器/">汇编基础（二）CPU寄存器</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+
+<!--MOB SHARE BEGIN-->
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/07/13/iOS晋级知识汇总(九)Block/" alt="二维码">
+     
+    </div>
+
+</div>
+
+<div class="mask js-mask"></div>
+<!--MOB SHARE END-->
+
+
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/汇编基础（一）学习汇编需要了解掌握的知识点/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:57:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/12/iOS晋级知识汇总(八)内存管理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/汇编基础（一）学习汇编需要了解掌握的知识点/">汇编基础（一）学习汇编需要了解掌握的知识点</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:56:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript（二）非越狱调试、修改App中UI的数据/">Cycript（二）非越狱调试、修改App中UI的数据</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/Cycript （一）配置环境/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:55:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/Cycript （一）配置环境/">Cycript （一）配置环境</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/HSB:HSL、RGB他们的纯色/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/HSB:HSL、RGB他们的纯色/">HSB/HSL、RGB他们的纯色</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 推送步骤以及原理/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 推送步骤以及原理/">iOS 推送步骤以及原理</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS----SIGPIPE信号终止进程/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS----SIGPIPE信号终止进程/">iOS----SIGPIPE信号终止进程</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/">TCP创建连接的三次握手，关闭连接的四次挥手。</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/8/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/10/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -412,8 +480,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

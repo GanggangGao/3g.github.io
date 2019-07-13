@@ -165,6 +165,93 @@
             
   
     
+<article id="post-生活杂记吹牛那些事" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/20/生活杂记吹牛那些事/">生活杂记吹牛那些事</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/生活杂记吹牛那些事/" class="archive-article-date">
+  	<time datetime="2018-09-20T11:30:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>说话、吹牛都是有技巧的，是男人都爱吹牛</p>
+<p>人与人吹牛的时候总会遇到一些尴尬的事情，每次吹牛的时候如果吹的天花乱坠让别人感觉你很牛逼，但如果当你自己吹的牛逼自己都圆不过来的时候就很尴尬了，这样别人该说你什么呐？哈哈哈笑个几声<br>
+        
+          <a class="article-more-a" href="/2018/09/20/生活杂记吹牛那些事/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">生活杂记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/20/生活杂记吹牛那些事/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
 <article id="post-深入浅出Runtime (二) Runtime的消息机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
 
@@ -836,87 +923,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（十七）- tweak 反反反插入/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-IPhone一起玩越狱 -（十六）- tweak 反反插入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/IPhone一起玩越狱 -（十六）- tweak 反反插入/">IPhone一起玩越狱 -（十六）- tweak 反反插入</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/IPhone一起玩越狱 -（十六）- tweak 反反插入/" class="archive-article-date">
-  	<time datetime="2018-07-30T12:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>通过<a href="https://www.jianshu.com/p/cefd2f8435ab" target="_blank" rel="noopener">tweak的原理</a>的研究的出来的结论是：</p>
-<ul>
-<li>tweak是根据dyld中的<code>DYLD_INSTER_LIBRARIES</code>这个宏环境变量临时插入自己的动态库</li>
-<li>在App的MachO文件中存在segmentname、sectionname 分别为<strong>RESTRICT、 </strong>restrict就能够使dyld中的DYLD_INSTER_LIBRARIES这个宏插入动态库失败，也就是tweak失败</li>
-<li>在<a href="/p/78ea4107f0be">IPhone一起玩越狱 -（十五）- 禁止tweak插入App进程</a>介绍了反tweak插入，也就是防护你的App被tweak篡改</li>
-</ul>
-<p><strong>反tweak插入，是一个防护问题，我怎么去攻破这层防护呐？这个防护是完美无缺的吗？</strong><br>
-        
-          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（十六）- tweak 反反插入/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（十六）- tweak 反反插入/">展开全文 >></a>
         </p>
       
 

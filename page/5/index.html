@@ -165,6 +165,87 @@
             
   
     
+<article id="post-IPhone一起玩越狱 -（十六）- tweak 反反插入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/IPhone一起玩越狱 -（十六）- tweak 反反插入/">IPhone一起玩越狱 -（十六）- tweak 反反插入</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/IPhone一起玩越狱 -（十六）- tweak 反反插入/" class="archive-article-date">
+  	<time datetime="2018-07-30T12:06:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>通过<a href="https://www.jianshu.com/p/cefd2f8435ab" target="_blank" rel="noopener">tweak的原理</a>的研究的出来的结论是：</p>
+<ul>
+<li>tweak是根据dyld中的<code>DYLD_INSTER_LIBRARIES</code>这个宏环境变量临时插入自己的动态库</li>
+<li>在App的MachO文件中存在segmentname、sectionname 分别为<strong>RESTRICT、 </strong>restrict就能够使dyld中的DYLD_INSTER_LIBRARIES这个宏插入动态库失败，也就是tweak失败</li>
+<li>在<a href="/p/78ea4107f0be">IPhone一起玩越狱 -（十五）- 禁止tweak插入App进程</a>介绍了反tweak插入，也就是防护你的App被tweak篡改</li>
+</ul>
+<p><strong>反tweak插入，是一个防护问题，我怎么去攻破这层防护呐？这个防护是完美无缺的吗？</strong><br>
+        
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（十六）- tweak 反反插入/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（十六）- tweak 反反插入/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
 <article id="post-IPhone一起玩越狱 -（十五）- 禁止tweak插入App进程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
 
@@ -818,84 +899,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（七）-  Cycript环境调试App/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-IPhone一起玩越狱 -（六）- USB登录Iphone用户" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/IPhone一起玩越狱 -（六）- USB登录Iphone用户/">IPhone一起玩越狱 -（六）- USB登录Iphone用户</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/IPhone一起玩越狱 -（六）- USB登录Iphone用户/" class="archive-article-date">
-  	<time datetime="2018-07-30T12:03:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://upload-images.jianshu.io/upload_images/7980283-43147813375440e1.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/300" alt=""></p>
-<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>上篇讲到SSH连接，Wi-Fiip地址访问IPhone<br>这篇就要讲到用USB去访问IPhone</p>
-<h2 id="USB连接IPhone"><a href="#USB连接IPhone" class="headerlink" title="USB连接IPhone"></a>USB连接IPhone</h2><blockquote>
-<p>上篇讲到OpenSSH是集成了SSH的一个软件，安装在了手机<br>SSH去访问手机，那么手机就要开启一个SSH的server<br>手机开启的SSH的默认端口是22<br>
-        
-          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（六）- USB登录Iphone用户/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（六）- USB登录Iphone用户/">展开全文 >></a>
         </p>
       
 
