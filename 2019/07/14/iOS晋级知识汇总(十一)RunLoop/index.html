@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
-  <title>Archives | Struggle3g‘s Blog</title>
+  <title>Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding yourself">
+  <meta name="description" content="1title:iOS晋级知识汇总(十一)RunLoop RunLoop 概念 数据结构 事件循环机制 RunLoop与NSTimer RunLoop与多线程">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Struggle3g‘s Blog">
-<meta property="og:url" content="https://www.struggle3g.com/archives/page/10/index.html">
+<meta property="og:url" content="https://www.struggle3g.com/2019/07/14/iOS晋级知识汇总(十一)RunLoop/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="Coding yourself">
+<meta property="og:description" content="1title:iOS晋级知识汇总(十一)RunLoop RunLoop 概念 数据结构 事件循环机制 RunLoop与NSTimer RunLoop与多线程">
 <meta property="og:locale" content="ch">
+<meta property="og:updated_time" content="2019-07-14T15:49:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="Coding yourself">
+<meta name="twitter:description" content="1title:iOS晋级知识汇总(十一)RunLoop RunLoop 概念 数据结构 事件循环机制 RunLoop与NSTimer RunLoop与多线程">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -163,241 +164,265 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-iOS晋级知识汇总(十一)RunLoop" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title:iOS晋级知识汇总(十一)RunLoop</span><br></pre></td></tr></table></figure>
+<h1 id="RunLoop"><a href="#RunLoop" class="headerlink" title="RunLoop"></a>RunLoop</h1><ul>
+<li>概念</li>
+<li>数据结构</li>
+<li>事件循环机制</li>
+<li>RunLoop与NSTimer</li>
+<li>RunLoop与多线程</li>
+</ul>
+<a id="more"></a>
+<h2 id="什么是RunLoop？"><a href="#什么是RunLoop？" class="headerlink" title="什么是RunLoop？"></a>什么是RunLoop？</h2><ul>
+<li><p>是通过内部维护的事件循环来对事件/消息进行管理的一个对象</p>
+<ul>
+<li>没有消息需要处理的时候，休眠以避免资源占用</li>
+<li>有消息需要处理时，立刻被唤醒</li>
+</ul>
+</li>
+<li><p>没有消息需要处理时，休眠以避免资源占用</p>
+</li>
+</ul>
+<p>用户态-&gt;内核态</p>
+<ul>
+<li>有消息需要处理时，立刻被唤醒</li>
+</ul>
+<p>内核态-&gt;用户态</p>
+<p><strong>用户态、内核态</strong></p>
+<p>用户态就是用开发使用的API都是用户态，需要用到系统内核的时候就是用到内核态，<br>每一个用户，也就是App都能让手机开关机，这种行为是不被允许的，所有才有一个用户态到内核态的切换，</p>
+<h2 id="什么是事件循环？"><a href="#什么是事件循环？" class="headerlink" title="什么是事件循环？"></a>什么是事件循环？</h2><p>维护的事件循环可以让我们不断的处理消息和事件，对他们进行管理，当没有消息进行处理的时候，会发生一些用户态到内核态的切换。由此来进行当前线程的休眠，同时会发生内核态到用户态的切换，然后当前用户线程会被唤醒。</p>
+<h2 id="我们的main函数为什么能保持不退出？"><a href="#我们的main函数为什么能保持不退出？" class="headerlink" title="我们的main函数为什么能保持不退出？"></a>我们的main函数为什么能保持不退出？</h2><p>在我们的main函数中会调用UIApplicationMain这个函数，这个函数里面做了一个运行循环(RunLoop)，不断的接收事件，滑动列表处理事件的返回，处理消息完成以后会继续等待，这个循环不是简单的for循环而是从用户态到内核态的切换(休眠)，从内核态到用户态的切换(唤醒)。</p>
+<h2 id="RunLoop的数据结构"><a href="#RunLoop的数据结构" class="headerlink" title="RunLoop的数据结构"></a>RunLoop的数据结构</h2><p>NSRunLoop是对CFRunLoop的封装，提供了面向对象的API。</p>
+<p>CFRunLoop的代码是开源的，可以通过这个开源看到CFRunLoop的数据结构</p>
+<ul>
+<li>CFRunLoop<ul>
+<li>pthread            -&gt;代表线程 一对一</li>
+<li>currentMode    CFRunLoopMode的数据结构</li>
+<li>modes          MutableSet<cfrunloopmode></cfrunloopmode></li>
+<li>commonModes    MutableSet<nsstring></nsstring></li>
+<li>commonModeItems  MutableSet&lt;Observers/Timers/Sources&gt;</li>
+</ul>
+</li>
+<li>CFRunLoopMode<ul>
+<li>name         mode的名字，通过名称来查找是哪一个mode</li>
+<li>sources0    MutableSet</li>
+<li>sources1    MutableSet</li>
+<li>observers   </li>
+<li>timers</li>
+</ul>
+</li>
+<li>Source/Timer/Observer</li>
+</ul>
+<h3 id="CFRunLoopSource"><a href="#CFRunLoopSource" class="headerlink" title="CFRunLoopSource"></a>CFRunLoopSource</h3><ul>
+<li>sources0<ul>
+<li>需要手动唤醒线程</li>
+</ul>
+</li>
+<li>sources1<ul>
+<li>具备唤醒线程的能力</li>
+</ul>
+</li>
+</ul>
+<h3 id="CFRunLoopTimer"><a href="#CFRunLoopTimer" class="headerlink" title="CFRunLoopTimer"></a>CFRunLoopTimer</h3><p>基于事件的定时器，和NSTimer和toll-free bridged</p>
+<h3 id="CFRunLoopObserver"><a href="#CFRunLoopObserver" class="headerlink" title="CFRunLoopObserver"></a>CFRunLoopObserver</h3><p>观测时间点：</p>
+<ul>
+<li>kCFRunLoopEntry             准备启动的时候系统会给一个回调</li>
+<li>kCFRunLoopBeforeTimers      runloop将要对timer一些事件进行处理</li>
+<li>kCFRunLoopBeforeSources     将要处理一些source事件</li>
+<li>kCFRunLoopBeforeWaiting     将要进入休眠状态，即将发生用户态到内核态的一个转换</li>
+<li>kCFRunLoopAfterWaiting      内核态切换到用户态不久</li>
+<li>kCFRunLoopExit              RunLoop退出</li>
+</ul>
+<h3 id="各个数据结构之间的关系"><a href="#各个数据结构之间的关系" class="headerlink" title="各个数据结构之间的关系"></a>各个数据结构之间的关系</h3><ul>
+<li>RunLoop和线程是一一对应的</li>
+<li>一个RunLoop可以拥有多个Mode</li>
+<li>一个mode可以有多个source、Timer、Observer</li>
+</ul>
+<h2 id="Runloop的Mode"><a href="#Runloop的Mode" class="headerlink" title="Runloop的Mode"></a>Runloop的Mode</h2><p>mode跟mode中的事件是不会相互影响的，当我把事件添加到mode1上面运行的时候在mode2上面那么mode1的事件永远不会执行，mode和mode之间是孤立的。</p>
+<p>我在tableview滚动的时候，你的banner控件不会自动切换，这就是RunLoop的mode的一种形式。</p>
+<h2 id="NSRunLoopCommonModes"><a href="#NSRunLoopCommonModes" class="headerlink" title="NSRunLoopCommonModes"></a>NSRunLoopCommonModes</h2><ul>
+<li>并不是实际存在的模式</li>
+<li>是同步source/timer/Observer到多个mode的一种技术方案。</li>
+</ul>
+<h2 id="NSRunLoop、CFRunLoop的Run方法"><a href="#NSRunLoop、CFRunLoop的Run方法" class="headerlink" title="NSRunLoop、CFRunLoop的Run方法"></a>NSRunLoop、CFRunLoop的Run方法</h2><p>void CFRunLoopRun()</p>
+<p><strong>RunLoop启动的流程</strong></p>
+<ul>
+<li>1、即将进入Runloop</li>
+<li>2、将处理Timer/source0事件</li>
+<li>3、处理Source0事件</li>
+<li>4、如果有source1要处理  跳转到8</li>
+<li>5、线程将要休眠</li>
+<li>6、休眠，等待唤醒<ul>
+<li>source1可以唤醒</li>
+<li>Timer事件可以唤醒</li>
+<li>外部手动唤醒</li>
+</ul>
+</li>
+<li>7、线程刚被唤醒</li>
+<li>8、处理唤醒时收到的消息   这一步会直接跳转到2中</li>
+</ul>
+<h2 id="RunLoop的核心"><a href="#RunLoop的核心" class="headerlink" title="RunLoop的核心"></a>RunLoop的核心</h2><ul>
+<li>用户态到内核态  休眠</li>
+<li>内核态到用户态  唤醒</li>
+</ul>
+<h2 id="滑动TableView的时候我们的定时器还会生效吗？"><a href="#滑动TableView的时候我们的定时器还会生效吗？" class="headerlink" title="滑动TableView的时候我们的定时器还会生效吗？"></a>滑动TableView的时候我们的定时器还会生效吗？</h2><p>当运行的Timer是用默认start运行的timer，那么timer的RunLoop的mode是defaultMode，当用户滑动TableView的时候，当前运行的RunLoop的mode会切换到tracking这个mode，这就造成了Timer运行事件的隔离，最终导致Timer事件在华东过程中，没有任何反应。解决方式是，把timer添加到commonmodes这个runloop中。commonmodes并不是一个实际的runloopmode，他只是把一些mode打上commonmode标记，然后可以把某一个是事件源，比如说是timer同步到多个mode当中。</p>
+<h2 id="RunLoop与多线程"><a href="#RunLoop与多线程" class="headerlink" title="RunLoop与多线程"></a>RunLoop与多线程</h2><ul>
+<li>线程和RunLoop一一对应的</li>
+<li>自己创建的线程默认是没有RunLoop的</li>
+</ul>
+<h3 id="怎么实现一个常驻的线程"><a href="#怎么实现一个常驻的线程" class="headerlink" title="怎么实现一个常驻的线程"></a>怎么实现一个常驻的线程</h3><ul>
+<li>为当前线程开启一个Runloop  （获取当前RunLoop，如果当前没有，则会自动创建）</li>
+<li>为该RunLoop中添加一个Port/source等维持RunLoop<ul>
+<li>如果一个RunLoop中间没有item(Port或者Source)资源的话，是维持不住RunLoop的，会直接退出</li>
+</ul>
+</li>
+<li>启动该RunLoop</li>
+</ul>
+<p><strong>代码如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">// 创建一个Source</span><br><span class="line">CFRunLoopSourceContext context = &#123;0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL&#125;;</span><br><span class="line">CFRunLoopSourceRef source = CFRunLoopSourceCreate(kCFAllocatorDefault, 0, &amp;context);</span><br><span class="line"></span><br><span class="line">// 创建RunLoop，同时向RunLoop的DefaultMode下面添加Source</span><br><span class="line">CFRunLoopAddSource(CFRunLoopGetCurrent(), source, kCFRunLoopDefaultMode);</span><br><span class="line"></span><br><span class="line">// 如果可以运行</span><br><span class="line">while (runAlways) &#123;</span><br><span class="line">    @autoreleasepool &#123;</span><br><span class="line">        // 令当前RunLoop运行在DefaultMode下面</span><br><span class="line">        CFRunLoopRunInMode(kCFRunLoopDefaultMode, 1.0e10, true);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 某一时机 静态变量runAlways = NO时 可以保证跳出RunLoop，线程退出</span><br><span class="line">CFRunLoopRemoveSource(CFRunLoopGetCurrent(), source, kCFRunLoopDefaultMode);</span><br><span class="line">CFRelease(source);</span><br></pre></td></tr></table></figure>
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="什么是RunLoop，他是怎么做到有事做事，没事休息"><a href="#什么是RunLoop，他是怎么做到有事做事，没事休息" class="headerlink" title="什么是RunLoop，他是怎么做到有事做事，没事休息"></a>什么是RunLoop，他是怎么做到有事做事，没事休息</h2><ul>
+<li>是通过内部事件循环来对事件和消息进行管理的一个对象</li>
+<li>这个事件循环，不是简单的for循环，而是有事做事，没事休眠的一个循环，避免浪费系统资源</li>
+<li>RunLoop的休眠和唤醒是系统对于用户态和内核态进行切换造成的</li>
+</ul>
+<h2 id="RunLoop与线程是怎么的关系？"><a href="#RunLoop与线程是怎么的关系？" class="headerlink" title="RunLoop与线程是怎么的关系？"></a>RunLoop与线程是怎么的关系？</h2><p>RunLopp和线程是一一对应的。<br>新创建的线程模式是没有RunLoop的</p>
+<h2 id="如何实现一个常驻线程？"><a href="#如何实现一个常驻线程？" class="headerlink" title="如何实现一个常驻线程？"></a>如何实现一个常驻线程？</h2><ul>
+<li>创建一个线程对应的RunLoop</li>
+<li>向这个RunLoop中添加一个Source或者timer、observer、或者port</li>
+<li>最后调用CFRunLoopRunInMode </li>
+</ul>
+<p>运行的模式和添加的的模式应该属于一个mode这样才能实现常驻线程</p>
+<h2 id="怎么保证子线程数据回来更新UI不打断用户滑动操作？"><a href="#怎么保证子线程数据回来更新UI不打断用户滑动操作？" class="headerlink" title="怎么保证子线程数据回来更新UI不打断用户滑动操作？"></a>怎么保证子线程数据回来更新UI不打断用户滑动操作？</h2><p>用户滑动操作实际上是在RunLoop中的trackingMode下，只要我们保证子线程的数据更新UI的时候处于defalutmode下，就不会影响用户动画操作。</p>
+
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:53:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/TCP创建连接的三次握手，关闭连接的四次挥手。/">TCP创建连接的三次握手，关闭连接的四次挥手。</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+
+<!--MOB SHARE BEGIN-->
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/07/14/iOS晋级知识汇总(十一)RunLoop/" alt="二维码">
+     
+    </div>
+
+</div>
+
+<div class="mask js-mask"></div>
+<!--MOB SHARE END-->
+
+
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/13/iOS晋级知识汇总(九)Block/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS  深、浅拷贝的那些奇葩的事（四）/">iOS  深、浅拷贝的那些奇葩的事（四）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:52:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 深拷贝，完全深拷贝（三）/">iOS 深拷贝，完全深拷贝（三）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 深、浅拷贝NSArray、NSMutableArray（二）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:51:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 深、浅拷贝NSArray、NSMutableArray（二）/">iOS 深、浅拷贝NSArray、NSMutableArray（二）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS 深、浅拷贝的认知（一）/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:50:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS 深、浅拷贝的认知（一）/">iOS 深、浅拷贝的认知（一）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/怎么去处理学习的深度与广度？/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:50:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/怎么去处理学习的深度与广度？/">怎么去处理学习的深度与广度？</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/有必要了解手机定位几种实现方式/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:49:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/有必要了解手机定位几种实现方式/">有必要了解手机定位几种实现方式</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/07/30/iOS Objective-C为什么属性（property）同时重写setter、getter方法会报错？/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:49:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/07/30/iOS Objective-C为什么属性（property）同时重写setter、getter方法会报错？/">iOS Objective-C为什么属性（property）同时重写setter、getter方法会报错？</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/9/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/8/">8</a><a class="page-number" href="/archives/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/11/">Next &raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -412,8 +437,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

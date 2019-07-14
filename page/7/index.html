@@ -165,6 +165,86 @@
             
   
     
+<article id="post-汇编基础（七）Ida分析Ipa中的MachO文件，得到汇编，还原高级代码、简单版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/汇编基础（七）Ida分析Ipa中的MachO文件，得到汇编，还原高级代码、简单版/">汇编基础（七）Ida分析Ipa中的MachO文件，得到汇编，还原高级代码、简单版</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/汇编基础（七）Ida分析Ipa中的MachO文件，得到汇编，还原高级代码、简单版/" class="archive-article-date">
+  	<time datetime="2018-07-30T11:59:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ul>
+<li>首先我们准备一个工程</li>
+<li>添加一些简单的函数调用，最基本的运算</li>
+<li>Bulid得到一个app包</li>
+<li>将app包里面的MachO文件放入到ida中分析汇编（ida去网上找资源）</li>
+<li>初步的将汇编还原成高级代码
+        
+          <a class="article-more-a" href="/2018/07/30/汇编基础（七）Ida分析Ipa中的MachO文件，得到汇编，还原高级代码、简单版/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/汇编基础（七）Ida分析Ipa中的MachO文件，得到汇编，还原高级代码、简单版/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
 <article id="post-汇编基础（六）内存分配区" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
 
@@ -824,81 +904,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/30/HSB:HSL、RGB他们的纯色/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-iOS 推送步骤以及原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/iOS 推送步骤以及原理/">iOS 推送步骤以及原理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/iOS 推送步骤以及原理/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="iOS推送"><a href="#iOS推送" class="headerlink" title="iOS推送"></a>iOS推送</h1><h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><p>1.应用程序向系统APNS注册消息推送。<br>2.iOS系统从APNS Server获取device token,应用程序接收device token.<br>3.应用程序将device token 发送给PUSH服务器，服务器进行缓存处理。<br>4.服务器在触发推送事件以后向APNS服务器发送推送消息，附带的有Device Token、 message等等一些附加值。<br>5.APNS服务将消息下发到iphone。<br>
-        
-          <a class="article-more-a" href="/2018/07/30/iOS 推送步骤以及原理/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/iOS 推送步骤以及原理/">展开全文 >></a>
         </p>
       
 

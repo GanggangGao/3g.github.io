@@ -165,6 +165,82 @@
             
   
     
+<article id="post-IPhone一起玩越狱 -（十七）- tweak 反反反插入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/30/IPhone一起玩越狱 -（十七）- tweak 反反反插入/">IPhone一起玩越狱 -（十七）- tweak 反反反插入</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/30/IPhone一起玩越狱 -（十七）- tweak 反反反插入/" class="archive-article-date">
+  	<time datetime="2018-07-30T12:06:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/7980283-f8e0f332b29793c8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt=""></p>
+<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p><strong>tweak：</strong> 在越狱环境，我要去修改，玩玩某个App，需要做的就是用theos创建一个tweak的项目，然后去修改App<br><strong>反tweak：</strong>  当我知道tweak去将动态库临时插入进程从而修改我的App的时候，这么搞那可不行万一怀孕了呐？，插入进程需要的DYLD的宏的环境变量DYLD_INSTER_LIBRARIES，查看dyld的源代码，我知道了在MachO文件中添加一个section其中segmentname、sectionname分别为<strong>RESTRICT、</strong>restrict从而达到我要的防治进程使用DYLD临时插入动态库<br><strong>反反tweak：</strong> 前几天玩的好好的App，突然之间tweak插入进程插不进去，我擦，这怎么回事？ 经过反复搜索，各种途径的努力，原来App在项目打包的时候，在MachO文件中添加了一个section其中segmentname、sectionname分别为<strong>RESTRICT、</strong>restrict，那么我只要修改MachO文件中的这个section，使它的segmentname、sectionname任意字段修改不等于<strong>RESTRICT、</strong>restrict，那么我的目的就达到了，然后我还是可以爆你。<br>
+        
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（十七）- tweak 反反反插入/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（十七）- tweak 反反反插入/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
 <article id="post-IPhone一起玩越狱 -（十六）- tweak 反反插入" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
 
@@ -822,83 +898,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（八）- 砸壳的概述/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-IPhone一起玩越狱 -（七）-  Cycript环境调试App" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/IPhone一起玩越狱 -（七）-  Cycript环境调试App/">IPhone一起玩越狱 -（七）-  Cycript环境调试App</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/IPhone一起玩越狱 -（七）-  Cycript环境调试App/" class="archive-article-date">
-  	<time datetime="2018-07-30T12:03:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="https://upload-images.jianshu.io/upload_images/7980283-fbecf8630726af9a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt=""></p>
-<h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>越狱准备了那么久，到底为了什么？<br>当然是越狱调试、开发一些新的东西，比如将正儿八经的App调试修改。。。。</p>
-<h2 id="配置Cycript环境"><a href="#配置Cycript环境" class="headerlink" title="配置Cycript环境"></a>配置Cycript环境</h2><p>在你的cydia中搜索<code>Cycript</code>安装，也可以直接添加我给的<a href="http://apt.so/zacharyspark" target="_blank" rel="noopener">添加源地址</a><br>
-        
-          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（七）-  Cycript环境调试App/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/IPhone一起玩越狱 -（七）-  Cycript环境调试App/">展开全文 >></a>
         </p>
       
 
