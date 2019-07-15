@@ -165,6 +165,93 @@
             
   
     
+<article id="post-队列异步和同步执行的不同" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/07/队列异步和同步执行的不同/">队列异步和同步执行的不同</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/07/队列异步和同步执行的不同/" class="archive-article-date">
+  	<time datetime="2018-11-07T02:05:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="队列异步和同步执行的不同"><a href="#队列异步和同步执行的不同" class="headerlink" title="队列异步和同步执行的不同"></a>队列异步和同步执行的不同</h1><p>并行队列同步执行，并行队列的特点是：不需要等待前一个任务执行完成就可调度下一个任务；同步执行特点：不会开启新的线程；所以任务是one by one的执行。</p>
+<p>串行队列同步执行，串行队列的特点：按顺序执行；同步执行特点：不会开启新的线程； so，one by one 执行</p>
+<p>并行队列异步执行，并行队列的特点：不需要等待前一个任务执行完成就可调度下一个任务；异步执行特点：可以开启新的线程；so 这个组合是实现任务的并发。</p>
+<p>串行队列异步执行，串行队列的特点：按顺序执行；异步执行：可以开启新的线程；所以串行队列异步执行也是 one by one；</p>
+
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">经验笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/07/队列异步和同步执行的不同/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
 <article id="post-玩溜Cocos Creator入门学习（九）UI系统介绍UI组件（Slider）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
 
@@ -1008,101 +1095,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/09/25/玩溜Cocos-Creator入门学习（三）UI系统UI的组件（Layout、EditBox、RichText）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-玩溜Cocos-Creator入门学习（二）UI系统介绍-UI的组件（Canvas、Widget、Button）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/21/玩溜Cocos-Creator入门学习（二）UI系统介绍-UI的组件（Canvas、Widget、Button）/">玩溜Cocos Creator入门学习（二）UI系统介绍 UI的组件（Canvas、Widget、Button）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/21/玩溜Cocos-Creator入门学习（二）UI系统介绍-UI的组件（Canvas、Widget、Button）/" class="archive-article-date">
-  	<time datetime="2018-09-21T03:11:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>Cocos Creator是触控科技推出的最新的开发者工具，实现了彻底的脚本化、组件化、以及数据驱动的特点，当然还有一个更加好用的UI系统，</p>
-<p>UI系统的基本组成部分和工作流程，所有UI界面的生产都是由最基本的UI元素拼装而成，下面就是UI系统的UI组件的介绍。<br>
-        
-          <a class="article-more-a" href="/2018/09/21/玩溜Cocos-Creator入门学习（二）UI系统介绍-UI的组件（Canvas、Widget、Button）/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Cocos Creator</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">游戏</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Cocos Creator游戏UI</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/21/玩溜Cocos-Creator入门学习（二）UI系统介绍-UI的组件（Canvas、Widget、Button）/">展开全文 >></a>
         </p>
       
 

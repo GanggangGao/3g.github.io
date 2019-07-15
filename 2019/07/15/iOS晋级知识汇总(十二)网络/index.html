@@ -8,17 +8,45 @@
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
   <title>Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Coding yourself">
+  <meta name="description" content="1title:iOS晋级知识汇总(十二)网络 网络 http协议 http与网络安全 TCP/UDP DNS解析 Session/Cookie">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Struggle3g‘s Blog">
-<meta property="og:url" content="https://www.struggle3g.com/page/9/index.html">
+<meta property="og:url" content="https://www.struggle3g.com/2019/07/15/iOS晋级知识汇总(十二)网络/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="Coding yourself">
+<meta property="og:description" content="1title:iOS晋级知识汇总(十二)网络 网络 http协议 http与网络安全 TCP/UDP DNS解析 Session/Cookie">
 <meta property="og:locale" content="ch">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-74fe8181c376a438.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-a73982bd93f737cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-caf22ec5ae7e14b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-f00a788a97de6f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-8a8ff2d9434c7a8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-c01e6506d57a59e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-2bf9ba64da9e4efc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-9f39f149b691496c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-d39a06eafd0a2b47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-801688ccf001ef78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-08c3534b7c8bc3b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-ac7e769acf04d4fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-7492c7124624ea38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-cbe86aad75d37639.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-fde29b8221c6d136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-9d2be8f4db8fac4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-4a41270305c60414.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-d236ec5298f3fe5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-39698cb1986d9ef5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-9bde4c888df973d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-b4c0c707209c90cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-50d0486af9dea10f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-4f1bfbec69d42c7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-c1224e965885c9fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-2db80234309c536c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/7980283-a3e34957a326bded.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-07-15T15:53:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="Coding yourself">
+<meta name="twitter:description" content="1title:iOS晋级知识汇总(十二)网络 网络 http协议 http与网络安全 TCP/UDP DNS解析 Session/Cookie">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/7980283-74fe8181c376a438.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -163,498 +191,387 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-    
-<article id="post-iOS Objective-C为什么属性（property）同时重写setter、getter方法会报错？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-iOS晋级知识汇总(十二)网络" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
 
     
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/iOS Objective-C为什么属性（property）同时重写setter、getter方法会报错？/">iOS Objective-C为什么属性（property）同时重写setter、getter方法会报错？</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/iOS Objective-C为什么属性（property）同时重写setter、getter方法会报错？/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:49:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><pre><code>在开发当中，遇到定义了一个属性，需要同时重构它的setter、getter方法，有的时候会报错，上代码：
-</code></pre>
-        
-          <a class="article-more-a" href="/2018/07/30/iOS Objective-C为什么属性（property）同时重写setter、getter方法会报错？/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/iOS Objective-C为什么属性（property）同时重写setter、getter方法会报错？/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-本地新建项目夹，push到远程git：! [rejected] master -&gt; master (fetch first),fatal- refusing to merge unrelated histories, ! [rejected] master -&gt; master (non-fast-forward)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/本地新建项目夹，push到远程git：! [rejected] master -> master (fetch first),fatal- refusing to merge unrelated histories, ! [rejected] master -> master (non-fast-forward)/">本地新建项目夹，push到远程git：! [rejected] master -&gt; master (fetch first),fatal- refusing to merge unrelated histories, ! [rejected] master -&gt; master (non-fast-forward)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/本地新建项目夹，push到远程git：! [rejected] master -> master (fetch first),fatal- refusing to merge unrelated histories, ! [rejected] master -> master (non-fast-forward)/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:48:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="在自己创建一个新的代码仓库，然后本地创建了一个项目夹，我们需要将文件的文件夹里面的内容上传到git，遇到一些错误信息。"><a href="#在自己创建一个新的代码仓库，然后本地创建了一个项目夹，我们需要将文件的文件夹里面的内容上传到git，遇到一些错误信息。" class="headerlink" title="在自己创建一个新的代码仓库，然后本地创建了一个项目夹，我们需要将文件的文件夹里面的内容上传到git，遇到一些错误信息。"></a>在自己创建一个新的代码仓库，然后本地创建了一个项目夹，我们需要将文件的文件夹里面的内容上传到git，遇到一些错误信息。</h2><h3 id="1-首先创建仓库"><a href="#1-首先创建仓库" class="headerlink" title="1.首先创建仓库:"></a>1.首先创建仓库:</h3><p><img src="http://upload-images.jianshu.io/upload_images/7980283-e2325a6715fcbfaf?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<pre><code>创建一个名字为gittest的仓库，在本地电脑创建一个gittest的项目夹用终端进入输入命令：
-</code></pre>
-        
-          <a class="article-more-a" href="/2018/07/30/本地新建项目夹，push到远程git：! [rejected] master -> master (fetch first),fatal- refusing to merge unrelated histories, ! [rejected] master -> master (non-fast-forward)/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/本地新建项目夹，push到远程git：! [rejected] master -> master (fetch first),fatal- refusing to merge unrelated histories, ! [rejected] master -> master (non-fast-forward)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-iPhone定位服务    " class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/iPhone定位服务    /">iPhone定位服务</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/iPhone定位服务    /" class="archive-article-date">
-  	<time datetime="2018-07-30T11:47:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>互联网已成为当今世界不可缺少的一部分，它使整个地球成为一个可以互通的网络村，定位服务在其中起到了非常重要的作用,只要跟位置相关的内容处处都离不开定位服务，定位服务在iOS上面是怎么实现的？*(自己挖个坑，详细了解一下定位服务的应用范围等等)已埋👉[详情](https://www.jianshu.com/p/78746283e876)*
-</code></pre><h1 id="iPhone定位服务"><a href="#iPhone定位服务" class="headerlink" title="iPhone定位服务"></a>iPhone定位服务</h1><pre><code>在iOS中定位功能是用Core  Location框架来进行操作的，首先创建一个[CLLocationManager](https://developer.apple.com/documentation/corelocation/cllocationmanager)，通过这个管理者进行定位服务。
-</code></pre><hr>
-        
-          <a class="article-more-a" href="/2018/07/30/iPhone定位服务    /#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/iPhone定位服务    /">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-CLLocationManagerDelegate协议详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/CLLocationManagerDelegate协议详解/">CLLocationManagerDelegate协议详解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/CLLocationManagerDelegate协议详解/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:46:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://upload-images.jianshu.io/upload_images/7980283-d54cfc9774f7b538?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<h3 id="CLLocationManagerDelegate协议详解"><a href="#CLLocationManagerDelegate协议详解" class="headerlink" title="CLLocationManagerDelegate协议详解"></a>CLLocationManagerDelegate协议详解</h3><h3 id="代理方法："><a href="#代理方法：" class="headerlink" title="代理方法："></a>代理方法：</h3>
-        
-          <a class="article-more-a" href="/2018/07/30/CLLocationManagerDelegate协议详解/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/CLLocationManagerDelegate协议详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-CLAuthorizationStatus详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/CLAuthorizationStatus详解/">CLAuthorizationStatus详解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/CLAuthorizationStatus详解/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:45:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://upload-images.jianshu.io/upload_images/7980283-899087eb931ad02d?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image"></p>
-<h1 id="CLAuthorizationStatus"><a href="#CLAuthorizationStatus" class="headerlink" title="CLAuthorizationStatus"></a>CLAuthorizationStatus</h1><h4 id="告诉开发者App是否被授权使用定位服务，枚举："><a href="#告诉开发者App是否被授权使用定位服务，枚举：" class="headerlink" title="告诉开发者App是否被授权使用定位服务，枚举："></a>告诉开发者App是否被授权使用定位服务，枚举：</h4><pre><code>[kCLAuthorizationStatusNotDetermined](https://developer.apple.com/documentation/corelocation/clauthorizationstatus/kclauthorizationstatusnotdetermined?language=objc)  //用户没有选择是否要使用定位服务（弹框没选择，或者根本没有弹框）
-</code></pre>
-        
-          <a class="article-more-a" href="/2018/07/30/CLAuthorizationStatus详解/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/CLAuthorizationStatus详解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-NSLocale 本地区域化 - Swift" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/NSLocale 本地区域化 - Swift/">NSLocale 本地区域化 - Swift</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/NSLocale 本地区域化 - Swift/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:41:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <pre><code>围绕着[NSLocale 区域化 - Objective-C](https://www.jianshu.com/p/38318cfbf986) 这篇来介绍一下 Swift 版本NSLocale的内容，并且会给出一些与Objective-C的一些不同之处。  Swift4.0版本
-</code></pre><h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><p><a href="https://developer.apple.com/documentation/foundation/nslocale" target="_blank" rel="noopener">    public init(localeIdentifier string: String)</a><br>
-        
-          <a class="article-more-a" href="/2018/07/30/NSLocale 本地区域化 - Swift/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/NSLocale 本地区域化 - Swift/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-NSLocale 本地区域化 - Objective-C" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/NSLocale 本地区域化 - Objective-C/">NSLocale 本地区域化 - Objective-C</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/NSLocale 本地区域化 - Objective-C/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:41:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="初衷"><a href="#初衷" class="headerlink" title="初衷"></a>初衷</h1><hr>
-<pre><code>有的时候在项目当中会使用到本地区域化的一些内容，还有可能需要使用别的区域的一些标识、属性、或者这个标识所对应的展示的内容（NSString等等），大概的了解还是有必要的。
-</code></pre><h2 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h2><ul>
-<li><a href="https://developer.apple.com/documentation/foundation/nslocale/1414217-initwithlocaleidentifier?language=objc" target="_blank" rel="noopener">initWithLocaleIdentifier</a>                实例方式创建</li>
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title:iOS晋级知识汇总(十二)网络</span><br></pre></td></tr></table></figure>
+<h1 id="网络"><a href="#网络" class="headerlink" title="网络"></a>网络</h1><ul>
+<li>http协议</li>
+<li>http与网络安全</li>
+<li>TCP/UDP</li>
+<li>DNS解析</li>
+<li>Session/Cookie</li>
 </ul>
+<a id="more"></a>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
+<li>请求/响应报文</li>
+<li>连接建立的流程</li>
+<li>HTTP的特点</li>
+</ul>
+<h3 id="请求报文"><a href="#请求报文" class="headerlink" title="请求报文"></a>请求报文</h3><ul>
+<li>请求行<ul>
+<li>方法、URL、协议版本、</li>
+<li>CRLF (Carriage-Return Line-Feed)回车换行符</li>
+</ul>
+</li>
+<li>请求头部<ul>
+<li>首部字段名:值 CRLF</li>
+<li>首部字段名:值 CRLF</li>
+<li>CRLF</li>
+</ul>
+</li>
+<li>实体<ul>
+<li>get不带</li>
+<li>post带</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-74fe8181c376a438.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/550" alt="请求报文.png"></p>
+<h3 id="响应报文"><a href="#响应报文" class="headerlink" title="响应报文"></a>响应报文</h3><ul>
+<li>响应行<ul>
+<li>版本、状态码、短语(状态码的描述)、CRLF</li>
+</ul>
+</li>
+<li>响应头部<ul>
+<li>首部字段名:值 CRLF</li>
+<li>首部字段名:值 CRLF</li>
+<li>CRLF</li>
+</ul>
+</li>
+<li>响应实体</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-a73982bd93f737cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="响应报文.png"></p>
+<h3 id="HTTP的请求方式都有哪些？"><a href="#HTTP的请求方式都有哪些？" class="headerlink" title="HTTP的请求方式都有哪些？"></a>HTTP的请求方式都有哪些？</h3><p>get、post、head、put、 delete、options</p>
+<h3 id="get和post方式有何区别？"><a href="#get和post方式有何区别？" class="headerlink" title="get和post方式有何区别？"></a>get和post方式有何区别？</h3><ul>
+<li>get请求参数以？分割拼接到URL后面，post请求参数在Body里面</li>
+<li>get参数长度限制2048个字符，post一般没有该限制</li>
+<li><p>get请求不安全，post请求比较安全</p>
+</li>
+<li><p>get用来获取资源？</p>
 <ul>
-<li><p><a href="https://developer.apple.com/documentation/foundation/nslocale/1488627-localewithlocaleidentifier?language=objc" target="_blank" rel="noopener">localeWithLocaleIdentifier:</a>         类方式创建</p>
-        
-          <a class="article-more-a" href="/2018/07/30/NSLocale 本地区域化 - Objective-C/#more">more >></a>
-        
+<li>安全的</li>
+<li>幂等的</li>
+<li>可缓存的</li>
+</ul>
+</li>
+<li>post处理资源<ul>
+<li>非安全的</li>
+<li>非幂等的</li>
+<li>不可缓存的</li>
+</ul>
+</li>
+</ul>
+<p>这些数据都是从RFC（Request For Comments）获取的。</p>
+<h4 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h4><ul>
+<li>不引起server端的任何状态变化</li>
+<li>get、head、options</li>
+</ul>
+<h4 id="幂等性"><a href="#幂等性" class="headerlink" title="幂等性"></a>幂等性</h4><ul>
+<li>同一个请求方法执行多次和执行一次的效果完全相同。</li>
+<li>get、put、delete</li>
+</ul>
+<h4 id="可缓存性"><a href="#可缓存性" class="headerlink" title="可缓存性"></a>可缓存性</h4><ul>
+<li>请求是否可以被缓存</li>
+<li>get 、head</li>
+<li>官方文档定义的一个规范，代理服务器可以缓存，</li>
+</ul>
+<h4 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h4><p>2XX(成功)、3XX(发生网络的重定向)、4XX(客户端发出的请求有异常)、5XX(server有异常)</p>
+<h2 id="HTTP的连接过程"><a href="#HTTP的连接过程" class="headerlink" title="HTTP的连接过程"></a>HTTP的连接过程</h2><h3 id="HTTP中的TCP连接的三次握手，和四次挥手"><a href="#HTTP中的TCP连接的三次握手，和四次挥手" class="headerlink" title="HTTP中的TCP连接的三次握手，和四次挥手"></a>HTTP中的TCP连接的三次握手，和四次挥手</h3><p><strong>三次握手</strong></p>
+<ul>
+<li>1、client -&gt; syn -&gt; server</li>
+<li>2、server -&gt; syn,ack -&gt; client</li>
+<li>3、client -&gt; ack -&gt; server</li>
+</ul>
+<p><strong>传输数据</strong></p>
+<ul>
+<li>4、Client -&gt; http请求报文 -&gt;server</li>
+<li>5、Server -&gt; http响应报文 -&gt;Client</li>
+</ul>
+<p><strong>四次挥手</strong></p>
+<ul>
+<li>6、client -&gt; FIN -&gt; server</li>
+<li>7、server -&gt; ACK -&gt; client</li>
+<li>8、server -&gt; FIN、ACK -&gt; Client</li>
+<li>9、Client -&gt; ACK -&gt; server</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-caf22ec5ae7e14b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HTTP的连接过程.png"></p>
+<h2 id="HTTP的特点"><a href="#HTTP的特点" class="headerlink" title="HTTP的特点"></a>HTTP的特点</h2><ul>
+<li><p>无连接</p>
+<ul>
+<li>HTTP的持久连接方案</li>
+<li>如何理解HTTP的持久连接方案</li>
+</ul>
+</li>
+<li><p>无状态 (多次发送http请求，如果是同一个用户，server端是不知道的)</p>
+<ul>
+<li>http如何规避无状态？<ul>
+<li>Cookie、session</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="HTTP的持久连接"><a href="#HTTP的持久连接" class="headerlink" title="HTTP的持久连接"></a>HTTP的持久连接</h3><p><strong>非持久连接</strong></p>
+<p>每次发送网络请求都是需要重新创建TCP的连接的。</p>
+<p><strong>持久连接</strong></p>
+<p>打开一条TCP通道，之后在一定时间，多个HTTP请求可能都是这条TCP链路上面进行的请求的。在经历一定时间之后，会关闭这条TCP通道。提升的HTTP请求响应的效率。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-f00a788a97de6f3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="持久连接.png"></p>
+<h4 id="请求头部字段"><a href="#请求头部字段" class="headerlink" title="请求头部字段"></a>请求头部字段</h4><ul>
+<li>Connection :keep-alive</li>
+<li>time:20  持续多久有效</li>
+<li>max:     这条连接最多发生多少次请求报文和响应报文对的次数。</li>
+</ul>
+<h4 id="如何判断一个请求是否结束的？"><a href="#如何判断一个请求是否结束的？" class="headerlink" title="如何判断一个请求是否结束的？"></a>如何判断一个请求是否结束的？</h4><ul>
+<li>content-length : 1024   <ul>
+<li>响应报文有一个content-length，当我们响应完成以后，根据这个字段的内容，来判断我们接收到的数据字节数有没有达到content-length，如果达到就代表已经完成了请求。</li>
+</ul>
+</li>
+<li>Chunked<ul>
+<li>在响应报文中的头部字段有一个chunked，该请求的最后一次请求中的响应报文头部字段有一个Chunked为空的字段，那么久整个这个请求已经完成了。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Charles抓包的原理是怎么样的？"><a href="#Charles抓包的原理是怎么样的？" class="headerlink" title="Charles抓包的原理是怎么样的？"></a>Charles抓包的原理是怎么样的？</h3><ul>
+<li>利用了中间人攻击漏洞来实现的。</li>
+</ul>
+<h2 id="HTTPS与网络安全"><a href="#HTTPS与网络安全" class="headerlink" title="HTTPS与网络安全"></a>HTTPS与网络安全</h2><p>HTTPS是安全的HTTP，它的安全是由应用层之下，传输层之上的TLS/SSL协议决定的</p>
+<h3 id="HTTPS和HTTP什么区别？"><a href="#HTTPS和HTTP什么区别？" class="headerlink" title="HTTPS和HTTP什么区别？"></a>HTTPS和HTTP什么区别？</h3><p>HTTPS = HTTP + SSL/TLS</p>
+<h3 id="HTTPS的协议栈"><a href="#HTTPS的协议栈" class="headerlink" title="HTTPS的协议栈"></a>HTTPS的协议栈</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-8a8ff2d9434c7a8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HTTPS协议栈.png"></p>
+<h3 id="HTTPS连接建立流程是怎么样的？"><a href="#HTTPS连接建立流程是怎么样的？" class="headerlink" title="HTTPS连接建立流程是怎么样的？"></a>HTTPS连接建立流程是怎么样的？</h3><ul>
+<li>client -&gt; （报文）client支持TLS版本号，支持的加密算法，Random numberC -&gt; server</li>
+<li>server -&gt;  选择的加密算法,random number S， server证书 -&gt; client</li>
+<li>client -&gt;  <strong>验证server证书</strong>，也就是验证公钥、私钥是否正确，server是否合法</li>
+<li>client -&gt;  <strong>组装会话密钥</strong>，通过Random numberC、S和预主密钥。</li>
+<li>Client -&gt;  通过server的公钥对预主密钥进行加密传输 -&gt; server</li>
+<li>server -&gt;  通过私钥来解密的到预主密钥</li>
+<li>server -&gt;  <strong>组装会话密钥</strong>，通过Random numberC、S和预主密钥组装会话密钥</li>
+<li>client -&gt;  加密的握手消息 -&gt; server  验证安全通道是否完成</li>
+<li>server -&gt;  返回一个加密的握手消息 -&gt; client  安全通道创建完成</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-c01e6506d57a59e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HTTPS加密的过程.png"></p>
+<h4 id="会话密钥"><a href="#会话密钥" class="headerlink" title="会话密钥"></a>会话密钥</h4><p>会话密钥 代表的是对称加密的一个结果。</p>
+<p>会话密钥 = 一定的算法(random S + random C + 预主密钥) </p>
+<h3 id="HTTPS都使用了哪些加密手段？-为什么？"><a href="#HTTPS都使用了哪些加密手段？-为什么？" class="headerlink" title="HTTPS都使用了哪些加密手段？ 为什么？"></a>HTTPS都使用了哪些加密手段？ 为什么？</h3><ul>
+<li>对称加密</li>
+<li>非对称加密<ul>
+<li>耗时</li>
+</ul>
+</li>
+</ul>
+<p>因为加密和解密非对称加密的算法是不一样的，所以在连接建立过程中，使用非对称加密来保证安全。</p>
+<p>如果连接建立以后，数据传输的时候用对称加密，来解决这种耗时操作带来的性能损耗。</p>
+<h2 id="TCP-UDP"><a href="#TCP-UDP" class="headerlink" title="TCP/UDP"></a>TCP/UDP</h2><p>传输层协议</p>
+<h3 id="TCP"><a href="#TCP" class="headerlink" title="TCP"></a>TCP</h3><p>传输控制协议</p>
+<h4 id="TCP的特点"><a href="#TCP的特点" class="headerlink" title="TCP的特点"></a>TCP的特点</h4><ul>
+<li>面向连接</li>
+<li>可靠传输</li>
+<li>面向字节流</li>
+<li>流量控制</li>
+<li>拥塞控制</li>
+</ul>
+<p><strong>面向连接</strong></p>
+<ul>
+<li>数据连接之前，需要建立连接<ul>
+<li>三次握手</li>
+</ul>
+</li>
+<li>数据传输完成以后，需要释放连接<ul>
+<li>四次挥手</li>
+</ul>
+</li>
+</ul>
+<p><strong>可靠传输</strong></p>
+<ul>
+<li>无差错</li>
+<li>不丢失</li>
+<li>不重复</li>
+<li><p>按序到达</p>
+</li>
+<li><p>可靠传输在TCP层面是通过停止等待协议来实现的。</p>
+<ul>
+<li>无差错情况</li>
+<li>超时重传</li>
+<li>确认丢失</li>
+<li>确认迟到</li>
+</ul>
+</li>
+</ul>
+<p>无差错情况：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-2bf9ba64da9e4efc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="无差错情况.png"></p>
+<p>超时重传：</p>
+<p>通过重传策略能保证：1、差错校验2、不丢失</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-9f39f149b691496c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="超时重传.png"></p>
+<p>确认丢失：</p>
+<p>client -&gt; 分组报文 -&gt; server<br>server -&gt; 确认报文 -&gt; 丢失没有传给client</p>
+<p>这个时候，client可以冲过超时重传，来解决没有响应的问题，client超时重传，同时server在收到这个分组报文以后，要做两个步骤：1、丢弃掉重传的M1报文，发送给client确认报文<br><img src="https://upload-images.jianshu.io/upload_images/7980283-d39a06eafd0a2b47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="确认丢失.png"></p>
+<p>确认迟到：</p>
+<p>确认报文，在网络当中被堵死，等client超时重传已经完成以后才拿到server的确认报文时，这个超时的确认报文，client接收以后不做任何操作。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-801688ccf001ef78.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="确认迟到.png"></p>
+<p><strong>面向字节流</strong></p>
+<ul>
+<li>当发送方发送数据，有一个发送缓冲，而接收方也有一个接收缓冲</li>
+<li>发送方每次发送给接收方的字节数，TCP会根据自己的情况进行划分，发送方发送了10个字节，并不是一次性把10个字节全部发送给接收者，一次性发送多少字节的数据时TCP根据情况自己决定的。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-08c3534b7c8bc3b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="面向字节流.png"></p>
+<p><strong>流量控制</strong></p>
+<p>是基于滑动窗口协议实现的</p>
+<p>发送窗口时根据接收窗口的大小来控制的。是根据报文的头字段进行控制的。</p>
+<p>当我们现在要继续发送数据的时候，可能由于接收方的接收窗口没有那么大，如果说发送方的窗口非常大的话，实际上就是需要确认报文的时候，在头部添加一个字段来控制发送窗口的大小。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-ac7e769acf04d4fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="滑动窗口协议的过程.png"></p>
+<p><strong>拥塞控制</strong></p>
+<ul>
+<li>慢开始、拥塞避免</li>
+<li>快恢复、快重传</li>
+</ul>
+<p>慢开始、拥塞避免：</p>
+<p>一开始发送1个报文，如果没有产生拥塞就继续发送2个，如果还是没有拥塞就继续按照指数增长发送报文，直到发送到门限初始值的时候，发送的报文指数增量变成了线性增量，直到出现网络拥塞(网络拥堵判断比较复杂，比如可以这么理解连续三个报文的确认ACK都没有收到那么就可以判定时网络拥塞)，然后按乘法减小，来减少发送报文的数量直到发送一个报文，再重新开始开始，并调整它的门限值。</p>
+<p>快恢复、快重传：</p>
+<p>在拥塞以后，直接从新的门限值开始使用拥塞避免加法增大策略进行发送报文</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-7492c7124624ea38.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="拥塞控制.png"></p>
+<h4 id="TCP的问题"><a href="#TCP的问题" class="headerlink" title="TCP的问题"></a>TCP的问题</h4><p><strong>为什么要做三次握手？</strong></p>
+<p>假如是2次握手。</p>
+<p>假设发送一个syn同步报文，在网络环境中超时，发生超时以后，客户端会发生一个超时重传的策略，重新发送一个syn同步报文，当server端收到syn的报文以后，会向client发送一个syn、ack确认报文，如果是2次握手那么就相当于建立了tcp连接，</p>
+<p>假如说，上述2次握手已经完成了，那么重试之前的超时syn报文，发送到了server端，那么server端肯定会认为又有一个TCP建立连接的请求。实际上client建立的连接只有一次。</p>
+<p>那么我们用三次握手？ </p>
+<p>当我们超时的报文被server接收以后，会发送一个确认报文给client，，如果说client已经建立起了TCP连接，那么就不会向Server发送最终确认报文，那么server短也就不会建立起来第二个TCP连接。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-cbe86aad75d37639.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="TCP为什么要三次握手.png"></p>
+<p><strong>为什么要四次挥手</strong></p>
+<p>client跟server是全双工的概念</p>
+<ul>
+<li>Client -&gt; FIN -&gt; server</li>
+<li>Server -&gt; ACK -&gt; client   此时client就已经关闭了。而server端并没有关闭</li>
+<li>如果这时候server端还有数据没有传完，那么继续传数据。</li>
+<li>当server数据发送完成以后  Server -&gt; FIN\ACK -&gt; client</li>
+<li>client -&gt; ACK -&gt; server</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-fde29b8221c6d136.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="为什么TCP需要四次挥手.png"></p>
+<h3 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h3><p>用户数据报协议</p>
+<h4 id="UDP特点"><a href="#UDP特点" class="headerlink" title="UDP特点"></a>UDP特点</h4><ul>
+<li><strong>无连接</strong>，  不需要建立连接</li>
+<li><strong>尽最大努力交付</strong> ，不可靠传输</li>
+<li><strong>面向报文</strong>，既不合并，也不拆分</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-9d2be8f4db8fac4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UDP面向报文的特点.png"></p>
+<h4 id="UDP的功能"><a href="#UDP的功能" class="headerlink" title="UDP的功能"></a>UDP的功能</h4><ul>
+<li>复用</li>
+<li>分用</li>
+<li>差错检测</li>
+</ul>
+<p><strong>复用</strong></p>
+<p>socket使用的时候需要ip和端口号，同一个IP地址的电脑上面不同的端口代表不同的应用。同一个应用也可能使用不同的应用层的协议，它们对应的端口号不一样，不管哪一个端口即将要传输数据出去都可以传输层UDP数据报，在经由IP。这就是多端口复用的概念。</p>
+<p><strong>分用</strong></p>
+<p>从Ip层接收了一个IP数据报数据(每一个数据报都有源端口和目标端口的概念)，把它拆分成UDP，根据目标端口进行分发，这就是分用的概念</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-4a41270305c60414.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UDP的复用和分用.png"></p>
+<h4 id="差错检测"><a href="#差错检测" class="headerlink" title="差错检测"></a>差错检测</h4><p>UDP进行差错检测的时候需要拼接的内容。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-d236ec5298f3fe5a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="UDP的差错检测.png"></p>
+<p>上述表红色位校验位，当接收方接收到UDP数据的时候采用同样的办法的到检验和，是否和传过来的检验和一样，如果一样就没问题，如果不一样就会出现问题</p>
+<h1 id="NDS解析"><a href="#NDS解析" class="headerlink" title="NDS解析"></a>NDS解析</h1><h2 id="了解NDS解析吗？"><a href="#了解NDS解析吗？" class="headerlink" title="了解NDS解析吗？"></a>了解NDS解析吗？</h2><p>域名到IP地址的映射，DNS解析请求采用UDP数据包，且名文</p>
+<p>client通过DNS协议向DNS服务器请求对相应域名的解析，得到Ip地址，再由client向对应的IPserver发送相应的网络请求。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-39698cb1986d9ef5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DNS解析过程.png"></p>
+<h2 id="NDS解析查询方式？"><a href="#NDS解析查询方式？" class="headerlink" title="NDS解析查询方式？"></a>NDS解析查询方式？</h2><ul>
+<li>递归查询  （我去帮你问一下）<ul>
+<li>client去本地DNS请求获取IP，本地DNS不知道，它会去找根域，根域没有找顶级DNS，顶级没有就找权限DNS，找到以后在按照原路返回给Client</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-9bde4c888df973d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DNS递归查询.png"></p>
+<ul>
+<li>迭代查询  (我告诉你谁可能知道)<ul>
+<li>client去本地DNS请求获取IP，本地DNS不知道，它会去找根域DNS，根域会告诉你顶级DNS有可能知道，我告诉你谁可能知道，你自己去问</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-b4c0c707209c90cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DNS迭代查询.png"></p>
+<h2 id="NDS解析存在哪些常见的问题？"><a href="#NDS解析存在哪些常见的问题？" class="headerlink" title="NDS解析存在哪些常见的问题？"></a>NDS解析存在哪些常见的问题？</h2><ul>
+<li>DNS劫持</li>
+<li>DNS解析转发问题</li>
+</ul>
+<h3 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h3><p>DNS解析是UDP数据报，且是名文的，钓鱼服务器会劫持到你的请求，并返回给你错误的IP地址，最终客户端拿到一个错误的serverIP。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-50d0486af9dea10f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DNS劫持.png"></p>
+<h3 id="DNS劫持与HTTP的关系是怎么样的？"><a href="#DNS劫持与HTTP的关系是怎么样的？" class="headerlink" title="DNS劫持与HTTP的关系是怎么样的？"></a>DNS劫持与HTTP的关系是怎么样的？</h3><ul>
+<li>DNS劫持根HTTP完全没有关系的。</li>
+<li>DNS解析发生在HTTP建立之前</li>
+<li>DNS解析请求使用UDP数据报，端口号是53</li>
+</ul>
+<h3 id="DNS解析转发"><a href="#DNS解析转发" class="headerlink" title="DNS解析转发"></a>DNS解析转发</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-4f1bfbec69d42c7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DNS解析转发.png"></p>
+<h3 id="如何解决DNS劫持？"><a href="#如何解决DNS劫持？" class="headerlink" title="如何解决DNS劫持？"></a>如何解决DNS劫持？</h3><ul>
+<li>httpDNS </li>
+<li>长连接</li>
+</ul>
+<p><strong>httpDNS</strong></p>
+<p>使用DNS协议向DNS服务器的53端口进行请求换成使用HTTP协议向DNS服务器的80端口进行请求<br>，119.29.29.29 时中国最大的DNS中介服务器，名字叫<strong>DNSport</strong></p>
+<p><a href="http://119.29.29.29/d?dn=域名&amp;ip=自己的ip地址" target="_blank" rel="noopener">http://119.29.29.29/d?dn=域名&amp;ip=自己的ip地址</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-c1224e965885c9fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="HTTPDNS.png"></p>
+<p><strong>长连接</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/7980283-2db80234309c536c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DNS长连接解决DNS劫持.png"></p>
+<h2 id="Session-Cookie"><a href="#Session-Cookie" class="headerlink" title="Session/Cookie"></a>Session/Cookie</h2><p>HTTP协议无状态特点的补偿</p>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>Client多次发送请求，server是无法记住到用户是不是之前的某个用户</p>
+<p>Cookie主要用来记录用户状态，区分用户：状态保存在客户端。响应报文头部有一个setCookie这个字段。后续的请求报文头部添加Cookie字段值为响应的Set-Cookie</p>
+<h4 id="怎么样修改Cookie？"><a href="#怎么样修改Cookie？" class="headerlink" title="怎么样修改Cookie？"></a>怎么样修改Cookie？</h4><ul>
+<li>新Cookie覆盖旧Cookie</li>
+<li>覆盖规则：name、path、domain等需要与原Cookie一致。</li>
+</ul>
+<h4 id="怎么样删除一个Cookie？"><a href="#怎么样删除一个Cookie？" class="headerlink" title="怎么样删除一个Cookie？"></a>怎么样删除一个Cookie？</h4><ul>
+<li>新Cookie覆盖旧Cookie</li>
+<li>覆盖规则：name、path、domain等需要与原Cookie一致。</li>
+<li>设置Cookie的expires=过去的一个时间点，或者maxAge=0</li>
+</ul>
+<h4 id="怎么保证Cookie的安全？"><a href="#怎么保证Cookie的安全？" class="headerlink" title="怎么保证Cookie的安全？"></a>怎么保证Cookie的安全？</h4><ul>
+<li>对Cookie进行加密处理  脚本可以破解</li>
+<li>只在https上携带Cookie  不容易破解</li>
+<li>设置Cookie为httpOnly，防止跨站脚本攻击</li>
+</ul>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><p>Session也是用来记录用户状态，区分用户的。状态存放在服务器</p>
+<h4 id="Session和Cookie的区别"><a href="#Session和Cookie的区别" class="headerlink" title="Session和Cookie的区别"></a>Session和Cookie的区别</h4><ul>
+<li>Session把状态存放到服务器端</li>
+<li>Cookie把状态存放在客户端</li>
+</ul>
+<h4 id="Session和Cookie关系是怎么样？"><a href="#Session和Cookie关系是怎么样？" class="headerlink" title="Session和Cookie关系是怎么样？"></a>Session和Cookie关系是怎么样？</h4><p>Session需要依赖与Cookie机制来实现</p>
+<h4 id="Session的工作流程"><a href="#Session的工作流程" class="headerlink" title="Session的工作流程"></a>Session的工作流程</h4><p><img src="https://upload-images.jianshu.io/upload_images/7980283-a3e34957a326bded.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Session的工作流程.png"></p>
+<h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h2 id="HTTP的GET和POST方式有什么区别？"><a href="#HTTP的GET和POST方式有什么区别？" class="headerlink" title="HTTP的GET和POST方式有什么区别？"></a>HTTP的GET和POST方式有什么区别？</h2><p>GET</p>
+<ul>
+<li>安全是的get请求不会改变server的状态</li>
+<li>幂等的，请求一次或者多次的到的结果是一样的</li>
+<li>可缓存的</li>
+</ul>
+<p>POST</p>
+<ul>
+<li>不安全的，post可以修改server的状态</li>
+<li>不幂等的，请求一次或者多次的到的结果是不一样的</li>
+<li>不可缓存</li>
+</ul>
+<h2 id="HTTPS连接建立流程是怎么样？"><a href="#HTTPS连接建立流程是怎么样？" class="headerlink" title="HTTPS连接建立流程是怎么样？"></a>HTTPS连接建立流程是怎么样？</h2><h2 id="TCP和UDP有什么区别？"><a href="#TCP和UDP有什么区别？" class="headerlink" title="TCP和UDP有什么区别？"></a>TCP和UDP有什么区别？</h2><p>TCP</p>
+<ul>
+<li>TCP是面向连接的，支持可靠传输、面向字节流，</li>
+<li>包括TCP提供了流量的控制跟拥塞的控制</li>
+</ul>
+<p>UDP</p>
+<ul>
+<li>只是简单的提供了复用、分用、差错检测的基本传输层的功能</li>
+<li>无连接的</li>
+</ul>
+<h2 id="简述TCP的慢开始过程？"><a href="#简述TCP的慢开始过程？" class="headerlink" title="简述TCP的慢开始过程？"></a>简述TCP的慢开始过程？</h2><h2 id="客户端怎么样避免DNS劫持？"><a href="#客户端怎么样避免DNS劫持？" class="headerlink" title="客户端怎么样避免DNS劫持？"></a>客户端怎么样避免DNS劫持？</h2><ul>
+<li>httpDNS</li>
+<li>长链接DNS</li>
+</ul>
+<h2 id="TCP连接的时候为什么是三次，而不是二次？"><a href="#TCP连接的时候为什么是三次，而不是二次？" class="headerlink" title="TCP连接的时候为什么是三次，而不是二次？"></a>TCP连接的时候为什么是三次，而不是二次？</h2><p>假如是2次握手。</p>
+<p>假设发送一个syn同步报文，在网络环境中超时，发生超时以后，客户端会发生一个超时重传的策略，重新发送一个syn同步报文，当server端收到syn的报文以后，会向client发送一个syn、ack确认报文，如果是2次握手那么就相当于建立了tcp连接，</p>
+<p>假如说，上述2次握手已经完成了，那么重试之前的超时syn报文，发送到了server端，那么server端肯定会认为又有一个TCP建立连接的请求。实际上client建立的连接只有一次。</p>
+<p>那么我们用三次握手？ </p>
+<p>当我们超时的报文被server接收以后，会发送一个确认报文给client，，如果说client已经建立起了TCP连接，那么就不会向Server发送最终确认报文，那么server短也就不会建立起来第二个TCP连接。</p>
+<h2 id="四次的挥手，为什么要两方面的断开"><a href="#四次的挥手，为什么要两方面的断开" class="headerlink" title="四次的挥手，为什么要两方面的断开"></a>四次的挥手，为什么要两方面的断开</h2><p>Client和server是全双工的概念</p>
+<ul>
+<li>Client -&gt; FIN -&gt; server</li>
+<li>Server -&gt; ACK -&gt; client   此时client就已经关闭了。而server端并没有关闭</li>
+<li>如果这时候server端还有数据没有传完，那么继续传数据。</li>
+<li>当server数据发送完成以后  Server -&gt; FIN\ACK -&gt; client</li>
+<li>client -&gt; ACK -&gt; server</li>
+</ul>
+<p>在client关闭完成以后，server如果还有数据没有发送完成，server端还是可以单独向client发送数据，直到完成在发送 FIN\ACK结束报文，client在响应ACK报文，这样就相当于整个HTTP请求结束</p>
+
       
 
 
@@ -668,16 +585,83 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/NSLocale 本地区域化 - Objective-C/">展开全文 >></a>
-        </p>
+
       
+        
+
+<!--MOB SHARE BEGIN-->
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.struggle3g.com/2019/07/15/iOS晋级知识汇总(十二)网络/" alt="二维码">
+     
+    </div>
+
+</div>
+
+<div class="mask js-mask"></div>
+<!--MOB SHARE END-->
+
+
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/14/iOS晋级知识汇总(十一)RunLoop/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -697,172 +681,20 @@
 
 
 
-
-
-
-
-
-
-  
-    
-<article id="post-volatitle关键字" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/volatitle关键字/">volatitle关键字</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/volatitle关键字/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:40:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在写程序的过程当中，创建一个单例，然后static volatile 实例的时候volatile这个关键字的含义有点不知其含义。</p>
-<p>总的来说告诉编译器这个volatile修饰的变量是易变的，当需要读取这个变量的值时，应该从内存中读取，而不是从寄存器中读取。<br>
-        
-          <a class="article-more-a" href="/2018/07/30/volatitle关键字/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/volatitle关键字/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-**为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？**" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/30/**为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？**/">为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/30/**为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？**/" class="archive-article-date">
-  	<time datetime="2018-07-30T11:39:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-首先Objectvice-c的语言的动态运行时"><a href="#1-首先Objectvice-c的语言的动态运行时" class="headerlink" title="1.首先Objectvice-c的语言的动态运行时;"></a>1.首先Objectvice-c的语言的动态运行时;</h2><pre><code>每个对象调用方法的时候都是调用Object_msgSend(self, method,value).
-
-当self为空的时候直接返回的空，并不会抛出cash.
-</code></pre><h2 id="2-而为什么向实例对象发送消息的时候，实例对象没有找到method时会抛出cash"><a href="#2-而为什么向实例对象发送消息的时候，实例对象没有找到method时会抛出cash" class="headerlink" title="2.而为什么向实例对象发送消息的时候，实例对象没有找到method时会抛出cash."></a>2.而为什么向实例对象发送消息的时候，实例对象没有找到method时会抛出cash.</h2>
-        
-          <a class="article-more-a" href="/2018/07/30/**为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？**/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/30/**为什么向nil对象发送消息的时候，不会崩溃？向一个实例对象发送消息的时候没找到相关的方法会抛出cash？**/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/8/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span>
-    </nav>
   
+
+  
+
+  
+
+  
+
+
+
+
+
 
 
           </div>
@@ -876,8 +708,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
