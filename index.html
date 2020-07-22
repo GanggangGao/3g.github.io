@@ -211,15 +211,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Runtime</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Objective-C</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">TCP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息转发</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">UDP</a>
         		</li>
       		
 		</ul>
@@ -311,7 +315,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Runtime</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">RunLoop</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -319,7 +323,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息转发</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">事件循环</a>
         		</li>
       		
 		</ul>
@@ -365,22 +369,35 @@
 
   
     
-<article id="post-iOS晋级知识汇总(九)Block" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+<article id="post-iOS晋级知识汇总(十)多线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
 
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/23/iOS晋级知识汇总(十)多线程/">iOS晋级知识汇总(十)多线程</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/23/iOS晋级知识汇总(十)多线程/" class="archive-article-date">
+  	<time datetime="2019-09-23T15:24:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-23</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title:iOS晋级知识汇总(九)Block</span><br></pre></td></tr></table></figure>
-<h1 id="block"><a href="#block" class="headerlink" title="block"></a>block</h1><ul>
-<li>Block介绍</li>
-<li>截获变量</li>
-<li>__block修饰符</li>
-<li>Block的内存管理</li>
-<li>Block的循环引用</li>
+        <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><ul>
+<li>GCD</li>
+<li>NSOperation(AFnetwork可以查看)</li>
+<li>NSThread</li>
+<li>多线程与锁</li>
 </ul>
         
-          <a class="article-more-a" href="/2019/07/13/iOS晋级知识汇总(九)Block/#more">more >></a>
+          <a class="article-more-a" href="/2019/09/23/iOS晋级知识汇总(十)多线程/#more">more >></a>
         
       
 
@@ -392,11 +409,122 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GCD</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">NSOperation-</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">NSThread</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/13/iOS晋级知识汇总(九)Block/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/23/iOS晋级知识汇总(十)多线程/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-iOS晋级知识汇总(九)Block" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/20/iOS晋级知识汇总(九)Block/">iOS晋级知识汇总(九)Block</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/20/iOS晋级知识汇总(九)Block/" class="archive-article-date">
+  	<time datetime="2019-09-20T13:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="block"><a href="#block" class="headerlink" title="block"></a>block</h1><ul>
+<li>Block介绍</li>
+<li>截获变量</li>
+<li>__block修饰符</li>
+<li>Block的内存管理</li>
+<li>Block的循环引用</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/09/20/iOS晋级知识汇总(九)Block/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Block</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/20/iOS晋级知识汇总(九)Block/">展开全文 >></a>
         </p>
       
 
@@ -436,10 +564,24 @@
   <div class="article-inner">
 
     
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/16/iOS晋级知识汇总(八)内存管理/">iOS晋级知识汇总(八)内存管理</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/16/iOS晋级知识汇总(八)内存管理/" class="archive-article-date">
+  	<time datetime="2019-09-16T14:30:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-16</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <hr>
-<h2 id="title-iOS晋级知识汇总-八-内存管理"><a href="#title-iOS晋级知识汇总-八-内存管理" class="headerlink" title="title:iOS晋级知识汇总(八)内存管理"></a>title:iOS晋级知识汇总(八)内存管理</h2><h1 id="iOS的内存管理"><a href="#iOS的内存管理" class="headerlink" title="iOS的内存管理"></a>iOS的内存管理</h1><ul>
+        <h1 id="iOS的内存管理"><a href="#iOS的内存管理" class="headerlink" title="iOS的内存管理"></a>iOS的内存管理</h1><ul>
 <li>内存布局</li>
 <li>内存管理方案</li>
 <li>数据结构</li>
@@ -450,7 +592,7 @@
 <li>循环引用</li>
 </ul>
         
-          <a class="article-more-a" href="/2019/07/12/iOS晋级知识汇总(八)内存管理/#more">more >></a>
+          <a class="article-more-a" href="/2019/09/16/iOS晋级知识汇总(八)内存管理/#more">more >></a>
         
       
 
@@ -462,171 +604,30 @@
     <div class="article-info article-info-index">
       
       
-      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ARC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MRC</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">内存管理方案</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/12/iOS晋级知识汇总(八)内存管理/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-iOS晋级知识汇总(六)框架和架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/11/iOS晋级知识汇总(六)框架和架构/">iOS晋级知识汇总(六)框架和架构</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/11/iOS晋级知识汇总(六)框架和架构/" class="archive-article-date">
-  	<time datetime="2019-07-11T14:53:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="怎样设计一个图片缓存框架-基本框架"><a href="#怎样设计一个图片缓存框架-基本框架" class="headerlink" title="怎样设计一个图片缓存框架(基本框架)"></a>怎样设计一个图片缓存框架(基本框架)</h1><ul>
-<li>Manager</li>
-<li>内存缓存</li>
-<li>磁盘缓存</li>
-<li>网络下载</li>
-<li>CodeManager<ul>
-<li>图片解码</li>
-<li>图片压缩/解压缩</li>
-</ul>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/07/11/iOS晋级知识汇总(六)框架和架构/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/11/iOS晋级知识汇总(六)框架和架构/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-iOS晋级知识汇总(五)设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/11/iOS晋级知识汇总(五)设计模式/">iOS晋级知识汇总(五)设计模式</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/11/iOS晋级知识汇总(五)设计模式/" class="archive-article-date">
-  	<time datetime="2019-07-11T08:50:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="六大设计原则"><a href="#六大设计原则" class="headerlink" title="六大设计原则"></a>六大设计原则</h2>
-        
-          <a class="article-more-a" href="/2019/07/11/iOS晋级知识汇总(五)设计模式/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/11/iOS晋级知识汇总(五)设计模式/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/16/iOS晋级知识汇总(八)内存管理/">展开全文 >></a>
         </p>
       
 
@@ -670,13 +671,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/11/iOS晋级知识汇总(七)第三方库/">iOS晋级知识汇总(七)第三方库</a>
+      <a class="article-title" href="/2019/09/10/iOS晋级知识汇总(七)第三方库/">iOS晋级知识汇总(七)第三方库</a>
     </h1>
   
 
         
-        <a href="/2019/07/11/iOS晋级知识汇总(七)第三方库/" class="archive-article-date">
-  	<time datetime="2019-07-11T03:35:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
+        <a href="/2019/09/10/iOS晋级知识汇总(七)第三方库/" class="archive-article-date">
+  	<time datetime="2019-09-10T13:30:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-10</time>
 </a>
         
       </header>
@@ -686,7 +687,7 @@
         <h1 id="第三方库"><a href="#第三方库" class="headerlink" title="第三方库"></a>第三方库</h1><h2 id="AFNetworking"><a href="#AFNetworking" class="headerlink" title="AFNetworking"></a>AFNetworking</h2><p>iOS客户端的第三方网络框架，<a href="https://github.com/AFNetworking/AFNetworking" target="_blank" rel="noopener">代码地址</a></p>
 <h3 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h3><p><img src="https://upload-images.jianshu.io/upload_images/7980283-855922c8a1bf211f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="AFNetworking的架构图.png"> </p>
         
-          <a class="article-more-a" href="/2019/07/11/iOS晋级知识汇总(七)第三方库/#more">more >></a>
+          <a class="article-more-a" href="/2019/09/10/iOS晋级知识汇总(七)第三方库/#more">more >></a>
         
       
 
@@ -698,11 +699,240 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">AFNetworking</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Reactive Cocoa</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SDWebImageView</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">AsyncDisPlayKit</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/11/iOS晋级知识汇总(七)第三方库/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/10/iOS晋级知识汇总(七)第三方库/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-iOS晋级知识汇总(六)框架和架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/06/iOS晋级知识汇总(六)框架和架构/">iOS晋级知识汇总(六)框架和架构</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/06/iOS晋级知识汇总(六)框架和架构/" class="archive-article-date">
+  	<time datetime="2019-09-06T15:12:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="怎样设计一个图片缓存框架-基本框架"><a href="#怎样设计一个图片缓存框架-基本框架" class="headerlink" title="怎样设计一个图片缓存框架(基本框架)"></a>怎样设计一个图片缓存框架(基本框架)</h1><ul>
+<li>Manager</li>
+<li>内存缓存</li>
+<li>磁盘缓存</li>
+<li>网络下载</li>
+<li>CodeManager<ul>
+<li>图片解码</li>
+<li>图片压缩/解压缩</li>
+</ul>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/09/06/iOS晋级知识汇总(六)框架和架构/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">架构</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MVP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">MVC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/06/iOS晋级知识汇总(六)框架和架构/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+  
+    
+<article id="post-iOS晋级知识汇总(五)设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/09/03/iOS晋级知识汇总(五)设计模式/">iOS晋级知识汇总(六)设计模式</a>
+    </h1>
+  
+
+        
+        <a href="/2019/09/03/iOS晋级知识汇总(五)设计模式/" class="archive-article-date">
+  	<time datetime="2019-09-03T14:45:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><h2 id="六大设计原则"><a href="#六大设计原则" class="headerlink" title="六大设计原则"></a>六大设计原则</h2>
+        
+          <a class="article-more-a" href="/2019/09/03/iOS晋级知识汇总(五)设计模式/#more">more >></a>
+        
+      
+
+
+
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">六大原则</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">责任链</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">桥接</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/09/03/iOS晋级知识汇总(五)设计模式/">展开全文 >></a>
         </p>
       
 
@@ -746,13 +976,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/11/iOS晋级知识汇总(四)算法/">iOS晋级知识汇总(四)算法</a>
+      <a class="article-title" href="/2019/08/28/iOS晋级知识汇总(四)算法/">iOS晋级知识汇总(四)算法</a>
     </h1>
   
 
         
-        <a href="/2019/07/11/iOS晋级知识汇总(四)算法/" class="archive-article-date">
-  	<time datetime="2019-07-10T23:14:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-11</time>
+        <a href="/2019/08/28/iOS晋级知识汇总(四)算法/" class="archive-article-date">
+  	<time datetime="2019-08-28T15:27:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-28</time>
 </a>
         
       </header>
@@ -761,7 +991,7 @@
       
         <p><img src="https://upload-images.jianshu.io/upload_images/7980283-4ee9bc9777e16ab5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="一般算法.png"></p>
         
-          <a class="article-more-a" href="/2019/07/11/iOS晋级知识汇总(四)算法/#more">more >></a>
+          <a class="article-more-a" href="/2019/08/28/iOS晋级知识汇总(四)算法/#more">more >></a>
         
       
 
@@ -773,91 +1003,34 @@
     <div class="article-info article-info-index">
       
       
-      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">字符串反转算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">链表反转算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">有序数组合并</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">排序算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/11/iOS晋级知识汇总(四)算法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-
-
-
-  
-    
-<article id="post-iOS晋级知识汇总(二)runtime" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/10/iOS晋级知识汇总(二)runtime/">iOS晋级知识汇总(二)runtime</a>
-    </h1>
-  
-
-        
-        <a href="/2019/07/10/iOS晋级知识汇总(二)runtime/" class="archive-article-date">
-  	<time datetime="2019-07-10T10:40:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Runtime"><a href="#Runtime" class="headerlink" title="Runtime"></a>Runtime</h1><h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><ul>
-<li>objc_object</li>
-<li>objc_class </li>
-<li>isa指针</li>
-<li>method_t</li>
-</ul>
-        
-          <a class="article-more-a" href="/2019/07/10/iOS晋级知识汇总(二)runtime/#more">more >></a>
-        
-      
-
-
-
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/10/iOS晋级知识汇总(二)runtime/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/28/iOS晋级知识汇总(四)算法/">展开全文 >></a>
         </p>
       
 
@@ -901,13 +1074,13 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/10/iOS晋级知识汇总(三)语言特性/">iOS晋级知识汇总(三)语言特性</a>
+      <a class="article-title" href="/2019/08/25/iOS晋级知识汇总(三)语言特性/">iOS晋级知识汇总(三)语言特性</a>
     </h1>
   
 
         
-        <a href="/2019/07/10/iOS晋级知识汇总(三)语言特性/" class="archive-article-date">
-  	<time datetime="2019-07-10T04:56:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-10</time>
+        <a href="/2019/08/25/iOS晋级知识汇总(三)语言特性/" class="archive-article-date">
+  	<time datetime="2019-08-25T13:15:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-25</time>
 </a>
         
       </header>
@@ -920,7 +1093,7 @@
 <li>把Framework的私有方法公开</li>
 </ul>
         
-          <a class="article-more-a" href="/2019/07/10/iOS晋级知识汇总(三)语言特性/#more">more >></a>
+          <a class="article-more-a" href="/2019/08/25/iOS晋级知识汇总(三)语言特性/#more">more >></a>
         
       
 
@@ -932,11 +1105,34 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">分类</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">关联对象</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Extension</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">KVC</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/10/iOS晋级知识汇总(三)语言特性/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/25/iOS晋级知识汇总(三)语言特性/">展开全文 >></a>
         </p>
       
 
@@ -1060,7 +1256,51 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Runtime</a>
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">六大原则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">责任链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">桥接</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">架构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MVP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GCD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NSOperation-</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">NSThread</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RunLoop</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1068,11 +1308,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">消息转发</a>
+                <a href="javascript:void(0)" class="js-tag color5">事件循环</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Runtime</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">消息转发</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1101,6 +1349,114 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">经验笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AFNetworking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Reactive Cocoa</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SDWebImageView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">AsyncDisPlayKit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UItableview相关</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">数据源同步</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件传递和视图响应</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">图像显示原理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分类</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">关联对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Extension</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">KVC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Block</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">对象、类对象、元类对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">消息传递机制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">消息传递</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">字符串反转算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">链表反转算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">有序数组合并</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ARC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MRC</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">内存管理方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">TCP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UDP</a>
               </li>
             
             <div class="clearfix"></div>
