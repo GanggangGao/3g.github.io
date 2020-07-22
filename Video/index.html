@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://www.struggle3g.com">
   <title>Struggle3g‘s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="只要有树叶飞舞的地方，就会有火在燃烧！       生活就是需要精彩！">
+  <meta name="description" content="只要有树叶飞舞的地方，就会有火在燃烧！                  (function() {                 function log(info) {                     console.log(info);                 }                  function forceSafariPlayVideo() {">
 <meta name="keywords" content="iOS,客户端,流媒体,iot,程序猿,程序员,程序猿,devepoer,开源,代码,code,黑客,破解,砸壳,html,用户体验">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Struggle3g‘s Blog">
 <meta property="og:url" content="https://www.struggle3g.com/Video/index.html">
 <meta property="og:site_name" content="Struggle3g‘s Blog">
-<meta property="og:description" content="只要有树叶飞舞的地方，就会有火在燃烧！       生活就是需要精彩！">
+<meta property="og:description" content="只要有树叶飞舞的地方，就会有火在燃烧！                  (function() {                 function log(info) {                     console.log(info);                 }                  function forceSafariPlayVideo() {">
 <meta property="og:locale" content="ch">
-<meta property="og:updated_time" content="2018-11-01T14:28:09.000Z">
+<meta property="og:updated_time" content="2020-07-22T17:16:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Struggle3g‘s Blog">
-<meta name="twitter:description" content="只要有树叶飞舞的地方，就会有火在燃烧！       生活就是需要精彩！">
+<meta name="twitter:description" content="只要有树叶飞舞的地方，就会有火在燃烧！                  (function() {                 function log(info) {                     console.log(info);                 }                  function forceSafariPlayVideo() {">
   
     <link rel="alternative" href="/atom.xml" title="Struggle3g‘s Blog" type="application/atom+xml">
   
@@ -170,17 +170,56 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <link rel="stylesheet" href="./ins.css">
+        
+<link rel="stylesheet" href="./ins.css">
 <hr>
 <center><h1>只要有树叶飞舞的地方，就会有火在燃烧！</h1></center>
 <hr>
 <center>
-<video controls autoplay loop playsinline="" id="myVideo" style="z-index:-1" width="100%" -webkit-playsinline="true" src="https://raw.githubusercontent.com/GanggangGao/blogImage/master/Videos/borenEnd06-1920*1080last.mp4" type="video/mp4">
+<video id="bgmusic" autoplay preload="" -webkit-playsinline="true" playsinline="true" controls style="z-index:-1" width="100%">
 </video>
+<script>
+            (function() {
+                function log(info) {
+                    console.log(info);
+                }
+
+                function forceSafariPlayVideo() {
+                    videoEl.load();
+                    videoEl.play();
+                }
+                var videoEl = document.getElementById('bgmusic');
+                videoEl.addEventListener('loadstart', function() {
+                    log('loadstart');
+                }, false);
+                videoEl.addEventListener('loadeddata', function() {
+                    log('loadeddata');
+                }, false);
+                videoEl.addEventListener('loadedmetadata', function() {
+                    log('loadedmetadata');
+                }, false);
+                videoEl.addEventListener('canplay', function() {
+                    log('canplay');
+                }, false);
+                videoEl.addEventListener('play', function() {
+                    log('play');
+                    window.removeEventListener('touchstart', forceSafariPlayVideo, false);
+                }, false);
+                videoEl.addEventListener('playing', function() {
+                    log('playing');
+                }, false);
+                videoEl.addEventListener('pause', function() {
+                    log('pause');
+                }, false);
+
+                window.addEventListener('touchstart', forceSafariPlayVideo, false);
+
+                videoEl.src = 'http://47.92.244.138/home/gangzi/img/BlogResources/Videos/boren.mp4';
+            })();
+        </script>
 </center>
 
 <div>生活就是需要精彩！<div>
-
 
 
 
@@ -384,22 +423,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">六大原则</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">责任链</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">桥接</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
              
@@ -416,6 +439,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">六大原则</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">责任链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">桥接</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">GCD</a>
               </li>
              
@@ -428,23 +467,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">RunLoop</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Objective-C</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">事件循环</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">小知识</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Runtime</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Objective-C</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -476,23 +507,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">RunLoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">事件循环</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">经验笔记</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">AFNetworking</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Reactive Cocoa</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">SDWebImageView</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">AsyncDisPlayKit</a>
+                <a href="javascript:void(0)" class="js-tag color1">Block</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -512,6 +539,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">AFNetworking</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Reactive Cocoa</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">SDWebImageView</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">AsyncDisPlayKit</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">分类</a>
               </li>
              
@@ -525,10 +568,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">KVC</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Block</a>
               </li>
              
               <li class="article-tag-list-item">
